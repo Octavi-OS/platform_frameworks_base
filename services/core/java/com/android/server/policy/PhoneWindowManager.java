@@ -671,6 +671,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     };
 
+    private int mTorchActionMode;
+
     private static final int MSG_DISPATCH_MEDIA_KEY_WITH_WAKE_LOCK = 3;
     private static final int MSG_DISPATCH_MEDIA_KEY_REPEAT_WITH_WAKE_LOCK = 4;
     private static final int MSG_KEYGUARD_DRAWN_COMPLETE = 5;
@@ -695,8 +697,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private static final int MSG_POWER_VERY_LONG_PRESS = 25;
     private static final int MSG_RINGER_TOGGLE_CHORD = 26;
     private static final int MSG_DISPATCH_VOLKEY_WITH_WAKE_LOCK = 27;
-    private static final int MSG_TOGGLE_TORCH = 50;
-    private static final int MSG_CLEAR_PROXIMITY = 51;
+    private static final int MSG_TOGGLE_TORCH = 28;
+    private static final int MSG_CLEAR_PROXIMITY = 29;
 
     private boolean mHasPermanentMenuKey;
     private SwipeToScreenshotListener mSwipeToScreenshot;
@@ -783,7 +785,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     handleRingerChordGesture();
                     break;
                 case MSG_TOGGLE_TORCH:
-                    toggleFlashLight();
+                    performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, true,
+                            "Power - Long Press - Torch");
+                    OctaviUtils.toggleCameraFlash();
                     break;
                 case MSG_DISPATCH_VOLKEY_WITH_WAKE_LOCK: {
                     KeyEvent event = (KeyEvent) msg.obj;
@@ -806,11 +810,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     break;
             }
         }
-    }
-
-    private void toggleFlashLight() {
-        performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, true, "Flashlight toggle");
-        OctaviUtils.toggleCameraFlash();
     }
 
     private UEventObserver mHDMIObserver = new UEventObserver() {
@@ -1134,6 +1133,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                             (mTorchActionMode == 1 && isScreenOn() && !isDozeMode())) {
                         wakeUpFromPowerKey(event.getDownTime());
                     }
+
                     final int maxCount = getMaxMultiPressPowerCount();
 
                     if (maxCount <= 1) {
@@ -1327,7 +1327,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         switch (behavior) {
             case MULTI_PRESS_POWER_NOTHING:
                 if ((mTorchActionMode == 1) && (!isScreenOn() || isDozeMode())) {
-                    toggleFlashLight();
+                    performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, true,
+                            "Power - Long Press - Torch");
+                    OctaviUtils.toggleCameraFlash();
                 }
                 break;
             case MULTI_PRESS_POWER_THEATER_MODE:
@@ -2323,9 +2325,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     mContext.getResources().getInteger(
                             com.android.internal.R.integer.config_veryLongPressOnPowerBehavior));
             mTorchActionMode = Settings.Secure.getIntForUser(resolver,
-                    Settings.Secure.TORCH_POWER_BUTTON_GESTURE, 0,
-                    UserHandle.USER_CURRENT);
-            mDefaultDisplayPolicy.updatehasNavigationBar();
+                    Settings.Secure.TORCH_POWER_BUTTON_GESTURE,
+                            0, UserHandle.USER_CURRENT);
         }
         if (updateRotation) {
             updateRotation(true);

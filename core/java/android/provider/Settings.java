@@ -9448,8 +9448,7 @@ public final class Settings {
          * 2: long tap power for torch
          * @hide
          */
-        public static final String TORCH_POWER_BUTTON_GESTURE =
-                "torch_power_button_gesture";
+        public static final String TORCH_POWER_BUTTON_GESTURE = "torch_power_button_gesture";
 
         /**
          * Whether the camera double twist gesture to flip between front and back mode should be
