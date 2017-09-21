@@ -164,7 +164,12 @@ interface IStatusBarService
     void startAssist(in Bundle args);
 
     /**
-     * Aex
+     * Octavi
      */
     void toggleCameraFlash();
+
+    void toggleRecentApps();
+    void toggleSplitScreen();
+    void preloadRecentApps();
+    void cancelPreloadRecentApps();
 }
