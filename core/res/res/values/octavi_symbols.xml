@@ -259,6 +259,9 @@
 
    <!-- App Lock -->
    <java-symbol type="string" name="lockscreen_pattern_instructions" />
+
+   <!-- Whether device supports gestures on fingerprint sensor -->
+   <java-symbol type="bool" name="config_supportsGesturesOnFingerprintSensor" />
  
 </resources>
  
