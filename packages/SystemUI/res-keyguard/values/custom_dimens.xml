@@ -15,6 +15,11 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
     <!-- Padding added to keyguard status area when Type clock is in use -->
     <dimen name="keyguard_status_area_typeclock_padding">32dp</dimen>
+
+    <!-- Weather condition icon  -->
+    <dimen name="weather_icon_size">24dp</dimen>
+
 </resources>
