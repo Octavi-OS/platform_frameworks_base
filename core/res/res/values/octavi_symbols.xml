@@ -193,6 +193,7 @@
    <java-symbol type="style" name="Animation.Toast.SlideLeftRight" />
 
    <!-- Pocket Lock -->
+   <java-symbol type="bool" name="config_pocketModeSupported" />
    <java-symbol type="layout" name="pocket_lock_view_layout" />
    <java-symbol type="id" name="pocket_hint_container" />
    <java-symbol type="id" name="pocket_hint_image" />
@@ -203,5 +204,5 @@
 
    <!-- Pocket Service -->
    <java-symbol type="string" name="config_pocketJudgeVendorSensorName" />
-   
+
 </resources>
