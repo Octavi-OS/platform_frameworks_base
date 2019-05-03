@@ -242,4 +242,6 @@
     <item>com.android.touch.gestures.KeyHandler</item>
     </string-array>
 
+    <!-- Pocket Lock -->
+    <bool name="config_pocketModeSupported">true</bool>
 </resources>
