@@ -167,6 +167,7 @@ interface IStatusBarService
      * Octavi
      */
     void toggleCameraFlash();
+    void toggleCameraFlashState(boolean enable);
 
     void toggleRecentApps();
     void toggleSplitScreen();
