@@ -6386,7 +6386,11 @@ public final class Settings {
                 "display_picture_adjustment";
 
         /**
-         * Did we tell about how they can stop breaking their eyes?
+         * @hide
+         */
+        public static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
+
+        /**
          * @hide
          */
         public static final String LIVE_DISPLAY_HINTED = "live_display_hinted";
