@@ -5440,7 +5440,6 @@ public final class Settings {
          */
         public static final String HEADS_UP_STOPLIST_VALUES = "heads_up_stoplist_values";
 
-
         /**
          * Which applications to disable heads up notifications for
          *
@@ -5946,6 +5945,11 @@ public final class Settings {
          * @hide
          */
         public static final String STATUS_BAR_NOTIF_COUNT = "status_bar_notif_count";
+
+        /**
+         * @hide
+         */
+        public static final String USE_OLD_MOBILETYPE = "use_old_mobiletype";
 
         /**
          * Keys we no longer back up under the current schema, but want to continue to
