@@ -290,8 +290,7 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener, Dumpab
     private boolean mLockIconPressed;
     private int mActiveMobileDataSubscription = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
     private final Executor mBackgroundExecutor;
-    private final boolean mFaceAuthOnSecurityView;
-    private boolean mBouncerFullyShown;
+    private final boolean mFaceAuthOnlyOnSecurityView;
 
     /**
      * Short delay before restarting fingerprint authentication after a successful try. This should
@@ -1604,8 +1603,8 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener, Dumpab
         mSubscriptionManager = SubscriptionManager.from(context);
         mDeviceProvisioned = isDeviceProvisionedInSettingsDb();
         mStrongAuthTracker = new StrongAuthTracker(context, this::notifyStrongAuthStateChanged);
-        mFaceAuthOnSecurityView = mContext.getResources().getBoolean(
-                com.android.internal.R.bool.config_faceAuthOnSecurityView);
+        mFaceAuthOnlyOnSecurityView = mContext.getResources().getBoolean(
+                R.bool.config_faceAuthOnlyOnSecurityView);
         mBackgroundExecutor = backgroundExecutor;
         mBroadcastDispatcher = broadcastDispatcher;
         mRingerModeTracker = ringerModeTracker;
@@ -2000,7 +1999,7 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener, Dumpab
      * If face auth is allows to scan on this exact moment.
      */
     public boolean shouldListenForFace() {
-        if (mFaceAuthOnSecurityView && mKeyguardReset){
+        if (mFaceAuthOnlyOnSecurityView && mKeyguardReset){
             mKeyguardReset = false;
             return false;
         }
@@ -2031,7 +2030,7 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener, Dumpab
                 && !isLockOutOrLockDown;
 
         boolean unlockPossible = true;
-        if ((!mBouncer || !awakeKeyguard) && isFaceAuthOnlyOnSecurityView()){
+        if ((!mBouncer || !awakeKeyguard) && mFaceAuthOnlyOnSecurityView){
             unlockPossible = false;
         }
 
@@ -2224,11 +2223,6 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener, Dumpab
         if (mFaceRunningState == BIOMETRIC_STATE_CANCELLING_RESTARTING) {
             setFaceRunningState(BIOMETRIC_STATE_CANCELLING);
         }
-    }
-
-    private boolean isFaceAuthOnlyOnSecurityView() {
-        return Settings.Secure.getInt(mContext.getContentResolver(),
-                Settings.Secure.FACE_UNLOCK_ALWAYS_REQUIRE_SWIPE, mFaceAuthOnSecurityView ? 1 : 0) != 0;
     }
 
     private boolean isDeviceProvisionedInSettingsDb() {
@@ -2572,7 +2566,7 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener, Dumpab
         mBouncerFullyShown = false;
         updateBiometricListeningState();
         mNeedsSlowUnlockTransition = resolveNeedsSlowUnlockTransition();
-        if (mFaceAuthOnSecurityView){
+        if (mFaceAuthOnlyOnSecurityView){
             mKeyguardReset = true;
         }
     }

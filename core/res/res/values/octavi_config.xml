@@ -172,9 +172,6 @@
     <!-- Default value for FOD animation package resources -->
     <string name="config_fodAnimationPackage" translatable="false">com.octavi.fod.animations</string>
 
-    <!-- Enable face auth when swiping security view -->
-    <bool name="config_faceAuthOnSecurityView">false</bool>
-
     <!-- Wired/BT headset focus mode -->
     <bool name="config_deviceRingtoneFocusMode">false</bool>
 
