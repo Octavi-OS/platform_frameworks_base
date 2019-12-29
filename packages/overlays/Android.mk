@@ -34,7 +34,9 @@ LOCAL_REQUIRED_MODULES := \
 	FontCoolstorySourceOverlay \
 	FontLGSmartGothicSourceOverlay \
 	FontNotoSerifSourceOverlay \
-        FontRosemarySourceOverlay \
+	FontOneplusSlateSource \
+	FontRosemarySourceOverlay \
+	FontSamsungOneSourceOverlay \
 	FontSonySketchSourceOverlay \
 	FontSurferSourceOverlay \
 	IconPackCircularAndroidOverlay \
