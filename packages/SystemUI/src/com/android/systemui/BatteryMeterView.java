@@ -519,7 +519,6 @@ public class BatteryMeterView extends LinearLayout implements
             mDrawable.setShowPercent(drawPercentInside);
             mXDrawable.setShowPercent(drawPercentInside);
         }
-        updatePercentText();
     }
 
     public void updateVisibility() {
