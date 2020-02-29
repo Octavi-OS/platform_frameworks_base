@@ -7432,6 +7432,7 @@ message MetricsEvent {
     //OCTAVI-OS 
     OCTAVI = 1999;
 
-    VENOM = 9548;
+    // Panel for Mobile Data
+    PANEL_MOBILE_DATA = 2002;
   }
 }
