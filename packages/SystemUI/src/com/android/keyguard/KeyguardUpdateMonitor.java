@@ -293,6 +293,7 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener, Dumpab
     private int mActiveMobileDataSubscription = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
     private final Executor mBackgroundExecutor;
     private final boolean mFaceAuthOnlyOnSecurityView;
+    private boolean mBouncerFullyShown;
 
     // Face unlock
     private static final boolean mCustomFaceUnlockSupported = FaceUnlockUtils.isFaceUnlockSupported();
@@ -1618,7 +1619,7 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener, Dumpab
         mDeviceProvisioned = isDeviceProvisionedInSettingsDb();
         mStrongAuthTracker = new StrongAuthTracker(context, this::notifyStrongAuthStateChanged);
         mFaceAuthOnlyOnSecurityView = mContext.getResources().getBoolean(
-                R.bool.config_faceAuthOnlyOnSecurityView);
+                com.android.internal.R.bool.config_faceAuthOnlyOnSecurityView);
         mBackgroundExecutor = backgroundExecutor;
         mBroadcastDispatcher = broadcastDispatcher;
         mRingerModeTracker = ringerModeTracker;
@@ -2063,6 +2064,10 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener, Dumpab
             shouldListen = false;
         }
 
+        if (shouldListen && mFaceAuthOnlyOnSecurityView && !mBouncerFullyShown){
+            shouldListen = false;
+        }
+
         // Aggregate relevant fields for debug logging.
         if (DEBUG_FACE || DEBUG_SPEW) {
             final KeyguardFaceListenModel model = new KeyguardFaceListenModel(
@@ -2091,7 +2096,7 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener, Dumpab
     public void onKeyguardBouncerFullyShown(boolean fullyShow) {
         if (mBouncerFullyShown != fullyShow){
             mBouncerFullyShown = fullyShow;
-            if (isFaceAuthOnlyOnSecurityView()){
+            if (mFaceAuthOnlyOnSecurityView){
                 updateFaceListeningState();
             }
         }
