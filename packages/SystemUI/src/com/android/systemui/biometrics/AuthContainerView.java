@@ -60,6 +60,8 @@ public class AuthContainerView extends LinearLayout
         implements AuthDialog, WakefulnessLifecycle.Observer {
 
     private static final String TAG = "BiometricPrompt/AuthContainerView";
+    private static final String FOD = "vendor.lineage.biometrics.fingerprint.inscreen";
+
     private static final int ANIMATION_DURATION_SHOW_MS = 250;
     private static final int ANIMATION_DURATION_AWAY_MS = 350; // ms
 
@@ -470,7 +472,7 @@ public class AuthContainerView extends LinearLayout
         if (mBiometricView != null) {
             mBiometricView.restoreState(savedState);
         }
-        wm.addView(this, getLayoutParams(mWindowToken));
+        wm.addView(this, getLayoutParams(mWindowToken, mBiometricView.getHasFod()));
     }
 
     @Override
@@ -630,7 +632,7 @@ public class AuthContainerView extends LinearLayout
      * @param windowToken token for the window
      * @return
      */
-    public static WindowManager.LayoutParams getLayoutParams(IBinder windowToken) {
+    public static WindowManager.LayoutParams getLayoutParams(IBinder windowToken, boolean mHasFod) {
         final int windowFlags = WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED
                 | WindowManager.LayoutParams.FLAG_SECURE;
         final WindowManager.LayoutParams lp = new WindowManager.LayoutParams(
