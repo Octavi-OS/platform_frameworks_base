@@ -356,10 +356,10 @@ public class VolumeDialogImpl implements VolumeDialog,
         int[] mainLocation = new int[2];
         main.getLocationOnScreen(mainLocation);
         internalInsetsInfo.touchableRegion.set(new Region(
-            mainLocation[0],
-            mainLocation[1],
-            mainLocation[0] + main.getWidth(),
-            mainLocation[1] + mDialogView.getHeight()
+                mainLocation[0] - main.getWidth(),
+                dialogLocation[1],
+                mainLocation[0] + main.getWidth(),
+                dialogLocation[1] + mDialogView.getHeight()
         ));
     };
 
