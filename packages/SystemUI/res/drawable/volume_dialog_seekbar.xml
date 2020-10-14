@@ -8,7 +8,7 @@
         </shape>
     </item>
     <item android:id="@android:id/progress">
-        <clip android:clipOrientation="horizontal" android:gravity="center">
+        <clip android:clipOrientation="horizontal" android:gravity="left">
             <selector>
                 <item android:state_enabled="false"
                     android:drawable="@android:color/transparent" />
