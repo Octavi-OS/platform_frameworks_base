@@ -36,20 +36,19 @@
         android:textAppearance="@style/TextAppearance.QS.Date"
         systemui:datePattern="@string/abbrev_wday_month_day_no_year_alarm" />
 
-
-	<LinearLayout
-		android:layout_width="wrap_content"
-		android:layout_height="match_parent"
-	        android:layout_gravity="center_vertical"
-	        android:gravity="end">
+    <android.widget.Space
+        android:id="@+id/space"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical|center_horizontal" />
 
             <com.android.systemui.statusbar.AlphaOptimizedFrameLayout
                 android:id="@+id/settings_button_container"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/qs_footer_action_button_size"
+                android:layout_height="@dimen/qs_footer_action_button_size"
                 android:clipChildren="false"
-	        android:layout_gravity="end"
-                android:layout_marginEnd="20dp">
+                android:clipToPadding="false">
 
                 <com.android.systemui.statusbar.phone.SettingsButton
                     android:id="@+id/settings_button"
@@ -57,7 +56,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-	            android:gravity="end"
                     android:padding="@dimen/qs_footer_icon_padding"
                     android:background="@drawable/ripple_drawable"
                     android:contentDescription="@string/accessibility_quick_settings_settings"
@@ -65,5 +63,4 @@
                     android:scaleType="centerInside"
                     android:tint="?android:attr/colorForeground"/>
             </com.android.systemui.statusbar.AlphaOptimizedFrameLayout>
-	</LinearLayout>
 </LinearLayout>
