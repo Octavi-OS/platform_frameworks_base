@@ -15,7 +15,7 @@
                 <item>
                     <shape android:shape="rectangle"
                         android:tint="?android:attr/colorAccent">
-                        <corners android:radius="44dp"/>
+                        <corners android:radius="48dp"/>
                         <size android:height="@dimen/custom_volume_dialog_seekbar_width" />
                         <solid android:color="?android:attr/colorAccent" />
                     </shape>
