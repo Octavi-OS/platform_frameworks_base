@@ -35,4 +35,7 @@
     <dimen name="net_traffic_txt_img_padding">2dp</dimen>
     <dimen name="net_traffic_single_text_size_x">14dp</dimen>
 
+    <!-- QS panel brightness side margin -->
+    <dimen name="qs_brightness_side_margin">10dp</dimen>
+
 </resources>
