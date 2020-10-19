@@ -222,7 +222,7 @@ public class QSFactoryImpl implements QSFactory {
             case "caffeine":
                 return mCaffeineTileProvider.get();
             case "weather":
-                return mWeatherTile.get();
+                return mWeatherTileProvider.get();
         }
 
         // Custom tiles
