@@ -38,4 +38,6 @@
     <!-- QS panel brightness side margin -->
     <dimen name="qs_brightness_side_margin">10dp</dimen>
 
+    <dimen name="current_weather_image_size">42dp</dimen>
+
 </resources>
