@@ -61,6 +61,7 @@ import androidx.lifecycle.LifecycleRegistry;
 import com.android.systemui.statusbar.policy.DeviceProvisionedController;
 import com.android.settingslib.Utils;
 import com.android.systemui.BatteryMeterView;
+import com.android.systemui.Dependency;
 import com.android.systemui.DualToneHandler;
 import com.android.systemui.Interpolators;
 import com.android.systemui.R;
