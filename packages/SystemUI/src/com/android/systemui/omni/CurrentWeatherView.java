@@ -133,7 +133,7 @@ public class CurrentWeatherView extends FrameLayout implements OmniJawsClient.Om
     }
 
     private int getTintColor() {
-        return getColorAttrDefaultColor(mContext, R.attr.wallpaperTextColor);
+        return Utils.getColorAttrDefaultColor(mContext, R.attr.wallpaperTextColor);
     }
 
     private void setErrorView() {
