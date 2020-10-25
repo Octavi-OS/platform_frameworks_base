@@ -23,6 +23,16 @@
     android:theme="@style/QSHeaderTheme"
     android:forceHasOverlappingRendering="false">
 
+
+    <TextClock
+        android:id="@+id/textClock"
+        android:singleLine="true"
+        android:layout_width="match_parent"
+        android:format12Hour="hh:mm"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="55dp"/>
+
         <com.android.systemui.qs.QSHeaderInfoLayout
             android:id="@+id/status_container"
             android:layout_width="0dp"
