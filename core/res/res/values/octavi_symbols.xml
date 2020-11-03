@@ -92,4 +92,7 @@
 
    <java-symbol type="array" name="config_customPermissionsList" />
 
+   <!-- FOD icon dimming -->
+   <java-symbol type="bool" name="config_targetUsesInKernelDimming" />
+
 </resources>
