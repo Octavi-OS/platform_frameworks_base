@@ -4967,6 +4967,8 @@ public final class Settings {
 
         public static final String THREE_FINGER_GESTURE = "three_finger_gesture";
 
+        public static final String SYSTEMUI_PLUGIN_VOLUME = "systemui_plugin_volume";
+
         /**
          * IMPORTANT: If you add a new public settings you also have to add it to
          * PUBLIC_SETTINGS below. If the new setting is hidden you have to add
@@ -5580,6 +5582,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(AICP_LOCKSCREEN_WEATHER_STYLE);
             PRIVATE_SETTINGS.add(LOCKSCREEN_MEDIA_ART);
             PRIVATE_SETTINGS.add(BACK_GESTURE_HAPTIC);
+            PRIVATE_SETTINGS.add(SYSTEMUI_PLUGIN_VOLUME);
         }
 
         /**
