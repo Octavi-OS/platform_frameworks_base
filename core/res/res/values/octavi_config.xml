@@ -253,7 +253,4 @@
     <!-- Whether device has fingerprint on power button -->
     <bool name="config_powerButtonFingerprint">false</bool>
 
-    <!-- Default value for Ambient Pulse light color -->
-    <integer name="config_ambientNotificationDefaultColor">0xFF3980FF</integer>
-
 </resources>
