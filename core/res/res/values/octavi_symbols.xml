@@ -97,7 +97,4 @@
     <!-- Pocket Service -->
     <java-symbol type="string" name="config_pocketJudgeVendorSensorName" />
 
-    <!-- Ambient notification light color -->
-    <java-symbol type="integer" name="config_ambientNotificationDefaultColor" />
-
 </resources>
