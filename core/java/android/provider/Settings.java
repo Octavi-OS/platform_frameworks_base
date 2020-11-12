@@ -5976,6 +5976,10 @@ public final class Settings {
          */
         public static final String SENSOR_BLOCK = "sensor_block";
 
+        /** reTicker **/
+        public static final String RETICKER_STATUS = "reticker_status";
+        public static final String RETICKER_COLORED = "reticker_colored";
+
         /**
          * Sensor blocked packages
          * @hide
