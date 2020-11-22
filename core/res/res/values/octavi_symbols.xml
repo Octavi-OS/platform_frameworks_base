@@ -97,4 +97,7 @@
 
    <java-symbol type="integer" name="config_screenBrightnessPulse" />
 
+   <!-- Ambiant Pulse Light -->
+   <java-symbol type="integer" name="config_AmbiantPulseLightColor" />
+
 </resources>
