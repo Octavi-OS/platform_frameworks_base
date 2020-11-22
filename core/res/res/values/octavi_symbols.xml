@@ -95,4 +95,6 @@
    <!-- FOD icon dimming -->
    <java-symbol type="bool" name="config_targetUsesInKernelDimming" />
 
+   <java-symbol type="integer" name="config_screenBrightnessPulse" />
+
 </resources>
