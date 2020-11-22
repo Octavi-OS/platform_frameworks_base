@@ -5548,6 +5548,12 @@ public final class Settings {
         public static final String LOCKSCREEN_CHARGING_ANIMATION_STYLE = "lockscreen_charging_animation_style";
 
         /**
+         * Custom Ambient raise gesture
+         * @hide
+         */
+        public static final String CUSTOM_AMBIENT_RAISE_GESTURE = "custom_ambient_raise_gesture";
+
+        /**
          * Keys we no longer back up under the current schema, but want to continue to
          * process when restoring historical backup datasets.
          *
