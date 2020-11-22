@@ -5433,6 +5433,11 @@ public final class Settings {
         public static final String OMNI_DOZE_ON_CHARGE_NOW = "doze_on_charge_now";
 
         /**
+         * @hide
+         */
+        public static final String FORCE_SHOW_NAVBAR = "navigation_bar_show_new";
+
+        /**
          * Keys we no longer back up under the current schema, but want to continue to
          * process when restoring historical backup datasets.
          *
@@ -5602,6 +5607,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(BACK_GESTURE_HAPTIC);
             PRIVATE_SETTINGS.add(SYSTEMUI_PLUGIN_VOLUME);
             PRIVATE_SETTINGS.add(OMNI_DOZE_ON_CHARGE);
+            PRIVATE_SETTINGS.add(FORCE_SHOW_NAVBAR);
         }
 
         /**
