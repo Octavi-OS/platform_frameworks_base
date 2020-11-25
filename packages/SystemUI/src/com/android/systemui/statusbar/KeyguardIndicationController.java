@@ -53,7 +53,7 @@ import com.airbnb.lottie.LottieAnimationView;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.app.IBatteryStats;
-import com.android.internal.util.custom.fod.FodUtils;
+import com.android.internal.util.custom.FodUtils;
 import com.android.internal.widget.ViewClippingUtil;
 import com.android.keyguard.KeyguardUpdateMonitor;
 import com.android.keyguard.KeyguardUpdateMonitorCallback;
