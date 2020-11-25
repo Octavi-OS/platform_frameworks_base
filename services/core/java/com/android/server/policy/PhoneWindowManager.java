@@ -1982,14 +1982,15 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             mBurnInProtectionHelper = new BurnInProtectionHelper(
                     context, minHorizontal, maxHorizontal, minVertical, maxVertical, maxRadius);
         }
-
         mHandler = new PolicyHandler();
+
         mSwipeToScreenshot = new SwipeToScreenshotListener(context, new SwipeToScreenshotListener.Callbacks() {
             @Override
             public void onSwipeThreeFinger() {
-                mHandler.post(mScreenshotRunnable);
+                ActionUtils.takeScreenshot(true);
             }
         });
+
         mWakeGestureListener = new MyWakeGestureListener(mContext, mHandler);
         // only for hwkey devices
         if (!mContext.getResources().getBoolean(
