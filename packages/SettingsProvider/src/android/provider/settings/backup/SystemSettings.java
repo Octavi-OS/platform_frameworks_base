@@ -91,5 +91,6 @@ public class SystemSettings {
         Settings.System.TORCH_LONG_PRESS_POWER_GESTURE,
         Settings.System.TORCH_LONG_PRESS_POWER_TIMEOUT,
         Settings.System.NOTIFICATION_HEADERS,
+        Settings.System.CENTER_NOTIFICATION_HEADERS,
     };
 }
