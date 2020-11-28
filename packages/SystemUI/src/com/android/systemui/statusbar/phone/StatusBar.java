@@ -714,10 +714,6 @@ public class StatusBar extends SystemUI implements DemoMode,
                     Settings.System.LOCKSCREEN_MEDIA_BLUR),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.HEADS_UP_STOPLIST_VALUES), false, this);
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.HEADS_UP_BLACKLIST_VALUES), false, this);
-            resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.FORCE_SHOW_NAVBAR),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
@@ -760,23 +756,11 @@ public class StatusBar extends SystemUI implements DemoMode,
             if (mNotificationShadeWindowViewController != null) {
                 mNotificationShadeWindowViewController.updateSettings();
             }
-            setHeadsUpStoplist();
-            setHeadsUpBlacklist();
             setLockScreenMediaBlurLevel();
             updateNavigationBar(false);
             updateChargingAnimation();
             setQsRowsColumns();
         }
-    }
-
-    private void setHeadsUpStoplist() {
-        if (mPresenter != null)
-            mPresenter.setHeadsUpStoplist();
-    }
-
-    private void setHeadsUpBlacklist() {
-        if (mPresenter != null)
-            mPresenter.setHeadsUpBlacklist();
     }
 
     private void setLockScreenMediaBlurLevel() {
