@@ -62,7 +62,6 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LifecycleRegistry;
 
-import com.android.systemui.statusbar.policy.DeviceProvisionedController;
 import com.android.internal.logging.UiEventLogger;
 import com.android.settingslib.Utils;
 import com.android.systemui.BatteryMeterView;
@@ -91,9 +90,6 @@ import com.android.systemui.statusbar.policy.DateView;
 import com.android.systemui.statusbar.policy.NextAlarmController;
 import com.android.systemui.statusbar.policy.ZenModeController;
 import com.android.systemui.util.RingerModeTracker;
-import com.android.systemui.statusbar.phone.SettingsButton;
-import com.android.internal.logging.MetricsLogger;
-import com.android.internal.logging.nano.MetricsProto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -141,9 +137,6 @@ public class QuickStatusBarHeader extends RelativeLayout implements
     private TouchAnimator mPrivacyChipAlphaAnimator;
     private DualToneHandler mDualToneHandler;
     private final CommandQueue mCommandQueue;
-    private SettingsButton mSettingsButton;
-    protected View mSettingsContainer;
-    private final DeviceProvisionedController mDeviceProvisionedController;
 
     private View mSystemIconsView;
     private View mQuickQsStatusIcons;
@@ -252,7 +245,7 @@ public class QuickStatusBarHeader extends RelativeLayout implements
             NextAlarmController nextAlarmController, ZenModeController zenModeController,
             StatusBarIconController statusBarIconController,
             ActivityStarter activityStarter, PrivacyItemController privacyItemController,
-            CommandQueue commandQueue, RingerModeTracker ringerModeTracker, DeviceProvisionedController deviceProvisionedController,
+            CommandQueue commandQueue, RingerModeTracker ringerModeTracker,
             UiEventLogger uiEventLogger) {
         super(context, attrs);
         mAlarmController = nextAlarmController;
@@ -264,7 +257,6 @@ public class QuickStatusBarHeader extends RelativeLayout implements
                 new ContextThemeWrapper(context, R.style.QSHeaderTheme));
         mCommandQueue = commandQueue;
         mRingerModeTracker = ringerModeTracker;
-        mDeviceProvisionedController = deviceProvisionedController;
         mSettingsObserver.observe();
         mUiEventLogger = uiEventLogger;
     }
@@ -319,9 +311,6 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         mClockView.setOnClickListener(this);
         mClockView.setQsHeader();
         mDateView = findViewById(R.id.date);
-        mSettingsButton = findViewById(R.id.settings_button);
-        mSettingsContainer = findViewById(R.id.settings_button_container);
-        mSettingsButton.setOnClickListener(this);
         mSpace = findViewById(R.id.space);
 
         // Tint for the battery icons are handled in setupHost()
@@ -423,10 +412,6 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         return isOriginalVisible != alarmVisible ||
                 !Objects.equals(originalAlarmText, mNextAlarmTextView.getText());
 	}
-
-    private void updateClickabilities() {
-        mSettingsButton.setClickable(mSettingsButton.getVisibility() == View.VISIBLE);
-    }
 
     private void applyDarkness(int id, Rect tintArea, float intensity, int color) {
         View v = findViewById(id);
@@ -764,25 +749,6 @@ public class QuickStatusBarHeader extends RelativeLayout implements
             mActivityStarter.postStartActivityDismissingKeyguard(new Intent(
                     Settings.ACTION_SOUND_SETTINGS), 0);
         }
-        if (v == mSettingsButton) {
-            if (!mDeviceProvisionedController.isCurrentUserSetup()) {
-                // If user isn't setup just unlock the device and dump them back at SUW.
-                mActivityStarter.postQSRunnableDismissingKeyguard(() -> {
-                });
-                return;
-            }
-            MetricsLogger.action(mContext,
-                    mExpanded ? MetricsProto.MetricsEvent.ACTION_QS_EXPANDED_SETTINGS_LAUNCH
-                            : MetricsProto.MetricsEvent.ACTION_QS_COLLAPSED_SETTINGS_LAUNCH);
-                startSettingsActivity();
-	}
-    }
-
-    public void updateEverything() {
-        post(() -> {
-            updateClickabilities();
-            setClickable(false);
-        });
     }
 
     @Override
@@ -799,6 +765,10 @@ public class QuickStatusBarHeader extends RelativeLayout implements
     @Override
     public void onConfigChanged(ZenModeConfig config) {
         updateStatusText();
+    }
+
+    public void updateEverything() {
+        post(() -> setClickable(!mExpanded));
     }
 
     public void setQSPanel(final QSPanel qsPanel) {
@@ -862,12 +832,6 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         }
         updateClockPadding();
     }
-
-    private void startSettingsActivity() {
-        mActivityStarter.startActivity(new Intent(android.provider.Settings.ACTION_SETTINGS),
-                true /* dismissShade */);
-    }
-
 
     public void setExpandedScrollAmount(int scrollY) {
         // The scrolling of the expanded qs has changed. Since the header text isn't part of it,
