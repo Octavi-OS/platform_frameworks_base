@@ -18,6 +18,7 @@
     android:id="@+id/quick_settings_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
     android:clipToPadding="false"
     android:clipChildren="false" >
 
