@@ -549,7 +549,7 @@ public class BrightnessController implements ToggleSlider.Listener {
 
     public void setMirrorView(View v) {
         mMirrorIcon = v.findViewById(R.id.brightness_icon);
-        mMirrorLevelIcon = v.findViewById(R.id.brightness_level);
+//        mMirrorLevelIcon = v.findViewById(R.id.brightness_level);
     }
 
 }

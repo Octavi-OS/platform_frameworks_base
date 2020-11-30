@@ -109,11 +109,12 @@ import java.util.Objects;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
-
 import com.android.settingslib.Utils;
+
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.DecelerateInterpolator;
 
 /**
  * View that contains the top-most bits of the screen (primarily the status bar with date, time, and
@@ -675,16 +676,26 @@ public class QuickStatusBarHeader extends RelativeLayout implements
     }
 
     public void setExpanded(boolean expanded) {
+	Animation fadeIn = new AlphaAnimation(0, 1);
+        fadeIn.setInterpolator(new DecelerateInterpolator());
+        fadeIn.setDuration(500);
+
+        Animation fadeOut = new AlphaAnimation(1, 0);
+        fadeOut.setInterpolator(new AccelerateInterpolator());
+        fadeOut.setDuration(500);
+
         if (mExpanded == expanded) return;
         mExpanded = expanded;
         mHeaderQsPanel.setExpanded(expanded);
         mDateView.setVisibility(mClockView.isClockDateEnabled() ? View.INVISIBLE : View.VISIBLE);
 
 	if(mExpanded){
+	fadeOut.start();
 	mSystemIconsView.setVisibility(View.INVISIBLE);
 	}
 	else {
 	mSystemIconsView.setVisibility(View.VISIBLE);
+	fadeIn.start();
 	}
         updateEverything();
     }

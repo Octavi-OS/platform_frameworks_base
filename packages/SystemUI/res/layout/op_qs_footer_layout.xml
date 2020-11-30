@@ -46,6 +46,7 @@
             android:paddingStart="20dp"
             android:paddingEnd="10dp"
             android:scaleType="centerInside"
+            android:visibility="gone"
             android:src="@drawable/ic_qs_brightness_high" />
 
         <com.android.systemui.settings.ToggleSliderView
