@@ -56,6 +56,8 @@ import com.android.settingslib.utils.ThreadUtils;
 import com.android.systemui.Dependency;
 import com.android.systemui.R;
 
+import com.android.internal.util.octavi.OctaviUtils;
+
 import vendor.lineage.biometrics.fingerprint.inscreen.V1_0.IFingerprintInscreen;
 import vendor.lineage.biometrics.fingerprint.inscreen.V1_0.IFingerprintInscreenCallback;
 
@@ -122,6 +124,7 @@ public class FODCircleView extends ImageView {
 
     private FODAnimation mFODAnimation;
     private boolean mIsRecognizingAnimEnabled;
+    private boolean mIsFodAnimationAvailable = false;
 
     private int mSelectedIcon;
     private final int[] ICON_STYLES = {
@@ -186,7 +189,7 @@ public class FODCircleView extends ImageView {
         public void onKeyguardVisibilityChanged(boolean showing) {
             mIsKeyguard = showing;
             updateStyle();
-            if (mFODAnimation != null) {
+            if (mIsFodAnimationAvailable && mFODAnimation != null) {
                 mFODAnimation.setAnimationKeyguard(mIsKeyguard);
             }
         }
@@ -204,7 +207,7 @@ public class FODCircleView extends ImageView {
             } else {
                 hide();
             }
-            if (mFODAnimation != null) {
+            if (mIsFodAnimationAvailable && mFODAnimation != null) {
                 mFODAnimation.setAnimationKeyguard(mIsBouncer);
             }
         }
@@ -226,7 +229,7 @@ public class FODCircleView extends ImageView {
         @Override
         public void onBiometricHelp(int msgId, String helpString,
                 BiometricSourceType biometricSourceType) {
-            if (msgId == -1){ // Auth error
+            if (msgId == -1 && mIsFodAnimationAvailable) { // Auth error
                 mHandler.post(() -> mFODAnimation.hideFODanimation());
             }
         }
@@ -346,7 +349,12 @@ public class FODCircleView extends ImageView {
         mUpdateMonitor = Dependency.get(KeyguardUpdateMonitor.class);
         mUpdateMonitor.registerCallback(mMonitorCallback);
 
-        mFODAnimation = new FODAnimation(context, mPositionX, mPositionY);
+        mIsFodAnimationAvailable = OctaviUtils.isPackageInstalled(context,
+                                    context.getResources().getString(
+                                    com.android.internal.R.string.config_fodAnimationPackage));
+        if (mIsFodAnimationAvailable) {
+            mFODAnimation = new FODAnimation(context, mPositionX, mPositionY);
+        }
     }
 
     private int interpolate(int i, int i2, int i3, int i4, int i5) {
@@ -422,17 +430,23 @@ public class FODCircleView extends ImageView {
 
         if (event.getAction() == MotionEvent.ACTION_DOWN && newIsInside) {
             showCircle();
-            mHandler.post(() -> mFODAnimation.showFODanimation());
+            if (mIsFodAnimationAvailable) {
+                mHandler.post(() -> mFODAnimation.showFODanimation());
+            }
             return true;
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             hideCircle();
-            mHandler.post(() -> mFODAnimation.hideFODanimation());
+            if (mIsFodAnimationAvailable) {
+                mHandler.post(() -> mFODAnimation.hideFODanimation());
+            }
             return true;
         } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
             return true;
         }
 
-        mHandler.post(() -> mFODAnimation.hideFODanimation());
+        if (mIsFodAnimationAvailable) {
+            mHandler.post(() -> mFODAnimation.hideFODanimation());
+        }
         return false;
     }
 
@@ -564,7 +578,7 @@ public class FODCircleView extends ImageView {
                 Settings.System.FOD_RECOGNIZING_ANIMATION, 0) != 0;
         mSelectedIcon = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.FOD_ICON, 0);
-        if (mFODAnimation != null) {
+        if (mIsFodAnimationAvailable && mFODAnimation != null) {
            mFODAnimation.update(mIsRecognizingAnimEnabled);
         }
     }
@@ -603,7 +617,9 @@ public class FODCircleView extends ImageView {
 
         if (mIsDreaming && !mIsCircleShowing) {
             mParams.y += mDreamingOffsetY;
-            mFODAnimation.updateParams(mParams.y);
+            if (mIsFodAnimationAvailable) {
+                mFODAnimation.updateParams(mParams.y);
+            }
         }
 
         mWindowManager.updateViewLayout(this, mParams);
