@@ -88,8 +88,6 @@ public class SystemSettings {
         Settings.System.DOUBLE_TAP_SLEEP_LOCKSCREEN,
         Settings.System.QS_PANEL_BG_USE_NEW_TINT,
         Settings.System.LOCKSCREEN_MEDIA_ART,
-        Settings.System.TORCH_LONG_PRESS_POWER_GESTURE,
-        Settings.System.TORCH_LONG_PRESS_POWER_TIMEOUT,
         Settings.System.NOTIFICATION_HEADERS,
         Settings.System.CENTER_NOTIFICATION_HEADERS,
     };
