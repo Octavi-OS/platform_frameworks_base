@@ -73,7 +73,6 @@ public class DozeScreenBrightness extends BroadcastReceiver implements DozeMachi
      * --ei brightness_bucket 1}
      */
     private int mDebugBrightnessBucket = -1;
-    private DozeMachine.State mState;
 
     @VisibleForTesting
     public DozeScreenBrightness(Context context, DozeMachine.Service service,
@@ -116,7 +115,6 @@ public class DozeScreenBrightness extends BroadcastReceiver implements DozeMachi
 
     @Override
     public void transitionTo(DozeMachine.State oldState, DozeMachine.State newState) {
-        mState = newState;
         switch (newState) {
             case INITIALIZED:
                 resetBrightnessToDefault();
@@ -155,10 +153,7 @@ public class DozeScreenBrightness extends BroadcastReceiver implements DozeMachi
 
     @Override
     public void onScreenState(int state) {
-        if (!mScreenOff
-                && (mState == DozeMachine.State.DOZE_AOD
-                     || mState == DozeMachine.State.DOZE_AOD_DOCKED)
-                && (state == Display.STATE_DOZE || state == Display.STATE_DOZE_SUSPEND)) {
+        if (state == Display.STATE_DOZE || state == Display.STATE_DOZE_SUSPEND) {
             setLightSensorEnabled(true);
         } else {
             setLightSensorEnabled(false);

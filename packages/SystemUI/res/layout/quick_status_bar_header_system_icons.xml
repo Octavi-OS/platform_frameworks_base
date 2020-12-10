@@ -29,7 +29,7 @@
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="match_parent" 
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="horizontal"
         android:gravity="center_vertical|start" >
@@ -106,6 +106,24 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:paddingEnd="2dp"/>
+
+    <android.widget.Space
+        android:id="@+id/space"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center_vertical|end" >
+
+    <include layout="@layout/ongoing_privacy_chip" />
+
+    </LinearLayout>
 
     <com.android.systemui.BatteryMeterView
         android:id="@+id/batteryRemainingIcon"
