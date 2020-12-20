@@ -5134,6 +5134,14 @@ public final class Settings {
         public static final String DATA_DISABLED_ICON = "data_disabled_icon";
 
         /**
+         * Wheter to play notification sound and vibration if screen is ON
+         * 0 - never
+         * 1 - always
+         * @hide
+         */
+        public static final String NOTIFICATION_SOUND_VIB_SCREEN_ON = "notification_sound_vib_screen_on";
+
+        /**
          * @hide
          */
         public static final String ROAMING_INDICATOR_ICON = "roaming_indicator_icon";
