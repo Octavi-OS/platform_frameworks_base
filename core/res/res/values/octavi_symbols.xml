@@ -205,4 +205,12 @@
    <!-- Pocket Service -->
    <java-symbol type="string" name="config_pocketJudgeVendorSensorName" />
 
+   <!-- Gaming mode -->
+   <java-symbol type="drawable" name="ic_gaming_notif" />
+   <java-symbol type="string" name="notification_channel_gaming" />
+   <java-symbol type="string" name="gaming_mode_notification_title" />
+   <java-symbol type="string" name="gaming_mode_notification_content" />
+   <java-symbol type="string" name="gaming_mode_enabled_toast" />
+   <java-symbol type="string" name="gaming_mode_disabled_toast" />
+   
 </resources>
