@@ -185,4 +185,7 @@
     <!-- Whether device supports variable refresh rate -->
     <bool name="config_hasVariableRefreshRate">false</bool>
 
+    <!-- Default fod pressed color -->
+    <integer name="config_fod_pressed_color">1</integer>
+
 </resources>
