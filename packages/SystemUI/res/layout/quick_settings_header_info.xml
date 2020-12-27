@@ -15,6 +15,7 @@
   ~ limitations under the License
   -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:systemui="http://schemas.android.com/apk/res-auto"
     android:id="@+id/header_text_container"
     android:layout_width="match_parent"
     android:layout_height="@dimen/qs_header_tooltip_height"
@@ -23,6 +24,12 @@
     android:theme="@style/QSHeaderTheme"
     android:forceHasOverlappingRendering="false">
 
+
+<LinearLayout 
+    android:id="@+id/qsclockshit"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <TextClock
         android:id="@+id/textClock"
@@ -33,7 +40,17 @@
         android:gravity="center"
         android:textSize="55dp"/>
 
-        <com.android.systemui.qs.QSHeaderInfoLayout
+    <com.android.systemui.statusbar.policy.DateView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textSize="16dp"
+        android:textAppearance="@style/TextAppearance.QS.Date"
+        systemui:datePattern="@string/abbrev_wday_month_day_no_year_alarm" />
+</LinearLayout>
+ 
+       <com.android.systemui.qs.QSHeaderInfoLayout
             android:id="@+id/status_container"
             android:layout_width="0dp"
             android:layout_weight="1"
