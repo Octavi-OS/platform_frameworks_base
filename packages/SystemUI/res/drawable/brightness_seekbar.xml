@@ -3,14 +3,14 @@
     <item android:id="@*android:id/background" android:gravity="center_vertical|fill_horizontal">
         <shape android:shape="rectangle"  
                android:tint="?android:attr/colorControlActivated">
-            <size android:height="30dp" />
+            <size android:height="8dp" />
             <solid android:color="@color/white_disabled" />
             <corners android:radius="@*android:dimen/dialog_corner_radius" />
         </shape></item>
     <item android:id="@*android:id/progress" android:gravity="center_vertical|fill_horizontal">
         <scale android:scaleWidth="100%"><shape android:shape="rectangle"  android:tint="@null"
             android:tintMode="multiply">
-            <size android:height="30dp" />
+            <size android:height="8dp" />
 
             <solid android:color="?android:attr/colorAccent"/>
             <corners android:radius="@*android:dimen/dialog_corner_radius" />
