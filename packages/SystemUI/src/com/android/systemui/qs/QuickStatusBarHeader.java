@@ -25,7 +25,6 @@ import android.app.AlarmManager;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.ContentObserver;
-import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
@@ -50,6 +49,7 @@ import android.util.MathUtils;
 import android.util.Pair;
 import android.view.ContextThemeWrapper;
 import android.view.DisplayCutout;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowInsets;
@@ -185,6 +185,7 @@ public class QuickStatusBarHeader extends RelativeLayout implements
 
     //textClock QS
     private TextClock mTextClock;
+    private LinearLayout mQsClockContainer;
 
     // Used for RingerModeTracker
     private final LifecycleRegistry mLifecycle = new LifecycleRegistry(this);
@@ -204,6 +205,9 @@ public class QuickStatusBarHeader extends RelativeLayout implements
                     this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System
                     .getUriFor(Settings.System.QS_DATAUSAGE), false,
+                    this, UserHandle.USER_ALL);
+ 	    resolver.registerContentObserver(Settings.System
+                    .getUriFor(Settings.System.QS_CLOCK_START), false,
                     this, UserHandle.USER_ALL);
             }
 
@@ -317,6 +321,7 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         mCarrierGroup = findViewById(R.id.carrier_group);
 	mTextClock = findViewById(R.id.textClock);
         mTextClock.setOnClickListener(this::onClick);
+	mQsClockContainer = findViewById(R.id.qsclockcontainer);
 
         updateResources();
 
@@ -528,8 +533,24 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         updateSBBatteryStyle();
         updateResources();
 	updateDataUsageView();
+	updateQsClockView();
      }
 
+    private void updateQsClockView() {
+	int isStart = Settings.System.getInt(mContext.getContentResolver(),
+        Settings.System.QS_CLOCK_START, 0);
+	if (isStart == 0) {
+	   mQsClockContainer.setGravity(Gravity.START);
+	   mTextClock.setTextColor(Utils.getColorAttrDefaultColor(mContext,
+                        android.R.attr.colorAccent));
+           mQsClockContainer.setPadding(getResources().getDimensionPixelOffset(R.dimen.qs_clock_start_20), 0, 0, 0);
+	} else {
+	   mTextClock.setTextColor(Utils.getColorAttrDefaultColor(mContext,
+                        android.R.attr.textColorPrimary));
+           mQsClockContainer.setGravity(Gravity.CENTER);
+           mQsClockContainer.setPadding(0, 0, 0, 0);
+	}
+    }
     private void updateQSBatteryMode() {
         int showEstimate = Settings.System.getInt(mContext.getContentResolver(),
         Settings.System.QS_BATTERY_MODE, 0);

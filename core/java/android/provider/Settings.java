@@ -5674,6 +5674,12 @@ public final class Settings {
         public static final String LEFT_VERTICAL_BACK_SWIPE_ACTION = "left_vertical_back_swipe_action";
 
         /**
+         * QS Clock Alignment
+         * @hide
+         */
+        public static final String QS_CLOCK_START = "qs_clock_start";
+
+        /**
          * Gestures nav: left long back swipe app action
          * @hide
          */

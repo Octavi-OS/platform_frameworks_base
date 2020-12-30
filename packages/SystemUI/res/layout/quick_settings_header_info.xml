@@ -26,24 +26,36 @@
 
 
 <LinearLayout 
-    android:id="@+id/qsclockshit"
+    android:id="@+id/qsclockcontainer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:gravity="center"
     android:orientation="vertical">
 
-    <TextClock
-        android:id="@+id/textClock"
-        android:singleLine="true"
-        android:layout_width="match_parent"
-        android:format12Hour="hh:mm"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="55dp"/>
+        android:orientation="horizontal">
+
+        <TextClock
+            android:id="@+id/textClock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:format12Hour="hh"
+            android:singleLine="true"
+            android:textSize="50dp" />
+
+        <TextClock
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:format12Hour=":mm"
+            android:singleLine="true"
+            android:textSize="50dp" />
+     </LinearLayout>
 
     <com.android.systemui.statusbar.policy.DateView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:singleLine="true"
         android:textSize="16dp"
         android:textAppearance="@style/TextAppearance.QS.Date"
