@@ -42,6 +42,7 @@ import android.os.ServiceManager;
 import android.os.SystemClock;
 import android.os.UserHandle;
 import android.os.Vibrator;
+import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.net.NetworkInfo;
@@ -165,6 +166,12 @@ public class OctaviUtils {
     // Check to see if device supports A/B (seamless) system updates
     public static boolean isABdevice(Context context) {
         return SystemProperties.getBoolean("ro.build.ab_update", false);
+    }
+
+    // Check for lockscreen accent color
+    public static boolean useLockscreenClockAccentColor(Context context) {
+        return Settings.System.getInt(context.getContentResolver(),
+          Settings.System.LOCKSCREEN_ACCENT_COLOR, 0) == 1;
     }
 
     public static String batteryTemperature(Context context, Boolean ForC) {

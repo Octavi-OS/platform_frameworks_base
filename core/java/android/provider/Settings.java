@@ -5366,6 +5366,12 @@ public final class Settings {
         public static final String SCREENSHOT_TYPE = "screenshot_type";
 
         /**
+         * Whether to use accent lock clock colors
+         * @hide
+         */
+        public static final String LOCKSCREEN_ACCENT_COLOR = "lockscreen_accent_color";
+
+        /**
          * Applications list where heasdup should't show
          * @hide
          */
