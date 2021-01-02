@@ -261,7 +261,7 @@ public class KeyguardClockSwitch extends RelativeLayout {
         // Initialize plugin parameters.
         mClockPlugin = plugin;
         mClockPlugin.setStyle(getPaint().getStyle());
-        if(OctaviUtils.useLockscreenClockAccentColor(mContext)) {
+        if(OctaviUtils.useLockscreenClockHourAccentColor(mContext)) {
             mClockPlugin.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
         } else {
             mClockPlugin.setTextColor(getCurrentTextColor());
@@ -301,7 +301,7 @@ public class KeyguardClockSwitch extends RelativeLayout {
      * It will also update plugin setTextColor if plugin is connected.
      */
     public void setTextColor(int color) {
-        if(OctaviUtils.useLockscreenClockAccentColor(mContext)) {
+        if(OctaviUtils.useLockscreenClockHourAccentColor(mContext)) {
             mClockView.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
             mClockViewBold.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
             if (mClockPlugin != null) {

@@ -168,10 +168,22 @@ public class OctaviUtils {
         return SystemProperties.getBoolean("ro.build.ab_update", false);
     }
 
-    // Check for lockscreen accent color
-    public static boolean useLockscreenClockAccentColor(Context context) {
+    // Check for lockscreen accent color hour
+    public static boolean useLockscreenClockHourAccentColor(Context context) {
         return Settings.System.getInt(context.getContentResolver(),
-          Settings.System.LOCKSCREEN_ACCENT_COLOR, 0) == 1;
+          Settings.System.LOCKSCREEN_ACCENT_COLOR_HOUR, 0) == 1;
+    }
+
+    // Check for lockscreen accent color minute
+    public static boolean useLockscreenClockMinuteAccentColor(Context context) {
+        return Settings.System.getInt(context.getContentResolver(),
+          Settings.System.LOCKSCREEN_ACCENT_COLOR_MINUTE, 0) == 1;
+    }
+
+    // Check for lockscreen accent color custom clocks
+    public static boolean useLockscreenCustomClockAccentColor(Context context) {
+        return Settings.System.getInt(context.getContentResolver(),
+          Settings.System.LOCKSCREEN_ACCENT_COLOR_CUSTOM, 0) == 1;
     }
 
     public static String batteryTemperature(Context context, Boolean ForC) {
