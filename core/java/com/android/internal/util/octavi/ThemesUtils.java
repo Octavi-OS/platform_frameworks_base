@@ -31,6 +31,9 @@ public class ThemesUtils {
         "com.android.system.switch.oneplus", // 1
 	"com.android.system.switch.narrow", // 2
         "com.android.system.switch.contained", // 3
+        "com.android.system.switch.md2", // 4
+        "com.android.system.switch.retro", // 5
+        "com.android.system.switch.telegram", // 6
     };
 
     public static void updateSwitchStyle(IOverlayManager om, int userId, int switchStyle) {
