@@ -34,6 +34,7 @@ public class ThemesUtils {
         "com.android.system.switch.md2", // 4
         "com.android.system.switch.retro", // 5
         "com.android.system.switch.telegram", // 6
+        "com.android.system.switch.stockish", //7
     };
 
     public static void updateSwitchStyle(IOverlayManager om, int userId, int switchStyle) {
