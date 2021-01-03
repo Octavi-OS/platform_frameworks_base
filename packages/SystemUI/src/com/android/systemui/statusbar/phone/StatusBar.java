@@ -74,6 +74,8 @@ import android.content.pm.IPackageManager;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
+import android.content.om.IOverlayManager;
+import android.content.om.OverlayInfo;
 import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.graphics.Point;
@@ -94,6 +96,8 @@ import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.os.Trace;
 import android.os.UserHandle;
+import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.os.UserManager;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
@@ -258,6 +262,8 @@ import javax.inject.Named;
 import javax.inject.Provider;
 
 import dagger.Lazy;
+
+import com.android.internal.util.octavi.ThemesUtils;
 
 public class StatusBar extends SystemUI implements DemoMode,
         ActivityStarter, KeyguardStateController.Callback,
@@ -755,6 +761,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.GAMING_MODE_HEADSUP_TOGGLE),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.SWITCH_STYLE),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -776,8 +785,12 @@ public class StatusBar extends SystemUI implements DemoMode,
                 setMaxKeyguardNotifConfig();
             } else if (uri.equals(Settings.System.getUriFor(Settings.System.LESS_BORING_HEADS_UP))) {
                 setUseLessBoringHeadsUp();
-            }
-            update();
+            } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.SWITCH_STYLE))) {
+                stockSwitchStyle();
+                updateSwitchStyle();
+	    }
+	    update();
         }
 
         public void update() {
@@ -1046,6 +1059,8 @@ public class StatusBar extends SystemUI implements DemoMode,
         mWindowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
         mDreamManager = IDreamManager.Stub.asInterface(
                 ServiceManager.checkService(DreamService.DREAM_SERVICE));
+        mOverlayManager = IOverlayManager.Stub.asInterface(
+                ServiceManager.getService(Context.OVERLAY_SERVICE));
 
         mDisplay = mWindowManager.getDefaultDisplay();
         mDisplayId = mDisplay.getDisplayId();
@@ -3765,6 +3780,16 @@ public class StatusBar extends SystemUI implements DemoMode,
         }
     }
 
+    public void updateSwitchStyle() {
+        int switchStyle = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.SWITCH_STYLE, 2, mLockscreenUserManager.getCurrentUserId());
+        ThemesUtils.updateSwitchStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId(), switchStyle);
+    }
+
+    public void stockSwitchStyle() {
+        ThemesUtils.stockSwitchStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
+    }
+
     private void updateDozingState() {
         Trace.traceCounter(Trace.TRACE_TAG_APP, "dozing", mDozing ? 1 : 0);
         Trace.beginSection("StatusBar#updateDozingState");
@@ -4450,6 +4475,7 @@ public class StatusBar extends SystemUI implements DemoMode,
     protected WindowManager mWindowManager;
     protected IWindowManager mWindowManagerService;
     private IDreamManager mDreamManager;
+    private IOverlayManager mOverlayManager;
 
     protected Display mDisplay;
     private int mDisplayId;
