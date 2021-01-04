@@ -181,6 +181,8 @@ public class EdgeBackGestureHandler extends CurrentUserTracker implements Displa
     private int mSysUiFlags;
 
     private boolean mEdgeHapticEnabled;
+    private boolean mBlockedGesturalNavigation;
+
     private static final int HAPTIC_DURATION = 20;
 
     private int mEdgeHeight;
@@ -716,6 +718,10 @@ public class EdgeBackGestureHandler extends CurrentUserTracker implements Displa
         return topActivity != null && mGestureBlockingActivities.contains(topActivity);
     }
 
+    public void setBlockedGesturalNavigation(boolean blocked) {
+        mBlockedGesturalNavigation = blocked;
+    }
+
     @Override
     public void writeToProto(SystemUiTraceProto proto) {
         if (proto.edgeBackGestureHandler == null) {
@@ -730,7 +736,9 @@ public class EdgeBackGestureHandler extends CurrentUserTracker implements Displa
         }
 
         public void onInputEvent(InputEvent event) {
-            EdgeBackGestureHandler.this.onInputEvent(event);
+            if (!mBlockedGesturalNavigation) {
+                EdgeBackGestureHandler.this.onInputEvent(event);
+            }
             finishInputEvent(event, true);
         }
     }
