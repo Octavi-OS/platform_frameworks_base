@@ -170,4 +170,8 @@
     <string name="config_SmartChargingSuspendValue" translatable="false">0</string>
     <string name="config_SmartChargingResumeValue" translatable="false">1</string> 
 
+    <!-- Older rotation sensors are not setting event.timestamp correctly. Setting to
+         true will use SystemClock.elapsedRealtimeNanos() to set timestamp. -->
+    <bool name="config_useSystemClockforRotationSensor">false</bool>
+
 </resources>
