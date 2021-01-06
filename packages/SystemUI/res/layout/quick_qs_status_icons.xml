@@ -18,7 +18,7 @@
     xmlns:systemui="http://schemas.android.com/apk/res-auto"
     android:id="@+id/quick_qs_status_icons"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/qs_header_tooltip_height"
+    android:layout_height="48dp"
     android:layout_below="@id/quick_status_bar_system_icons"
     android:clipChildren="false"
     android:clipToPadding="false"
@@ -33,7 +33,7 @@
         android:layout_gravity="start|center_vertical"
         android:gravity="center_vertical"
         android:singleLine="true"
-        android:textAppearance="@style/TextAppearance.QS.Date"
+        android:textAppearance="@style/TextAppearance.QS.Status"
         systemui:datePattern="@string/abbrev_wday_month_day_no_year_alarm" />
 
     <android.widget.Space

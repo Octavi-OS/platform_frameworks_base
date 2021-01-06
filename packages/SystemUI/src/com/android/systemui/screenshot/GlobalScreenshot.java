@@ -404,6 +404,15 @@ public class GlobalScreenshot implements ViewTreeObserver.OnComputeInternalInset
         }
     }
 
+    void hideScreenshotSelector() {
+        setLockedScreenOrientation(false);
+        mWindowManager.removeView(mScreenshotLayout);
+        mScreenshotSelectorView.stopSelection();
+        mScreenshotSelectorView.setVisibility(View.GONE);
+        mCaptureButton.setVisibility(View.GONE);
+        setBlockedGesturalNavigation(false);
+    }
+
     void setBlockedGesturalNavigation(boolean blocked) {
         IStatusBarService service = IStatusBarService.Stub.asInterface(
                 ServiceManager.getService(Context.STATUS_BAR_SERVICE));
@@ -414,6 +423,12 @@ public class GlobalScreenshot implements ViewTreeObserver.OnComputeInternalInset
                 // end of the world
             }
         }
+    }
+
+    void setLockedScreenOrientation(boolean locked) {
+        mWindowLayoutParams.screenOrientation = locked
+                ? ActivityInfo.SCREEN_ORIENTATION_LOCKED
+                : ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED;
     }
 
     Rect getRotationAdjustedRect(Rect rect) {
@@ -445,14 +460,6 @@ public class GlobalScreenshot implements ViewTreeObserver.OnComputeInternalInset
         }
 
         return adjustedRect;
-    }
-
-    void setLockedScreenOrientation(boolean locked) {
-        if (locked) {
-            mWindowLayoutParams.screenOrientation = ActivityInfo.SCREEN_ORIENTATION_LOCKED;
-        } else {
-            mWindowLayoutParams.screenOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED;
-        }
     }
 
     /**
@@ -507,20 +514,11 @@ public class GlobalScreenshot implements ViewTreeObserver.OnComputeInternalInset
         });
     }
 
-    void hideScreenshotSelector() {
-        setLockedScreenOrientation(false);
-        mWindowManager.removeView(mScreenshotLayout);
-        mScreenshotSelectorView.stopSelection();
-        mScreenshotSelectorView.setVisibility(View.GONE);
-        mCaptureButton.setVisibility(View.GONE);
-        setBlockedGesturalNavigation(false);
-    }
-
     /**
      * Cancels screenshot request
      */
     void stopScreenshot() {
-        // If the selector layer still presents on screen, we remove it and resets its state.
+        // If the selector layer still presents on screen, we hide it.
         if (mScreenshotLayout.getParent() != null) {
             hideScreenshotSelector();
         }
