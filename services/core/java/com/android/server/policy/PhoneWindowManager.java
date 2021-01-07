@@ -1987,7 +1987,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         mSwipeToScreenshot = new SwipeToScreenshotListener(context, new SwipeToScreenshotListener.Callbacks() {
             @Override
             public void onSwipeThreeFinger() {
-                ActionUtils.takeScreenshot(true);
+                OctaviUtils.takeScreenshot(true);
             }
         });
 

@@ -88,7 +88,7 @@ import android.util.SparseBooleanArray;
 import androidx.lifecycle.Observer;
 
 import com.android.internal.annotations.VisibleForTesting;
-import com.android.internal.util.custom.fod.FodUtils;
+import com.android.internal.util.custom.FodUtils;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.settingslib.WirelessUtils;
 import com.android.settingslib.fuelgauge.BatteryStatus;
@@ -1991,7 +1991,7 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener, Dumpab
                 shouldListenForFingerprintAssistant() || (mKeyguardOccluded && mIsDreaming))
                 && !mSwitchingUser && !isFingerprintDisabled(getCurrentUser())
                 && (!mKeyguardGoingAway || !mDeviceInteractive) && mIsPrimaryUser
-                && allowedOnBouncer && (mHasFod || !mIsDeviceInPocket;
+                && allowedOnBouncer && (mHasFod || !mIsDeviceInPocket);
         return shouldListen;
     }
 
