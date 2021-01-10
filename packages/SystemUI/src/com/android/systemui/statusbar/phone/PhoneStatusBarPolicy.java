@@ -443,26 +443,34 @@ public class PhoneStatusBarPolicy
                 mResources.getString(R.string.accessibility_quick_settings_bluetooth_on);
         boolean bluetoothVisible = false;
         if (mBluetooth != null) {
-            if (mBluetooth.isBluetoothConnected()) {
-                final Collection<CachedBluetoothDevice> devices = mBluetooth.getDevices();
-                if (devices != null) {
-                    // get battery level for the first device with battery level support
-                    for (CachedBluetoothDevice device : devices) {
-                        // don't get the level if still pairing
-                        if (mBluetooth.getBondState(device) == BluetoothDevice.BOND_NONE) continue;
-                        int state = device.getMaxConnectionState();
-                        if (state == BluetoothProfile.STATE_CONNECTED) {
-                            int batteryLevel = device.getBatteryLevel();
-                            BluetoothClass type = device.getBtClass();
-                            if (batteryLevel != BluetoothDevice.BATTERY_LEVEL_UNKNOWN && showBatteryForThis(type)) {
-                                iconId = getBtLevelIconRes(batteryLevel);
-                            } else {
-                                iconId = R.drawable.stat_sys_data_bluetooth_connected;
-                            }
-                            contentDescription = mResources.getString(R.string.accessibility_bluetooth_connected);
-                            break;
-                        }
-                    }
+            if (mBluetooth.isBluetoothConnected()
+                    && (mBluetooth.isBluetoothAudioActive()
+                    || !mBluetooth.isBluetoothAudioProfileOnly())) {
+                List<CachedBluetoothDevice> connectedDevices = mBluetooth.getConnectedDevices();
+                int batteryLevel = connectedDevices.isEmpty() ?
+                        -1 : connectedDevices.get(0).getBatteryLevel();
+                if (batteryLevel == 100) {
+                    iconId = R.drawable.stat_sys_data_bluetooth_connected_battery_10;
+                } else if (batteryLevel >= 90) {
+                    iconId = R.drawable.stat_sys_data_bluetooth_connected_battery_9;
+                } else if (batteryLevel >= 80) {
+                    iconId = R.drawable.stat_sys_data_bluetooth_connected_battery_8;
+                } else if (batteryLevel >= 70) {
+                    iconId = R.drawable.stat_sys_data_bluetooth_connected_battery_7;
+                } else if (batteryLevel >= 60) {
+                    iconId = R.drawable.stat_sys_data_bluetooth_connected_battery_6;
+                } else if (batteryLevel >= 50) {
+                    iconId = R.drawable.stat_sys_data_bluetooth_connected_battery_5;
+                } else if (batteryLevel >= 40) {
+                    iconId = R.drawable.stat_sys_data_bluetooth_connected_battery_4;
+                } else if (batteryLevel >= 30) {
+                    iconId = R.drawable.stat_sys_data_bluetooth_connected_battery_3;
+                } else if (batteryLevel >= 20) {
+                    iconId = R.drawable.stat_sys_data_bluetooth_connected_battery_2;
+                } else if (batteryLevel >= 10) {
+                    iconId = R.drawable.stat_sys_data_bluetooth_connected_battery_1;
+                } else if (batteryLevel >= 0) {
+                    iconId = R.drawable.stat_sys_data_bluetooth_connected_battery_0;
                 }
 	        bluetoothVisible = mBluetooth.isBluetoothEnabled();
 	    }
