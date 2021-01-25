@@ -94,5 +94,6 @@ public class SystemSettings {
         Settings.System.RINGTONE_VIBRATION_PATTERN,
         Settings.System.CUSTOM_RINGTONE_VIBRATION_PATTERN,
         Settings.System.FP_ICON_DISABLED,
+        Settings.System.QS_MEDIA_PLAYER,
     };
 }
