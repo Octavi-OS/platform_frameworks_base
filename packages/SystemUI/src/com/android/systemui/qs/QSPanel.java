@@ -1078,6 +1078,10 @@ public class QSPanel extends LinearLayout implements Tunable, Callback, Brightne
         }
     }
 
+    int getVisualTilePadding() {
+        return mVisualTilePadding;
+    }
+
     public void setContentMargins(int startMargin, int endMargin) {
         // Only some views actually want this content padding, others want to go all the way
         // to the edge like the brightness slider
