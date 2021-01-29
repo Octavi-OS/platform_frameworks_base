@@ -27,10 +27,8 @@ import android.util.Slog;
 import android.view.View;
 
 import com.android.systemui.SystemUI;
-import com.android.systemui.biometrics.FODCircleViewImplCallback;
 import com.android.systemui.statusbar.CommandQueue;
 import com.android.systemui.statusbar.CommandQueue.Callbacks;
-import com.android.systemui.util.Assert;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -45,15 +43,10 @@ public class FODCircleViewImpl extends SystemUI implements CommandQueue.Callback
     private static final String TAG = "FODCircleViewImpl";
 
     private FODCircleView mFodCircleView;
-
-    private final ArrayList<WeakReference<FODCircleViewImplCallback>>
-            mCallbacks = new ArrayList<>();
     private final CommandQueue mCommandQueue;
     private boolean mDisableNightMode;
     private boolean mNightModeActive;
     private int mAutoModeState;
-
-    private boolean mIsFODVisible;
 
     @Inject
     public FODCircleViewImpl(Context context, CommandQueue commandQueue) {
@@ -71,12 +64,6 @@ public class FODCircleViewImpl extends SystemUI implements CommandQueue.Callback
         mCommandQueue.addCallback(this);
         try {
             mFodCircleView = new FODCircleView(mContext);
-            for (int i = 0; i < mCallbacks.size(); i++) {
-                FODCircleViewImplCallback cb = mCallbacks.get(i).get();
-                if (cb != null) {
-                    cb.onFODStart();
-                }
-            }
         } catch (RuntimeException e) {
             Slog.e(TAG, "Failed to initialize FODCircleView", e);
         }
@@ -89,13 +76,6 @@ public class FODCircleViewImpl extends SystemUI implements CommandQueue.Callback
             if (isNightLightEnabled()) {
                 disableNightMode();
             }
-            for (int i = 0; i < mCallbacks.size(); i++) {
-                FODCircleViewImplCallback cb = mCallbacks.get(i).get();
-                if (cb != null) {
-                    cb.onFODStatusChange(true);
-                }
-            }
-            mIsFODVisible = true;
             mFodCircleView.show();
         }
     }
@@ -111,13 +91,6 @@ public class FODCircleViewImpl extends SystemUI implements CommandQueue.Callback
             if (isNightLightEnabled()) {
                 setNightMode(mNightModeActive, mAutoModeState);
             }
-            for (int i = 0; i < mCallbacks.size(); i++) {
-                FODCircleViewImplCallback cb = mCallbacks.get(i).get();
-                if (cb != null) {
-                    cb.onFODStatusChange(false);
-                }
-            }
-            mIsFODVisible = false;
             mFodCircleView.hide();
         }
     }
@@ -137,31 +110,5 @@ public class FODCircleViewImpl extends SystemUI implements CommandQueue.Callback
         } else if (autoMode == 1 || autoMode == 2) {
             colorDisplayManager.setNightDisplayAutoMode(autoMode);
         }
-    }
-
-    public void registerCallback(FODCircleViewImplCallback callback) {
-        Assert.isMainThread();
-        Slog.v(TAG, "*** register callback for " + callback);
-        for (int i = 0; i < mCallbacks.size(); i++) {
-            if (mCallbacks.get(i).get() == callback) {
-                Slog.e(TAG, "Object tried to add another callback",
-                        new Exception("Called by"));
-                return;
-            }
-        }
-        mCallbacks.add(new WeakReference<>(callback));
-        removeCallback(null);
-        sendUpdates(callback);
-    }
-
-    public void removeCallback(FODCircleViewImplCallback callback) {
-        Assert.isMainThread();
-        Slog.v(TAG, "*** unregister callback for " + callback);
-        mCallbacks.removeIf(el -> el.get() == callback);
-    }
-
-    private void sendUpdates(FODCircleViewImplCallback callback) {
-        callback.onFODStart();
-        callback.onFODStatusChange(mIsFODVisible);
     }
 }
