@@ -264,7 +264,7 @@ public class FODCircleView extends ImageView implements TunerService.Tunable {
                 mHandler.post(() -> showCircle());
                 mPressPending = false;
             }
-            mScreenTurnedOn = true;
+            mIsScreenTurnedOn = true;
         }
 
         @Override
