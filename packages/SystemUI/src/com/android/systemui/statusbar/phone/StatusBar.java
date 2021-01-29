@@ -565,8 +565,6 @@ public class StatusBar extends SystemUI implements DemoMode,
 
     private VolumePluginManager mVolumePluginManager;
 
-    private int mChargingAnimation;
-
     private final BroadcastReceiver mWallpaperChangedReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -716,9 +714,6 @@ public class StatusBar extends SystemUI implements DemoMode,
                     Settings.System.FORCE_SHOW_NAVBAR),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.LOCKSCREEN_CHARGING_ANIMATION_STYLE),
-                    false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.QS_ROWS_PORTRAIT),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
@@ -759,9 +754,6 @@ public class StatusBar extends SystemUI implements DemoMode,
                     uri.equals(Settings.System.getUriFor(Settings.System.QS_COLUMNS_PORTRAIT)) ||
                     uri.equals(Settings.System.getUriFor(Settings.System.QS_COLUMNS_LANDSCAPE))) {
                 setQsRowsColumns();
-            } else if (uri.equals(Settings.System.getUriFor(
-                    Settings.System.LOCKSCREEN_CHARGING_ANIMATION_STYLE))) {
-                updateChargingAnimation();
             } else if (uri.equals(Settings.System.getUriFor(Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG))) {
                 setMaxKeyguardNotifConfig();
             } else if (uri.equals(Settings.System.getUriFor(Settings.System.LESS_BORING_HEADS_UP))) {
@@ -782,7 +774,6 @@ public class StatusBar extends SystemUI implements DemoMode,
             setHeadsUpBlacklist();
             setLockScreenMediaBlurLevel();
             updateNavigationBar(false);
-            updateChargingAnimation();
             setQsRowsColumns();
             setMaxKeyguardNotifConfig();
             setUseLessBoringHeadsUp();
@@ -793,14 +784,6 @@ public class StatusBar extends SystemUI implements DemoMode,
     private void setLockScreenMediaBlurLevel() {
         if (mMediaManager != null) {
             mMediaManager.setLockScreenMediaBlurLevel();
-        }
-    }
-
-    private void updateChargingAnimation() {
-        mChargingAnimation = Settings.System.getIntForUser(mContext.getContentResolver(),
-                Settings.System.LOCKSCREEN_CHARGING_ANIMATION_STYLE, 1, UserHandle.USER_CURRENT);
-        if (mKeyguardIndicationController != null) {
-            mKeyguardIndicationController.updateChargingIndication(mChargingAnimation);
         }
     }
 
