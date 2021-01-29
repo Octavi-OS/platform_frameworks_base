@@ -27,6 +27,9 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.RectF;
 import android.hardware.fingerprint.FingerprintManager;
 import android.net.ConnectivityManager;
 import android.hardware.input.InputManager;
@@ -45,6 +48,7 @@ import android.os.Vibrator;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.net.NetworkInfo;
 import android.net.ConnectivityManager;
 import android.os.SystemProperties;
@@ -330,6 +334,32 @@ public class OctaviUtils {
 
     public static boolean deviceSupportNavigationBar(Context context) {
         return deviceSupportNavigationBarForUser(context, UserHandle.USER_CURRENT);
+    }
+
+    public static Bitmap scaleCenterInside(final Bitmap source, final int newWidth, final int newHeight) {
+        int sourceWidth = source.getWidth();
+        int sourceHeight = source.getHeight();
+
+        float widthRatio = (float) newWidth / sourceWidth;
+        float heightRatio = (float) newHeight / sourceHeight;
+        float ratio = Math.max(widthRatio, heightRatio);
+        float scaledWidth = sourceWidth * ratio;
+        float scaledHeight = sourceHeight * ratio;
+
+        //Bitmap scaled = Bitmap.createScaledBitmap(source, (int)scaledWidth, (int)scaledHeight, true);
+
+        RectF targetRect = null;
+        if (newWidth > newHeight) {
+            float inset = (scaledHeight - newHeight) / 2;
+            targetRect = new RectF(0, -inset, newWidth, newHeight + inset);
+        } else {
+            float inset = (scaledWidth - newWidth) / 2;
+            targetRect = new RectF(-inset, 0, newWidth + inset, newHeight);
+        }
+        Bitmap dest = Bitmap.createBitmap(newWidth, newHeight, source.getConfig());
+        Canvas canvas = new Canvas(dest);
+        canvas.drawBitmap(source, null, targetRect, null);
+        return dest;
     }
 
     public static boolean deviceSupportNavigationBarForUser(Context context, int userId) {
