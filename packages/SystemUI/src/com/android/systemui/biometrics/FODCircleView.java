@@ -29,6 +29,7 @@ import android.database.ContentObserver;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.hardware.biometrics.BiometricSourceType;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.PixelFormat;
 import android.graphics.Point;
@@ -116,10 +117,12 @@ public class FODCircleView extends ImageView implements TunerService.Tunable {
     private int mCurrentBrightness;
     private int mDreamingOffsetY;
 
+    private boolean mFading;
     private boolean mIsBouncer;
     private boolean mIsKeyguard;
     private boolean mIsDreaming;
     private boolean mIsScreenTurnedOn;
+    private boolean mIsBiometricRunning;
     private boolean mIsCircleShowing;
     private boolean mIsAnimating = false;
     private boolean mTouchedOutside;
@@ -221,9 +224,34 @@ public class FODCircleView extends ImageView implements TunerService.Tunable {
 
     private KeyguardUpdateMonitorCallback mMonitorCallback = new KeyguardUpdateMonitorCallback() {
         @Override
+        public void onBiometricAuthenticated(int userId, BiometricSourceType biometricSourceType,
+                boolean isStrongBiometric) {
+            // We assume that if biometricSourceType matches Fingerprint it will be
+            // handled here, so we hide only when other biometric types authenticate
+            if (biometricSourceType != BiometricSourceType.FINGERPRINT) {
+                hide();
+            }
+        }
+
+        @Override
+        public void onBiometricRunningStateChanged(boolean running,
+                BiometricSourceType biometricSourceType) {
+            if (biometricSourceType == BiometricSourceType.FINGERPRINT) {
+                mIsBiometricRunning = running;
+            }
+        }
+
+        @Override
         public void onDreamingStateChanged(boolean dreaming) {
             mIsDreaming = dreaming;
             updateAlpha();
+
+            if (mIsKeyguard && mUpdateMonitor.isFingerprintDetectionRunning()) {
+                show();
+                updateAlpha();
+            } else {
+                hide();
+            }
 
             if (dreaming) {
                 mBurnInProtectionTimer = new Timer();
@@ -237,6 +265,11 @@ public class FODCircleView extends ImageView implements TunerService.Tunable {
         @Override
         public void onKeyguardVisibilityChanged(boolean showing) {
             mIsKeyguard = showing;
+            if (!showing) {
+                hide();
+            } else {
+                updateAlpha();
+            }
             updateStyle();
             if (mIsFodAnimationAvailable && mFODAnimation != null) {
                 mFODAnimation.setAnimationKeyguard(mIsKeyguard);
@@ -276,6 +309,13 @@ public class FODCircleView extends ImageView implements TunerService.Tunable {
         public void onScreenTurnedOff() {
             if (!mDeviceFlickersGoingToSleep) {
                 hide();
+            }
+        }
+
+        @Override
+        public void onStartedWakingUp() {
+            if (mUpdateMonitor.isFingerprintDetectionRunning()) {
+                show();
             }
         }
 
@@ -600,6 +640,7 @@ public class FODCircleView extends ImageView implements TunerService.Tunable {
     }
 
     public void dispatchPress() {
+        if (mFading) return;
         IFingerprintInscreen daemon = getFingerprintInScreenDaemon();
         try {
             daemon.onPress();
@@ -687,23 +728,41 @@ public class FODCircleView extends ImageView implements TunerService.Tunable {
             return;
         }
 
+        if (mUpdateMonitor.getUserCanSkipBouncer(mUpdateMonitor.getCurrentUser())) {
+            // Ignore show calls if user can skip bouncer
+            return;
+        }
+
+        if (mIsKeyguard && !mIsBiometricRunning) {
+            return;
+        }
+
         updatePosition();
         mCustomSettingsObserver.observe();
         mCustomSettingsObserver.update();
 
-        ThreadUtils.postOnBackgroundThread(() -> {
-            dispatchShow();
-        });
         setVisibility(View.VISIBLE);
+        animate().withStartAction(() -> mFading = true)
+                .alpha(mIsDreaming ? 0.5f : 1.0f)
+                .setDuration(FADE_ANIM_DURATION)
+                .withEndAction(() -> mFading = false)
+                .start();
+        dispatchShow();
     }
 
     public void hide() {
         setVisibility(View.GONE);
+        animate().withStartAction(() -> mFading = true)
+                .alpha(0)
+                .setDuration(FADE_ANIM_DURATION)
+                .withEndAction(() -> {
+                    setVisibility(View.GONE);
+                    mFading = false;
+                })
+                .start();
         mCustomSettingsObserver.unobserve();
         hideCircle();
-        ThreadUtils.postOnBackgroundThread(() -> {
-            dispatchHide();
-        });
+        dispatchHide();
     }
 
     private void updateAlpha() {
