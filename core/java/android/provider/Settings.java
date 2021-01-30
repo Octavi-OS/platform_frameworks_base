@@ -5844,6 +5844,12 @@ public final class Settings {
          */
         public static final String SMART_CHARGING_RESUME_LEVEL = "smart_charging_resume_level";
 
+        /** Whether to pulse ambient on new music tracks
+         *
+         * @hide
+         */
+        public static final String PULSE_ON_NEW_TRACKS = "pulse_on_new_tracks";
+
         /**
          * Keys we no longer back up under the current schema, but want to continue to
          * process when restoring historical backup datasets.
