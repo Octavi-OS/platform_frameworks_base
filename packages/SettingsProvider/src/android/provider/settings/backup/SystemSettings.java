@@ -90,5 +90,7 @@ public class SystemSettings {
         Settings.System.LOCKSCREEN_MEDIA_ART,
         Settings.System.NOTIFICATION_HEADERS,
         Settings.System.CENTER_NOTIFICATION_HEADERS,
+        Settings.System.VOLUME_BUTTON_MUSIC_CONTROL,
+        Settings.System.VOLUME_ROCKER_WAKE,
     };
 }
