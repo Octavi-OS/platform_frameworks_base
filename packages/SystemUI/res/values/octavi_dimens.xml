@@ -86,4 +86,6 @@
     <!-- The size of the area around a resize handle used for touch detection -->
     <dimen name="global_screenshot_selector_touch_width">30dp</dimen>
 
+    <dimen name="keyguard_charging_animation_margin">30dp</dimen>
+
 </resources>
