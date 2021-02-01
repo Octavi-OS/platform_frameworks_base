@@ -1571,7 +1571,8 @@ public class NotificationStackScrollLayout extends ViewGroup implements ScrollAd
      */
     @ShadeViewRefactor(RefactorComponent.COORDINATOR)
     private float getAppearStartPosition() {
-        if (isHeadsUpTransition()) {
+	Log.e("Error;;NOtifStack", ""+getFirstVisibleSection());
+        if (isHeadsUpTransition() && getFirstVisibleSection().getFirstVisibleChild()!=null) {
             return mHeadsUpInset
                     + getFirstVisibleSection().getFirstVisibleChild().getPinnedHeadsUpHeight();
         }

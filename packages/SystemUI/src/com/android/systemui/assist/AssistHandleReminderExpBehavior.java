@@ -282,8 +282,6 @@ final class AssistHandleReminderExpBehavior implements BehaviorController {
         if (mContext != null) {
             mBroadcastDispatcher.get().unregisterReceiver(mDefaultHomeBroadcastReceiver);
             mBootCompleteCache.get().removeListener(mBootCompleteListener);
-            mContext.unregisterReceiver(mDefaultHomeBroadcastReceiver);
-            /*Settings.Secure.putLong(mContext.getContentResolver(), LEARNING_TIME_ELAPSED_KEY, 0);*/
             mContext.getContentResolver().unregisterContentObserver(mSettingObserver);
             mSettingObserver = null;
             // putString to use overrideableByRestore
