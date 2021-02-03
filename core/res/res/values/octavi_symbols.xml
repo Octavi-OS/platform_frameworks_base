@@ -232,6 +232,13 @@
    <!-- Whether or not we should show vendor mismatch message -->
    <java-symbol type="bool" name="config_show_vendor_mismatch_message" />
 
-    <!-- Aerr symbol -->
-    <java-symbol type="id" name="aerr_disable" />
+   <!-- Aerr symbol -->
+   <java-symbol type="id" name="aerr_disable" />
+
+   <!-- Whether device has physical tri state switch -->
+   <java-symbol type="bool" name="config_hasAlertSlider" />
+
+   <!-- The location of the devices physical tri state switch -->
+   <java-symbol type="integer" name="config_alertSliderLocation" />
+
 </resources>
