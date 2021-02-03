@@ -75,7 +75,8 @@ public class NotificationInterruptStateProviderImpl implements NotificationInter
     private HeadsUpManager mHeadsUpManager;
 
     private boolean mLessBoringHeadsUp;
-    private boolean mSkipHeadsUp;
+    private boolean mGamingMode;
+    private int mSkipHeadsUp;
 
     ActivityManager mAm;
     private ArrayList<String> mStoplist = new ArrayList<String>();
@@ -193,6 +194,8 @@ public class NotificationInterruptStateProviderImpl implements NotificationInter
      */
     @Override
     public boolean shouldLaunchFullScreenIntentWhenAdded(NotificationEntry entry) {
+        if (mGamingMode)
+            return false; // Don't allow fullscreen intent if gaming mode is active
         return entry.getSbn().getNotification().fullScreenIntent != null
                 && (!shouldHeadsUp(entry)
                 || mStatusBarStateController.getState() == StatusBarState.KEYGUARD);
@@ -332,17 +335,29 @@ public class NotificationInterruptStateProviderImpl implements NotificationInter
     }
 
     @Override
-    public void setGamingPeekMode(boolean skipHeadsUp) {
+    public void setGamingPeekMode(boolean gamingMode, int skipHeadsUp) {
+        mGamingMode = gamingMode;
         mSkipHeadsUp = skipHeadsUp;
     }
 
     private boolean shouldSkipHeadsUp(StatusBarNotification sbn) {
         String notificationPackageName = sbn.getPackageName().toLowerCase();
     // Gaming mode takes precedence since messaging headsup is intrusive
-        if (mSkipHeadsUp) {
-            boolean isNonInstrusive = notificationPackageName.equals("com.android.dialer")
-                || notificationPackageName.contains("clock");
-            return !mStatusBarStateController.isDozing() &&  mSkipHeadsUp && !isNonInstrusive;
+    if (mGamingMode) {
+            boolean isNonInstrusive;
+            if (mSkipHeadsUp == 1) {
+                isNonInstrusive = notificationPackageName.contains("dialer") ||
+                    notificationPackageName.contains("clock");
+                return !isNonInstrusive;
+            } else if (mSkipHeadsUp == 2) {
+                isNonInstrusive = notificationPackageName.contains("clock");
+                return !isNonInstrusive;
+            } else if (mSkipHeadsUp == 3) {
+                isNonInstrusive = notificationPackageName.contains("dialer");
+                return !isNonInstrusive;
+            } else if (mSkipHeadsUp == 4) {
+                return true;
+            }
         }
         boolean isLessBoring = notificationPackageName.equals("com.android.dialer") ||
                 notificationPackageName.contains("clock") ||
