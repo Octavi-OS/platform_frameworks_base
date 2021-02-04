@@ -92,5 +92,6 @@ public class SystemSettings {
         Settings.System.CENTER_NOTIFICATION_HEADERS,
         Settings.System.VOLUME_BUTTON_MUSIC_CONTROL,
         Settings.System.VOLUME_ROCKER_WAKE,
+        Settings.System.RINGTONE_VIBRATION_PATTERN,
     };
 }
