@@ -21,6 +21,7 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Point
 import android.graphics.Rect
+import android.renderscript.Allocation
 import android.util.Log
 import android.util.MathUtils
 import com.android.internal.graphics.ColorUtils
