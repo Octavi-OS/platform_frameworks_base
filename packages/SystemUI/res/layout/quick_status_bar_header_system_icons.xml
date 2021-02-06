@@ -27,6 +27,12 @@
     android:clickable="true"
     android:paddingTop="@dimen/status_bar_padding_top" >
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical|start" >
+
     <com.android.systemui.statusbar.policy.Clock
            android:id="@+id/clock"
            android:layout_width="wrap_content"
@@ -46,6 +52,14 @@
            android:layout_weight="1"
            android:gravity="center_vertical|center_horizontal" />
 
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="0dp" 
+        android:layout_height="match_parent" 
+        android:layout_weight="2" 
+        android:orientation="horizontal"
+        android:gravity="center_vertical|end" >
+
          <com.android.systemui.statusbar.policy.NetworkTraffic
             android:id="@+id/networkTraffic"
             android:paddingEnd="@dimen/status_bar_left_clock_end_padding"
@@ -55,8 +69,9 @@
             android:layout_marginStart="2dp"
             android:layout_marginEnd="2dp"
             android:singleLine="false"
-            android:lineSpacingMultiplier="1.2"
-            systemui:showDark="false"/>
+            android:textColor="?android:attr/textColorPrimary"
+            systemui:showDark="false"
+            android:lineSpacingMultiplier="1.2"/>
 
     <com.android.systemui.statusbar.phone.StatusIconContainer
         android:id="@+id/statusIcons"

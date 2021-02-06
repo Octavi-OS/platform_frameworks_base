@@ -44,6 +44,7 @@ import android.provider.Settings;
 import android.service.notification.ZenModeConfig;
 import android.text.format.DateUtils;
 import android.util.AttributeSet;
+import com.airbnb.lottie.LottieAnimationView;
 import android.util.Log;
 import android.util.MathUtils;
 import android.util.Pair;
@@ -57,6 +58,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import android.widget.Space;
 import android.widget.TextView;
 import android.widget.TextClock;
@@ -97,6 +99,7 @@ import com.android.systemui.statusbar.policy.DateView;
 import com.android.systemui.statusbar.policy.NextAlarmController;
 import com.android.systemui.statusbar.policy.ZenModeController;
 import com.android.systemui.util.RingerModeTracker;
+import com.android.systemui.omni.OmniJawsClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -110,6 +113,8 @@ import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 
+import com.android.settingslib.Utils;
+
 /**
  * View that contains the top-most bits of the screen (primarily the status bar with date, time, and
  * battery) and also contains the {@link QuickQSPanel} along with some of the panel's inner
@@ -117,7 +122,7 @@ import android.text.style.ForegroundColorSpan;
  */
 public class QuickStatusBarHeader extends RelativeLayout implements
         View.OnClickListener, NextAlarmController.NextAlarmChangeCallback,
-        ZenModeController.Callback, LifecycleOwner {
+        ZenModeController.Callback, LifecycleOwner, OmniJawsClient.OmniJawsObserver {
     private static final String TAG = "QuickStatusBarHeader";
     private static final boolean DEBUG = false;
 
@@ -187,6 +192,15 @@ public class QuickStatusBarHeader extends RelativeLayout implements
     private TextClock mTextClock;
     private LinearLayout mQsClockContainer;
 
+    //Weather QS
+    private OmniJawsClient mWeatherClient;
+
+    private ImageView mWeatherImg;
+    private TextView mWeatherCity;
+    private TextView mWeatherDegree;
+    private LinearLayout mWeatherContainer;
+    private ConstraintLayout mPillContainer;
+
     // Used for RingerModeTracker
     private final LifecycleRegistry mLifecycle = new LifecycleRegistry(this);
 
@@ -213,7 +227,7 @@ public class QuickStatusBarHeader extends RelativeLayout implements
 
         @Override
         public void onChange(boolean selfChange) {
-            updateSettings();
+            updateSettingsQs();
         }
     }
 
@@ -275,7 +289,7 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         mActivityStarter = activityStarter;
         mPrivacyItemController = privacyItemController;
         mDualToneHandler = new DualToneHandler(
-                new ContextThemeWrapper(context, R.style.QSHeaderTheme));
+        new ContextThemeWrapper(context, R.style.QSHeaderTheme));
         mCommandQueue = commandQueue;
         mRingerModeTracker = ringerModeTracker;
         mSettingsObserver.observe();
@@ -322,6 +336,11 @@ public class QuickStatusBarHeader extends RelativeLayout implements
 	mTextClock = findViewById(R.id.textClock);
         mTextClock.setOnClickListener(this::onClick);
 	mQsClockContainer = findViewById(R.id.qsclockcontainer);
+        mWeatherCity = findViewById(R.id.weather_city);
+	mWeatherDegree = findViewById(R.id.weather_degree);
+	mWeatherImg = findViewById(R.id.weather_img);
+	mWeatherContainer = findViewById(R.id.weather_container_qs);
+        mPillContainer = findViewById(R.id.pill_container);
 
         updateResources();
 
@@ -330,7 +349,8 @@ public class QuickStatusBarHeader extends RelativeLayout implements
                 android.R.attr.colorForeground);
         float intensity = getColorIntensity(colorForeground);
         int fillColor = mDualToneHandler.getSingleColor(intensity);
-        int fillColorWhite = getContext().getResources().getColor(android.R.color.white);
+//        int fillColorWhite = getContext().getResources().getColor(android.R.color.white);
+        mWeatherClient = new OmniJawsClient(getContext());
 
         // Set the correct tint for the status icons so they contrast
         mIconManager.setTint(fillColor);
@@ -366,7 +386,45 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         mBatteryRemainingIcon.setOnClickListener(this);
         mRingerModeTextView.setSelected(true);
         mNextAlarmTextView.setSelected(true);
-        updateSettings();
+        mAllIndicatorsEnabled = mPrivacyItemController.getAllIndicatorsAvailable();
+        mMicCameraIndicatorsEnabled = mPrivacyItemController.getMicCameraAvailable();
+        mWeatherClient = new OmniJawsClient(getContext());
+        mWeatherClient.addSettingsObserver();
+        mWeatherClient.addObserver(this);
+	queryAndUpdateWeather();
+        updateSettingsQs();
+    }
+
+    private void queryAndUpdateWeather(){
+        if (mWeatherClient != null && mWeatherClient.isOmniJawsEnabled()){
+        mWeatherClient.queryWeather();
+	OmniJawsClient.WeatherInfo weatherInfo = mWeatherClient.getWeatherInfo();
+
+        if (weatherInfo != null){
+	mWeatherContainer.setVisibility(View.VISIBLE);
+	mWeatherCity.setText(weatherInfo.city);
+        Spannable spannable = new SpannableStringBuilder(weatherInfo.tempUnits);
+        spannable.setSpan(new ForegroundColorSpan(Utils.getColorAttrDefaultColor(getContext(), android.R.attr.colorAccent)), 0, weatherInfo.tempUnits.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+	mWeatherDegree.setText(weatherInfo.temp + " " + spannable);
+	mWeatherImg.setImageDrawable(mWeatherClient.getWeatherConditionImage(weatherInfo.conditionCode)); //FUCKS NEEDS 2 PROVIDER
+	    }
+        } else {
+             mWeatherContainer.setVisibility(View.GONE);
+	}
+    }
+
+    @Override
+    public void weatherUpdated() {
+        queryAndUpdateWeather();
+    }
+
+    @Override
+    public void weatherError(int errorReason) {
+        Log.e(TAG, "weatherError " + errorReason);
+     if (mWeatherClient!=null && mWeatherClient.isOmniJawsEnabled()){
+	    mWeatherContainer.setVisibility(View.VISIBLE);
+	} else mWeatherContainer.setVisibility(View.GONE);
     }
 
     public QuickQSPanel getHeaderQsPanel() {
@@ -528,7 +586,7 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         updatePrivacyChipAlphaAnimator();
     }
 
-    private void updateSettings() {
+    private void updateSettingsQs() {
         updateQSBatteryMode();
         updateSBBatteryStyle();
         updateResources();
@@ -537,19 +595,26 @@ public class QuickStatusBarHeader extends RelativeLayout implements
      }
 
     private void updateQsClockView() {
-	int isStart = Settings.System.getInt(mContext.getContentResolver(),
+	int pos = Settings.System.getInt(mContext.getContentResolver(),
         Settings.System.QS_CLOCK_START, 0);
-	if (isStart == 0) {
+
+        if (pos == 0) {
+	   mQsClockContainer.setVisibility(View.VISIBLE);
 	   mQsClockContainer.setGravity(Gravity.START);
 	   mTextClock.setTextColor(Utils.getColorAttrDefaultColor(mContext,
                         android.R.attr.colorAccent));
            mQsClockContainer.setPadding(getResources().getDimensionPixelOffset(R.dimen.qs_clock_start_20), 0, 0, 0);
-	} else {
+	} else if(pos == 1) {
+	   mQsClockContainer.setVisibility(View.VISIBLE);
 	   mTextClock.setTextColor(Utils.getColorAttrDefaultColor(mContext,
                         android.R.attr.textColorPrimary));
            mQsClockContainer.setGravity(Gravity.CENTER);
            mQsClockContainer.setPadding(0, 0, 0, 0);
-	}
+	} else {
+	   mQsClockContainer.setVisibility(View.GONE);
+	   mPillContainer.setVisibility(View.VISIBLE);
+           queryAndUpdateWeather();
+        }
     }
     private void updateQSBatteryMode() {
         int showEstimate = Settings.System.getInt(mContext.getContentResolver(),
@@ -614,6 +679,13 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         mExpanded = expanded;
         mHeaderQsPanel.setExpanded(expanded);
         mDateView.setVisibility(mClockView.isClockDateEnabled() ? View.INVISIBLE : View.VISIBLE);
+
+	if(mExpanded){
+	mSystemIconsView.setVisibility(View.INVISIBLE);
+	}
+	else {
+	mSystemIconsView.setVisibility(View.VISIBLE);
+	}
         updateEverything();
     }
 

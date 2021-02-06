@@ -26,4 +26,7 @@
 
     <color name="accent_device_default_light">@*android:color/accent_device_default_light</color>
 
+    <color name="qs_clock_bg">#CCFFFFFF</color>
+    <color name="black">#000</color>
+
 </resources>

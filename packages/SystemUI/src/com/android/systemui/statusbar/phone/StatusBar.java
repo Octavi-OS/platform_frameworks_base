@@ -74,7 +74,6 @@ import android.content.pm.IPackageManager;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
-import android.content.om.IOverlayManager;
 import android.content.om.OverlayInfo;
 import android.content.res.Resources;
 import android.database.ContentObserver;
@@ -4499,7 +4498,6 @@ public class StatusBar extends SystemUI implements DemoMode,
     protected WindowManager mWindowManager;
     protected IWindowManager mWindowManagerService;
     private IDreamManager mDreamManager;
-    private IOverlayManager mOverlayManager;
 
     protected Display mDisplay;
     private int mDisplayId;
