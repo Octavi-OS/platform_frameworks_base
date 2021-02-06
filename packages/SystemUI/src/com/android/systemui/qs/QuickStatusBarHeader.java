@@ -99,7 +99,7 @@ import com.android.systemui.statusbar.policy.DateView;
 import com.android.systemui.statusbar.policy.NextAlarmController;
 import com.android.systemui.statusbar.policy.ZenModeController;
 import com.android.systemui.util.RingerModeTracker;
-import com.android.systemui.omni.OmniJawsClient;
+import com.android.internal.util.omni.OmniJawsClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -403,10 +403,10 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         if (weatherInfo != null){
 	mWeatherContainer.setVisibility(View.VISIBLE);
 	mWeatherCity.setText(weatherInfo.city);
-        Spannable spannable = new SpannableStringBuilder(weatherInfo.tempUnits);
-        spannable.setSpan(new ForegroundColorSpan(Utils.getColorAttrDefaultColor(getContext(), android.R.attr.colorAccent)), 0, weatherInfo.tempUnits.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        Spannable spannable = new SpannableStringBuilder(weatherInfo.temp + " " + weatherInfo.tempUnits);
+        spannable.setSpan(new ForegroundColorSpan(Utils.getColorAttrDefaultColor(getContext(), android.R.attr.colorAccent)), spannable.length() - 2, spannable.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-	mWeatherDegree.setText(weatherInfo.temp + " " + spannable);
+	mWeatherDegree.setText(spannable);
 	mWeatherImg.setImageDrawable(mWeatherClient.getWeatherConditionImage(weatherInfo.conditionCode)); //FUCKS NEEDS 2 PROVIDER
 	    }
         } else {
