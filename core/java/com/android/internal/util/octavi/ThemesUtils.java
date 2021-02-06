@@ -65,6 +65,10 @@ public class ThemesUtils {
             "com.gnonymous.gvisualmod.urm_r", // 1
             "com.gnonymous.gvisualmod.urm_m", // 2
             "com.gnonymous.gvisualmod.urm_l", // 3
+
+    public static final String[] BRIGHTNESS_SLIDER_THEMES = {
+            "com.android.systemui.brightness.slider.memeroundstroke",
+            "com.android.systemui.brightness.slider.oos",
     };
 
     public static final String NAVBAR_COLOR_PURP = "com.gnonymous.gvisualmod.pgm_purp";
@@ -78,7 +82,7 @@ public class ThemesUtils {
     public static final String NAVBAR_COLOR_ROSE = "com.gnonymous.gvisualmod.pgm_rose";
 
     public static void updateSwitchStyle(IOverlayManager om, int userId, int switchStyle) {
-        if (switchStyle == 1) {
+        if (switchStyle == 0) {
             stockSwitchStyle(om, userId);
         } else {
             try {
@@ -133,5 +137,30 @@ public class ThemesUtils {
             // Do Nothing
         }
         return clocks;
+      }
+
+    public static void stockBrightnessSliderStyle(IOverlayManager om, int userId) {
+        for (int i = 0; i < BRIGHTNESS_SLIDER_THEMES.length; i++) {
+            String brightnessSlidertheme = BRIGHTNESS_SLIDER_THEMES[i];
+            try {
+                om.setEnabled(brightnessSlidertheme,
+                        false /*disable*/, userId);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void updateBrightnessSliderStyle(IOverlayManager om, int userId, int brightnessSliderStyle) {
+        if (brightnessSliderStyle == 0) {
+            stockBrightnessSliderStyle(om, userId);
+        } else {
+            try {
+                om.setEnabled(BRIGHTNESS_SLIDER_THEMES[brightnessSliderStyle],
+                        true, userId);
+            } catch (RemoteException e) {
+                Log.w(TAG, "Can't change brightness slider theme", e);
+            }
+        }
     }
 }

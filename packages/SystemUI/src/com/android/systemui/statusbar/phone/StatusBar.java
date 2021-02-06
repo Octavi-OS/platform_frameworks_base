@@ -263,6 +263,7 @@ import javax.inject.Provider;
 
 import dagger.Lazy;
 
+import android.content.om.IOverlayManager;
 import com.android.internal.util.octavi.ThemesUtils;
 
 public class StatusBar extends SystemUI implements DemoMode,
@@ -356,6 +357,8 @@ public class StatusBar extends SystemUI implements DemoMode,
      */
     protected int mState; // TODO: remove this. Just use StatusBarStateController
     protected boolean mBouncerShowing;
+
+    private IOverlayManager mOverlayManager;
 
     private PhoneStatusBarPolicy mIconPolicy;
     private StatusBarSignalPolicy mSignalPolicy;
@@ -764,6 +767,9 @@ public class StatusBar extends SystemUI implements DemoMode,
            resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.QS_TILE_TITLE_VISIBILITY),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.BRIGHTNESS_SLIDER_STYLE),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -792,6 +798,9 @@ public class StatusBar extends SystemUI implements DemoMode,
                     Settings.System.SWITCH_STYLE))) {
                 stockSwitchStyle();
                 updateSwitchStyle();
+           } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.BRIGHTNESS_SLIDER_STYLE))) {
+                updateBrightnessSliderStyle();
             } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.PULSE_ON_NEW_TRACKS))) {
                 setPulseOnNewTracks();
@@ -3803,6 +3812,33 @@ public class StatusBar extends SystemUI implements DemoMode,
     public void stockSwitchStyle() {
         ThemesUtils.stockSwitchStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
     }
+
+    public void updateBrightnessSliderStyle() {
+        int brighthnessSliderStyle = Settings.System.getInt(mContext.getContentResolver(),
+                 Settings.System.BRIGHTNESS_SLIDER_STYLE, 0);
+         String[] BRIGHTNESS_SLIDER_THEMES = {
+            "com.android.systemui.brightness.slider.memeroundstroke",
+            "com.android.systemui.brightness.slider.oos",
+         };
+
+	 if (brighthnessSliderStyle == 0){
+	 for (int i = 0; i < BRIGHTNESS_SLIDER_THEMES.length; i++) {
+            String brightnessSlidertheme = BRIGHTNESS_SLIDER_THEMES[i];
+            try {
+                mOverlayManager.setEnabled(brightnessSlidertheme,
+                        false /*disable*/, mLockscreenUserManager.getCurrentUserId());
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        } } else {
+	    try {
+                mOverlayManager.setEnabled(BRIGHTNESS_SLIDER_THEMES[brighthnessSliderStyle-1],
+                        true, mLockscreenUserManager.getCurrentUserId());
+            } catch (RemoteException e) {
+                Log.w(TAG, "Can't change theme", e);
+            }
+ 	}
+     }
 
     private void updateDozingState() {
         Trace.traceCounter(Trace.TRACE_TAG_APP, "dozing", mDozing ? 1 : 0);
