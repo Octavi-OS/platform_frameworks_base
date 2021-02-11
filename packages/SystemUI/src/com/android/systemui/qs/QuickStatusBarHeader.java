@@ -33,12 +33,14 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.media.AudioManager;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.UserHandle;
 import android.os.Looper;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.provider.AlarmClock;
+import android.provider.CalendarContract;
 import android.provider.Settings;
 import android.service.notification.ZenModeConfig;
 import android.text.format.DateUtils;
@@ -317,7 +319,6 @@ public class QuickStatusBarHeader extends RelativeLayout implements
 
         mClockView = findViewById(R.id.clock);
         mClockView.setOnClickListener(this);
-        mClockView.setQsHeader();
         mClockView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
@@ -325,7 +326,16 @@ public class QuickStatusBarHeader extends RelativeLayout implements
                     return false;
                 }
             });
+        mClockView.setQsHeader();
         mDateView = findViewById(R.id.date);
+        mDateView.setOnClickListener(this);
+        mDateView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    startCalendarActivity();
+                    return false;
+                }
+            });
         mSpace = findViewById(R.id.space);
 
         // Tint for the battery icons are handled in setupHost()
@@ -775,6 +785,15 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         nIntent.setClassName("com.android.settings",
             "com.android.settings.Settings$DateTimeSettingsActivity");
         mActivityStarter.startActivity(nIntent, true /* dismissShade */);
+        mVibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+    }
+
+    private void startCalendarActivity() {
+        Uri calendarUri = CalendarContract.CONTENT_URI
+                .buildUpon()
+                .appendPath("time")
+                .build();
+        mActivityStarter.startActivity(new Intent(Intent.ACTION_VIEW, calendarUri), true);
         mVibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
     }
 
