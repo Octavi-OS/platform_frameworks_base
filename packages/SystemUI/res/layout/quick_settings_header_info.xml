@@ -42,6 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:format12Hour="hh"
+            android:format24Hour="kk"
             android:singleLine="true"
             android:textSize="50dp" />
 
@@ -49,6 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:format12Hour=":mm"
+            android:format24Hour="mm"
             android:singleLine="true"
             android:textSize="50dp" />
      </LinearLayout>
@@ -84,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg"
                     android:format12Hour="hh.mm a"
-                    android:format24Hour="hh.mm a"
+                    android:format24Hour="kk.mm a"
                     android:paddingStart="10dp"
                     android:paddingTop="5dp"
                     android:paddingEnd="10dp"
