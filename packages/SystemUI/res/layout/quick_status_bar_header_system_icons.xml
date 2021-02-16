@@ -28,9 +28,10 @@
     android:paddingTop="@dimen/status_bar_padding_top" >
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:orientation="horizontal"
+        android:layout_weight="1"
         android:gravity="center_vertical|start" >
 
     <com.android.systemui.statusbar.policy.Clock
@@ -53,7 +54,6 @@
            android:gravity="center_vertical|center_horizontal" />
 
     <LinearLayout
-        android:visibility="gone"
         android:layout_width="0dp" 
         android:layout_height="match_parent" 
         android:layout_weight="2" 
@@ -69,7 +69,6 @@
             android:layout_marginStart="2dp"
             android:layout_marginEnd="2dp"
             android:singleLine="false"
-            android:textColor="?android:attr/textColorPrimary"
             systemui:showDark="false"
             android:lineSpacingMultiplier="1.2"/>
 

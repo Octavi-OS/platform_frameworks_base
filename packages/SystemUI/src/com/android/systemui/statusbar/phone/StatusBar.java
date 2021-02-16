@@ -317,6 +317,12 @@ public class StatusBar extends SystemUI implements DemoMode,
 
     protected static final boolean CLOSE_PANEL_WHEN_EMPTIED = true;
 
+    //Brightness styles
+         private static String[] BRIGHTNESS_SLIDER_THEMES = {
+            "com.android.systemui.brightness.slider.memeroundstroke",
+            "com.android.systemui.brightness.slider.oos",
+         };
+
     /**
      * The delay to reset the hint text when the hint animation is finished running.
      */
@@ -3813,16 +3819,8 @@ public class StatusBar extends SystemUI implements DemoMode,
         ThemesUtils.stockSwitchStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
     }
 
-    public void updateBrightnessSliderStyle() {
-        int brighthnessSliderStyle = Settings.System.getInt(mContext.getContentResolver(),
-                 Settings.System.BRIGHTNESS_SLIDER_STYLE, 0);
-         String[] BRIGHTNESS_SLIDER_THEMES = {
-            "com.android.systemui.brightness.slider.memeroundstroke",
-            "com.android.systemui.brightness.slider.oos",
-         };
-
-	 if (brighthnessSliderStyle == 0){
-	 for (int i = 0; i < BRIGHTNESS_SLIDER_THEMES.length; i++) {
+    private void stockBrightnessSliderStyle(){
+        for (int i = 0; i < BRIGHTNESS_SLIDER_THEMES.length; i++) {
             String brightnessSlidertheme = BRIGHTNESS_SLIDER_THEMES[i];
             try {
                 mOverlayManager.setEnabled(brightnessSlidertheme,
@@ -3830,8 +3828,16 @@ public class StatusBar extends SystemUI implements DemoMode,
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
-        } } else {
-	    try {
+        }
+    }
+
+    public void updateBrightnessSliderStyle() {
+        int brighthnessSliderStyle = Settings.System.getInt(mContext.getContentResolver(),
+                 Settings.System.BRIGHTNESS_SLIDER_STYLE, 0);
+
+	stockBrightnessSliderStyles();
+	if (brighthnessSliderStyle>0){
+	try {
                 mOverlayManager.setEnabled(BRIGHTNESS_SLIDER_THEMES[brighthnessSliderStyle-1],
                         true, mLockscreenUserManager.getCurrentUserId());
             } catch (RemoteException e) {
