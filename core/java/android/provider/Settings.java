@@ -4655,18 +4655,6 @@ public final class Settings {
         public static final String NOTIFICATION_LIGHT_PULSE = "notification_light_pulse";
 
         /**
-         * FOD recognizing animation
-         * @hide
-         */
-        public static final String FOD_RECOGNIZING_ANIMATION = "fod_recognizing_animation";
-
-        /**
-         * FOD recognizing animation picker
-         * @hide
-         */
-        public static final String FOD_ANIM = "fod_recognizing_animation_list";
-
-        /**
          * Show pointer location on screen?
          * 0 = no
          * 1 = yes
@@ -5349,6 +5337,7 @@ public final class Settings {
         public static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
 
         /**
+         * Show battery percentage when charging
          * @hide
          */
         public static final String STATUS_BAR_BATTERY_TEXT_CHARGING = "status_bar_battery_text_charging";
@@ -5702,24 +5691,6 @@ public final class Settings {
          * @hide
          */
         public static final String CENTER_NOTIFICATION_HEADERS = "center_notification_headers";
-
-        /**
-         * FOD icon picker
-         * @hide
-         */
-        public static final String FOD_ICON = "fod_icon";
-
-        /**
-         * Screen off fod
-         * @hide
-         */
-        public static final String FOD_GESTURE = "fod_gesture";
-
-        /**
-         * FOD night light
-         * @hide
-         */
-        public static final String FOD_NIGHT_LIGHT = "fod_night_light";
 
         /**
          * Whether to show artist and title on ambient/lock screen on new music tracks

@@ -101,9 +101,6 @@
         <item>com.google.android.apps.wellbeing</item>
     </string-array>
 
-    <!-- FOD icon dim-->
-    <bool name="config_targetUsesInKernelDimming">false</bool>
-
     <!-- -1 means use same as config_screenBrightnessDoze -->
     <integer name="config_screenBrightnessPulse">-1</integer>
 
@@ -131,12 +128,6 @@
 
     <!-- Whether to send camera status intent -->
     <bool name="config_sendCameraStatusIntent">false</bool>
-
-    <!-- Default value for FOD animation package resources -->
-    <string name="config_fodAnimationPackage" translatable="false">com.octavi.fod.animations</string>
-
-    <!-- NightLight FOD -->
-    <bool name="disable_fod_night_light">false</bool>
 
     <!-- AOKP custom system animations -->
     <string name="animation_fade">Fade</string>
@@ -176,9 +167,6 @@
     <!-- Older rotation sensors are not setting event.timestamp correctly. Setting to
          true will use SystemClock.elapsedRealtimeNanos() to set timestamp. -->
     <bool name="config_useSystemClockforRotationSensor">false</bool>
-
-    <!-- Hide FOD while Going to sleep from lockscreen to avoid HBM flicker -->
-    <bool name="config_inDisplayFingerprintFlickersGoingToSleep">false</bool>
 
     <!-- Whether or not we should show vendor mismatch message -->
     <bool name="config_show_vendor_mismatch_message">true</bool>

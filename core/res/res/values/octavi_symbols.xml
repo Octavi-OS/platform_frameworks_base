@@ -95,9 +95,6 @@
 
    <java-symbol type="array" name="config_customPermissionsList" />
 
-   <!-- FOD icon dimming -->
-   <java-symbol type="bool" name="config_targetUsesInKernelDimming" />
-
    <java-symbol type="integer" name="config_screenBrightnessPulse" />
 
    <!-- Ambient notification light color -->
@@ -110,11 +107,6 @@
 
    <!-- Whether to send camera status intent -->
    <java-symbol type="bool" name="config_sendCameraStatusIntent" />
-
-   <java-symbol type="string" name="config_fodAnimationPackage" />
-
-   <!-- NightLight FOD -->
-   <java-symbol type="bool" name="disable_fod_night_light"/>
 
    <!-- AOKP custom system animations -->
    <java-symbol type="string" name="action_null"/>
@@ -225,9 +217,6 @@
 
    <!-- Rotation sensor -->
    <java-symbol type="bool" name="config_useSystemClockforRotationSensor" />
-
-   <!-- Hide FOD while Going to sleep from lockscreen to avoid HBM flicker -->
-   <java-symbol type="bool" name="config_inDisplayFingerprintFlickersGoingToSleep" />
 
    <!-- Vendor mismatch fingerprint warning -->
    <java-symbol type="string" name="system_error_vendorprint" />
