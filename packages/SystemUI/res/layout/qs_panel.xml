@@ -19,15 +19,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clipToPadding="false"
-    android:clipChildren="false" >
+    android:clipChildren="false"
+    android:background="@drawable/qs_background_primary">
 
     <!-- Main QS background -->
     <View
         android:id="@+id/quick_settings_background"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:elevation="4dp"
-        android:background="@drawable/qs_background_primary" />
+        android:layout_height="0dp"/>
 
     <!-- Black part behind the status bar -->
     <View
@@ -35,8 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="@*android:dimen/quick_qs_offset_height"
         android:clipToPadding="false"
-        android:clipChildren="false"
-        android:background="#ff000000" />
+        android:clipChildren="false"/>
 
     <!-- Gradient view behind QS -->
     <View
