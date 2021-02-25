@@ -2307,14 +2307,6 @@ public class StatusBar extends SystemUI implements DemoMode,
         if (DEBUG) {
             Log.d(TAG, "Toggling camera flashlight");
         }
-        if (!isScreenFullyOff() && mDeviceInteractive && !isPulsing() && !mDozing) {
-            toggleFlashlight();
-            return;
-        }
-        mDozeServiceHost.toggleFlashlightProximityCheck();
-    }
-
-    public void toggleFlashlight() {
         if (mFlashlightController.isAvailable()) {
             mFlashlightController.setFlashlight(!mFlashlightController.isEnabled());
         }
@@ -2899,6 +2891,10 @@ public class StatusBar extends SystemUI implements DemoMode,
         pw.println("SharedPreferences:");
         for (Map.Entry<String, ?> entry : Prefs.getAll(mContext).entrySet()) {
             pw.print("  "); pw.print(entry.getKey()); pw.print("="); pw.println(entry.getValue());
+        }
+
+        if (mFlashlightController != null) {
+            mFlashlightController.dump(fd, pw, args);
         }
     }
 

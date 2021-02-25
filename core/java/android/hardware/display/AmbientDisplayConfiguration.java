@@ -56,7 +56,6 @@ public class AmbientDisplayConfiguration {
                 || pickupGestureEnabled(user)
                 || tapGestureEnabled(user)
                 || doubleTapGestureEnabled(user)
-                || isPowerBtnFlashlightEnabled(user)
                 || isAmbientTickerEnabled(user);
     }
 
@@ -270,11 +269,5 @@ public class AmbientDisplayConfiguration {
             return ambientLightsActivated && !accessibilityInversionEnabled(user) && alwaysOnAvailable() && alwaysOnEnabledSetting(user);
         }
         return false;
-    }
-
-    /** {@hide} */
-    public boolean isPowerBtnFlashlightEnabled(int user) {
-        return Settings.Secure.getIntForUser(mContext.getContentResolver(),
-                Settings.Secure.TORCH_POWER_BUTTON_GESTURE, 0, user) != 0;
     }
 }
