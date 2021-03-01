@@ -131,9 +131,9 @@
     <string name="ambientmusic_songinfo" formatted="false">%s by %s</string>
     <!-- Headphones Buddy -->
     <string name="hp_buddy">Headphones Buddy</string>
-    <string name="hp_buddy_left">Left only</string>
-    <string name="hp_buddy_right">Right only</string>
-    <string name="hp_buddy_center">Both</string>
+    <string name="hp_buddy_left">僅左邊</string>
+    <string name="hp_buddy_right">僅右邊</string>
+    <string name="hp_buddy_center">兩者</string>
     <string name="hp_buddy_not_connected">連接您的耳機</string>
     <string name="lockscreen_default">預設</string>
     <string name="lockscreen_hidden">無</string>
