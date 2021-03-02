@@ -179,5 +179,8 @@
     <!-- Scrolling Screenshot string -->
     <string name="scrollss">Scroll</string>
 
+    <!-- CPUInfo tile -->
+    <string name="quick_settings_cpuinfo_label">CPU Info</string>
+
 </resources> 
 
