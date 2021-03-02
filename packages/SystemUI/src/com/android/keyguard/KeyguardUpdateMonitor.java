@@ -2667,6 +2667,11 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener, Dumpab
             return true;
         }
 
+        // change in battery overheat
+        if (current.health != old.health) {
+            return true;
+        }
+
         return false;
     }
 
