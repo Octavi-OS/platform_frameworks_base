@@ -118,4 +118,7 @@
 
     <!-- controls -->
     <color name="control_default_background">#19ffffff</color> <!-- 10% white -->
+
+    <color name="meter_bg_color">@color/transparent</color>
+
 </resources>

@@ -24,4 +24,6 @@
     <color name="edge_light_red">#ea4234</color>
     <color name="edge_light_yellow">#fbbc06</color>
 
+    <color name="meter_bg_color">#000</color>
+
 </resources>
