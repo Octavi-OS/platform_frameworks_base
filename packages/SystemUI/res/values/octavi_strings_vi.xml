@@ -140,10 +140,10 @@
     <!-- Scrolling Screenshot string -->
     <string name="scrollss">Cuộn</string>
     <!-- CPUInfo tile -->
-    <string name="quick_settings_cpuinfo_label">CPU Info</string>
+    <string name="quick_settings_cpuinfo_label">Thông tin CPU</string>
     <!-- FPS Info tile -->
-    <string name="quick_settings_fpsinfo_label">FPS Info</string>
+    <string name="quick_settings_fpsinfo_label">Thông tin FPS</string>
     <!-- Smart Pixels QS Tile -->
-    <string name="quick_settings_smart_pixels">Smart Pixels</string>
-    <string name="quick_settings_smart_pixels_on_power_save">Auto-enabled Smart Pixels</string>
+    <string name="quick_settings_smart_pixels">Điểm ảnh thông minh</string>
+    <string name="quick_settings_smart_pixels_on_power_save">Tự động bật điểm ảnh thông minh</string>
 </resources>
