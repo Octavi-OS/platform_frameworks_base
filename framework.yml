@@ -1,5 +1,5 @@
 files:
   - source: /packages/SystemUI/res/values/octavi_strings.xml
-    translation: /packages/SystemUI/res/values/octavi_strings_%language%.xml
+    translation: /packages/SystemUI/res/values-%language%/octavi_strings.xml
   - source: /core/res/res/values/octavi_strings.xml
     translation: /core/res/res/values-%language%/octavi_strings.xml
