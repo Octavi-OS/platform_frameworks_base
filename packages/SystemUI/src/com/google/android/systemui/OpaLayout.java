@@ -15,6 +15,8 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.os.UserManager;
+import android.os.UserHandle;
+import android.provider.Settings;
 import android.util.ArraySet;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
