@@ -12,138 +12,138 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="statusbar_items_title">Statusbar icon</string>
+    <string name="statusbar_items_title">状态栏图标</string>
     <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
-    <string name="keyguard_indication_dash_charging_time">Dash Charging (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> until full)</string>
-    <string name="keyguard_plugged_in_dash_charging">Dash Charging</string>
+    <string name="keyguard_indication_dash_charging_time">Dash 闪充中 (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> 后充满)</string>
+    <string name="keyguard_plugged_in_dash_charging">Dash 闪充中</string>
     <!-- Indication on the keyguard that is shown when the device is charging with a warp charger. Should match keyguard_plugged_in_warp_charging [CHAR LIMIT=40]-->
-    <string name="keyguard_indication_warp_charging_time" formatted="false"><xliff:g id="percentage">%2$s</xliff:g> • Warp Charging (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> until full)</string>
-    <string name="keyguard_plugged_in_warp_charging"><xliff:g id="percentage">%s</xliff:g>Warp Charging</string>
+    <string name="keyguard_indication_warp_charging_time" formatted="false"><xliff:g id="percentage">%2$s</xliff:g> • Warp 闪充中 (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> 后充满)</string>
+    <string name="keyguard_plugged_in_warp_charging"><xliff:g id="percentage">%s</xliff:g> • Warp 闪充中</string>
     <!-- Indication on the keyguard that is shown when the device is charging with a VOOC charger. Should match keyguard_plugged_in_vooc_charging [CHAR LIMIT=40]-->
-    <string name="keyguard_indication_vooc_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • VOOC Charging (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> until full)</string>
-    <string name="keyguard_plugged_in_vooc_charging"><xliff:g id="percentage">%s</xliff:g> VOOC Charging</string>
+    <string name="keyguard_indication_vooc_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • VOOC快速充电中 (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> 后充满)</string>
+    <string name="keyguard_plugged_in_vooc_charging"><xliff:g id="percentage">%s</xliff:g> • VOOC 快速充电中</string>
     <!-- Indication on the keyguard that is shown when the device is charging with a turbo power charger. Should match keyguard_plugged_in_turbo_power_charging [CHAR LIMIT=40]-->
-    <string name="keyguard_indication_turbo_power_time" formatted="false"><xliff:g id="percentage">%2$s</xliff:g> • Turbo Charging (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> until full)</string>
-    <string name="keyguard_plugged_in_turbo_charging" formatted="false"><xliff:g id="percentage">%s</xliff:g> • Turbo Charging</string>
+    <string name="keyguard_indication_turbo_power_time" formatted="false"><xliff:g id="percentage">%2$s</xliff:g> • 快速充电中 (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> 后充满)</string>
+    <string name="keyguard_plugged_in_turbo_charging" formatted="false"><xliff:g id="percentage">%s</xliff:g> • 快速充电中</string>
     <!-- DataSwitch Tile -->
-    <string name="qs_data_switch_label">Switch data card to</string>
-    <string name="qs_data_switch_toast_0">Currently no SIM card is inserted</string>
-    <string name="qs_data_switch_toast_1">Currently only one SIM card is inserted</string>
-    <string name="qs_data_switch_changed_1">Using SIM 1 for Mobile data</string>
-    <string name="qs_data_switch_changed_2">Using SIM 2 for Mobile data</string>
+    <string name="qs_data_switch_label">切换移动数据卡</string>
+    <string name="qs_data_switch_toast_0">当前没有插入 SIM 卡</string>
+    <string name="qs_data_switch_toast_1">当前仅插入了一张 SIM 卡</string>
+    <string name="qs_data_switch_changed_1">移动数据使用 SIM 卡 1</string>
+    <string name="qs_data_switch_changed_2">移动数据使用 SIM 卡 2</string>
     <!-- Reboot/Recovery QS tile -->
-    <string name="quick_settings_reboot_label">Reboot</string>
-    <string name="quick_settings_reboot_recovery_label">Recovery</string>
+    <string name="quick_settings_reboot_label">重启</string>
+    <string name="quick_settings_reboot_recovery_label">恢复模式</string>
     <!-- Mono QS Tile -->
-    <string name="quick_settings_monotoggle_tile">Audio mode</string>
-    <string name="quick_settings_monotoggle_tile_mono">Mono audio</string>
-    <string name="quick_settings_monotoggle_tile_stereo">Stereo audio</string>
+    <string name="quick_settings_monotoggle_tile">音频模式</string>
+    <string name="quick_settings_monotoggle_tile_mono">单声道音频</string>
+    <string name="quick_settings_monotoggle_tile_stereo">立体声</string>
     <!-- Spidey Analog clock -->
     <!-- Spectrum Analog clock -->
     <!-- Dot Analog clock -->
     <!-- Sneeky Analog clock -->
     <!-- Octavi Analog clock -->
     <!-- Screenshot QS tile -->
-    <string name="quick_settings_screenshot_label">Screenshot</string>
-    <string name="quick_settings_region_screenshot_label">Partial screenshot</string>
+    <string name="quick_settings_screenshot_label">截屏</string>
+    <string name="quick_settings_region_screenshot_label">局部截屏</string>
     <!-- HW Keys Tile -->
-    <string name="accessibility_quick_settings_hwkeys_on">HW keys on</string>
-    <string name="accessibility_quick_settings_hwkeys_off">HW keys off</string>
-    <string name="quick_settings_hwkeys_label">HW keys</string>
+    <string name="accessibility_quick_settings_hwkeys_on">开启硬件键</string>
+    <string name="accessibility_quick_settings_hwkeys_off">关闭硬件键</string>
+    <string name="quick_settings_hwkeys_label">硬件键</string>
     <!-- Advanced restart -->
-    <string name="global_action_reboot">Restart</string>
-    <string name="global_action_reboot_system">System</string>
-    <string name="global_action_reboot_progress">Restarting\u2026</string>
-    <string name="global_action_reboot_recovery">Recovery</string>
-    <string name="global_action_reboot_recovery_progress">Restarting to recovery mode\u2026</string>
-    <string name="global_action_reboot_hot">Hot</string>
-    <string name="global_action_reboot_bootloader">Bootloader</string>
-    <string name="global_action_reboot_bootloader_progress">Restarting to bootloader mode\u2026</string>
-    <string name="global_action_reboot_fastboot">Fastboot</string>
-    <string name="global_action_reboot_fastboot_progress">Restarting to fastboot mode\u2026</string>
-    <string name="global_action_settings">Settings</string>
-    <string name="global_action_screenshot">Screenshot</string>
-    <string name="global_action_screenrecord">Screenrecord</string>
-    <string name="global_action_flashlight">Flashlight</string>
+    <string name="global_action_reboot">重启</string>
+    <string name="global_action_reboot_system">系统</string>
+    <string name="global_action_reboot_progress">正在重启\u2026</string>
+    <string name="global_action_reboot_recovery">恢复模式</string>
+    <string name="global_action_reboot_recovery_progress">正在重启至恢复模式\u2026</string>
+    <string name="global_action_reboot_hot">热重启</string>
+    <string name="global_action_reboot_bootloader">引导程序（Bootloader）</string>
+    <string name="global_action_reboot_bootloader_progress">正在重启至引导模式\u2026</string>
+    <string name="global_action_reboot_fastboot">Fastboot 模式</string>
+    <string name="global_action_reboot_fastboot_progress">正在重启至 fastbootd 模式\u2026</string>
+    <string name="global_action_settings">设置</string>
+    <string name="global_action_screenshot">截屏</string>
+    <string name="global_action_screenrecord">屏幕录像</string>
+    <string name="global_action_flashlight">手电筒</string>
     <!-- Label for current user in power menu options dialog -->
-    <string name="global_action_current_user">Current</string>
+    <string name="global_action_current_user">当前的</string>
     <!-- Advance location quick setting tile -->
     <string name="quick_settings_secondary_location_off"></string>
-    <string name="quick_settings_location_secondary_battery_saving">Battery Saving</string>
-    <string name="accessibility_quick_settings_location_battery_saving">Location reporting: battery saving mode.</string>
-    <string name="quick_settings_location_secondary_gps_only">Sensors Only</string>
-    <string name="accessibility_quick_settings_location_gps_only">Location reporting: sensors only mode.</string>
-    <string name="quick_settings_location_secondary_high_accuracy">High Accuracy</string>
-    <string name="accessibility_quick_settings_location_high_accuracy">Location reporting: high accuracy mode.</string>
+    <string name="quick_settings_location_secondary_battery_saving">省电模式</string>
+    <string name="accessibility_quick_settings_location_battery_saving">位置报告：省电模式。</string>
+    <string name="quick_settings_location_secondary_gps_only">仅GPS</string>
+    <string name="accessibility_quick_settings_location_gps_only">位置报告：仅传感器模式。</string>
+    <string name="quick_settings_location_secondary_high_accuracy">高准确度</string>
+    <string name="accessibility_quick_settings_location_high_accuracy">位置报告：高准确度模式</string>
     <!-- Sound QS Tile -->
-    <string name="quick_settings_sound_label">Sound</string>
-    <string name="quick_settings_sound_ring">Ring</string>
-    <string name="quick_settings_sound_vibrate">Vibrate</string>
-    <string name="quick_settings_sound_mute">Mute</string>
+    <string name="quick_settings_sound_label">声音</string>
+    <string name="quick_settings_sound_ring">响铃</string>
+    <string name="quick_settings_sound_vibrate">振动</string>
+    <string name="quick_settings_sound_mute">静音</string>
     <!-- Caffeine QS Tile -->
-    <string name="quick_settings_caffeine_label">Caffeine</string>
-    <string name="quick_settings_caffeine_label_off">Off</string>
-    <string name="accessibility_quick_settings_caffeine_off">Caffeine off</string>
-    <string name="accessibility_quick_settings_caffeine_on">Caffeine on</string>
-    <string name="omnijaws_service_error">Error</string>
-    <string name="omnijaws_service_unkown">No weather data</string>
-    <string name="omnijaws_service_error_long">Error loading weather data</string>
-    <string name="omnijaws_service_disabled">Service is disabled</string>
-    <string name="omnijaws_detail_header">Weather</string>
-    <string name="omnijaws_label_default">Weather</string>
-    <string name="omnijaws_current_text">Now</string>
-    <string name="omnijaws_package_not_available">OmniJaws not available</string>
-    <string name="omnijaws_service_last_update">Last update:</string>
+    <string name="quick_settings_caffeine_label">保持亮屏</string>
+    <string name="quick_settings_caffeine_label_off">关闭</string>
+    <string name="accessibility_quick_settings_caffeine_off">保持亮屏已关闭</string>
+    <string name="accessibility_quick_settings_caffeine_on">保持亮屏已开</string>
+    <string name="omnijaws_service_error">错误</string>
+    <string name="omnijaws_service_unkown">没有天气数据</string>
+    <string name="omnijaws_service_error_long">加载天气数据时出错</string>
+    <string name="omnijaws_service_disabled">服务已停用</string>
+    <string name="omnijaws_detail_header">天气</string>
+    <string name="omnijaws_label_default">天气</string>
+    <string name="omnijaws_current_text">当前</string>
+    <string name="omnijaws_package_not_available">OmniJaws 不可用</string>
+    <string name="omnijaws_service_last_update">上次更新：</string>
     <!-- AOD QS tile -->
     <string name="quick_settings_aod_label">AOD</string>
     <!-- Ambient display QS tile -->
-    <string name="quick_settings_ambient_display_label">Ambient display</string>
-    <string name="accessibility_quick_settings_ambient_display_off">Ambient display off</string>
-    <string name="accessibility_quick_settings_ambient_display_on">Ambient display on</string>
-    <string name="accessibility_quick_settings_ambient_display_changed_off">Ambient display turned off</string>
-    <string name="accessibility_quick_settings_ambient_display_changed_on">Ambient display turned on</string>
+    <string name="quick_settings_ambient_display_label">环境显示</string>
+    <string name="accessibility_quick_settings_ambient_display_off">关闭环境显示</string>
+    <string name="accessibility_quick_settings_ambient_display_on">开启环境显示。</string>
+    <string name="accessibility_quick_settings_ambient_display_changed_off">环境显示已关闭</string>
+    <string name="accessibility_quick_settings_ambient_display_changed_on">环境显示已开启。</string>
     <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.
          [CHAR LIMIT=4] -->
     <!-- Screenrecorder -->
-    <string name="screenrecord_stopdot_label">Show stop dot\nLongpress to move it</string>
-    <string name="screenrecord_lowquality_label">Lower quality for smaller file size</string>
+    <string name="screenrecord_stopdot_label">显示停止点\n长按移动它</string>
+    <string name="screenrecord_lowquality_label">较低画质以求更小的文件大小</string>
     <!-- Heads Up QS Tile -->
-    <string name="quick_settings_heads_up_label">Heads up</string>
-    <string name="accessibility_quick_settings_heads_up_off">Heads up off.</string>
-    <string name="accessibility_quick_settings_heads_up_on">Heads up on.</string>
-    <string name="accessibility_quick_settings_heads_up_changed_off">Heads up turned off.</string>
-    <string name="accessibility_quick_settings_heads_up_changed_on">Heads up turned on.</string>
+    <string name="quick_settings_heads_up_label">浮动通知</string>
+    <string name="accessibility_quick_settings_heads_up_off">关闭浮动通知</string>
+    <string name="accessibility_quick_settings_heads_up_on">开启浮动通知。</string>
+    <string name="accessibility_quick_settings_heads_up_changed_off">浮动通知已关闭</string>
+    <string name="accessibility_quick_settings_heads_up_changed_on">浮动通知已开启。</string>
     <!-- accessibility label for button to open running apps prefscreen [CHAR LIMIT=NONE] -->
-    <string name="accessibility_quick_settings_running_services">Open Running Services screen.</string>
+    <string name="accessibility_quick_settings_running_services">显示正在运行的服务。</string>
     <!-- Gaming mode -->
-    <string name="gaming_mode_not_enabled">Gaming mode is disabled in settings</string>
-    <string name="quick_settings_gaming_mode_label">Gaming mode</string>
+    <string name="gaming_mode_not_enabled">游戏模式在设置中已被禁用</string>
+    <string name="quick_settings_gaming_mode_label">游戏模式</string>
     <!-- Content description of the Gaming mode tile in quick settings when disabled (not shown on the screen). [CHAR LIMIT=NONE] -->
-    <string name="accessibility_quick_settings_gaming_mode_disabled">Gaming mode turned off.</string>
+    <string name="accessibility_quick_settings_gaming_mode_disabled">游戏模式已关闭.</string>
     <!-- Content description of the Gaming mode tile in quick settings when enabled (not shown on the screen). [CHAR LIMIT=NONE] -->
-    <string name="accessibility_quick_settings_gaming_mode_enabled">Gaming mode turned on.</string>
+    <string name="accessibility_quick_settings_gaming_mode_enabled">游戏模式已开启.</string>
     <!-- Partial screenshot -->
-    <string name="global_screenshot_selector_capture_description">Capture partial screenshot</string>
-    <string name="global_screenshot_selector_cancel_description">Cancel partial screenshot</string>
+    <string name="global_screenshot_selector_capture_description">截取部分屏幕</string>
+    <string name="global_screenshot_selector_cancel_description">取消部分屏幕截图</string>
     <!-- Ambient Music Ticker -->
     <string name="ambientmusic_songinfo" formatted="false">%s by %s</string>
     <!-- Headphones Buddy -->
-    <string name="hp_buddy">Headphones Buddy</string>
-    <string name="hp_buddy_left">Left only</string>
-    <string name="hp_buddy_right">Right only</string>
-    <string name="hp_buddy_center">Both</string>
-    <string name="hp_buddy_not_connected">Connect your headphones</string>
-    <string name="lockscreen_default">Default</string>
-    <string name="lockscreen_hidden">None</string>
+    <string name="hp_buddy">耳机</string>
+    <string name="hp_buddy_left">仅左侧</string>
+    <string name="hp_buddy_right">仅右侧</string>
+    <string name="hp_buddy_center">同时启用</string>
+    <string name="hp_buddy_not_connected">连接您的耳机</string>
+    <string name="lockscreen_default">默认</string>
+    <string name="lockscreen_hidden">无</string>
     <!-- Scrolling Screenshot string -->
-    <string name="scrollss">Scroll</string>
+    <string name="scrollss">滑动</string>
     <!-- CPUInfo tile -->
-    <string name="quick_settings_cpuinfo_label">CPU Info</string>
+    <string name="quick_settings_cpuinfo_label">CPU信息</string>
     <!-- FPS Info tile -->
-    <string name="quick_settings_fpsinfo_label">FPS Info</string>
+    <string name="quick_settings_fpsinfo_label">FPS信息</string>
     <!-- Smart Pixels QS Tile -->
-    <string name="quick_settings_smart_pixels">Smart Pixels</string>
-    <string name="quick_settings_smart_pixels_on_power_save">Auto-enabled Smart Pixels</string>
+    <string name="quick_settings_smart_pixels">智能像素</string>
+    <string name="quick_settings_smart_pixels_on_power_save">自动启用智能像素</string>
 </resources>
