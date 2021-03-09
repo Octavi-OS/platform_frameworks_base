@@ -53,14 +53,14 @@
     <!-- Advanced restart -->
     <string name="global_action_reboot">Restart</string>
     <string name="global_action_reboot_system">System</string>
-    <string name="global_action_reboot_progress">Restarting\u2026</string>
+    <string name="global_action_reboot_progress">Reiniciando</string>
     <string name="global_action_reboot_recovery">Recovery</string>
-    <string name="global_action_reboot_recovery_progress">Restarting to recovery mode\u2026</string>
+    <string name="global_action_reboot_recovery_progress">Reiniciando en modo recovery</string>
     <string name="global_action_reboot_hot">Hot</string>
     <string name="global_action_reboot_bootloader">Bootloader</string>
-    <string name="global_action_reboot_bootloader_progress">Restarting to bootloader mode\u2026</string>
+    <string name="global_action_reboot_bootloader_progress">Reiniciando en modo bootloader</string>
     <string name="global_action_reboot_fastboot">Fastboot</string>
-    <string name="global_action_reboot_fastboot_progress">Restarting to fastboot mode\u2026</string>
+    <string name="global_action_reboot_fastboot_progress">Reiniciando en modo fastboot</string>
     <string name="global_action_settings">Settings</string>
     <string name="global_action_screenshot">Screenshot</string>
     <string name="global_action_screenrecord">Screenrecord</string>
