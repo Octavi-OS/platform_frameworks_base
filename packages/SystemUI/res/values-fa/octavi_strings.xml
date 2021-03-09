@@ -140,10 +140,10 @@
     <!-- Scrolling Screenshot string -->
     <string name="scrollss">اسکرول</string>
     <!-- CPUInfo tile -->
-    <string name="quick_settings_cpuinfo_label">CPU Info</string>
+    <string name="quick_settings_cpuinfo_label">اطلاعات پردازنده</string>
     <!-- FPS Info tile -->
-    <string name="quick_settings_fpsinfo_label">FPS Info</string>
+    <string name="quick_settings_fpsinfo_label">اطلاعات فریم بر ثانیه</string>
     <!-- Smart Pixels QS Tile -->
-    <string name="quick_settings_smart_pixels">Smart Pixels</string>
-    <string name="quick_settings_smart_pixels_on_power_save">Auto-enabled Smart Pixels</string>
+    <string name="quick_settings_smart_pixels">پیکسل های هوشمند</string>
+    <string name="quick_settings_smart_pixels_on_power_save">پیکسل های هوشمند درحالت خودکار</string>
 </resources>
