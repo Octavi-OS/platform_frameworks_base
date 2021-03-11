@@ -19,22 +19,22 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Button that copies the url to the log of a crashed application -->
-    <string name="aerr_copy">کپی کردن آدرس گزارش خرابی</string>
-    <string name="url_copy_success">آدرس با موفقیت کپی شد</string>
-    <string name="url_copy_failed">مشکلی در حین آپلود کردن گزارش به dogbin رخ داد</string>
+    <string name="aerr_copy">Copy crash log URL</string>
+    <string name="url_copy_success">URL copied successfully</string>
+    <string name="url_copy_failed">An error occured while uploading the log to dogbin</string>
     <!-- Pocket Lock -->
-    <string name="pocket_lock_message_long_press">نگه داشتن دکمه پاور برای تعامل</string>
+    <string name="pocket_lock_message_long_press">Long press power button to interact</string>
     <!-- Gaming mode -->
-    <string name="notification_channel_gaming">حالت مخصوص بازی کردن</string>
-    <string name="gaming_mode_notification_title">حالت بازی فعال شد</string>
-    <string name="gaming_mode_notification_content">برای غیرفعال کردن حالت بازی ضربه بزنید</string>
-    <string name="gaming_mode_enabled_toast">حالت بازی روشن شد</string>
-    <string name="gaming_mode_disabled_toast">حالت بازی خاموش شد</string>
+    <string name="notification_channel_gaming">Gaming mode</string>
+    <string name="gaming_mode_notification_title">Gaming mode enabled</string>
+    <string name="gaming_mode_notification_content">Tap to turn off Gaming mode</string>
+    <string name="gaming_mode_enabled_toast">Gaming mode turned on</string>
+    <string name="gaming_mode_disabled_toast">Gaming mode turned off</string>
     <!-- MicroG -->
     <string name="permlab_fakePackageSignature">Spoof package signature</string>
     <!-- Description of an application permission, listed so the user can choose whether
          they want to allow the application to do this. -->
-    <string name="permdesc_fakePackageSignature">به برنامه اجازه داده شده است تا به عنوان یک برنامه دیگر تظاهر کند. برنامه های مخرب ممکن است از این قابلیت استفاده کنند تا به دیتای شخصی شما دسترسی پیدا کنند. لطفا با احتیاط این اجازه را دهید!</string>
+    <string name="permdesc_fakePackageSignature">Allows the app to pretend to be a different app. Malicious applications might be able to use this to access private application data. Legitimate uses include an emulator pretending to be what it emulates. Grant this permission with caution only!</string>
     <!-- Title of a category of application permissions, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permgrouplab_fake_package_signature">Spoof package signature</string>
     <!-- Description of a category of application permissions, listed so the user can choose whether they want to allow the application to do this. -->
@@ -45,5 +45,5 @@
     <!-- Vendor mismatch fingerprint warning [CHAR LIMIT=NONE] -->
     <string name="system_error_vendorprint">Your vendor image does not match the system. Please flash the <xliff:g id="string">%s</xliff:g> vendor image for your device</string>
     <!-- Aerr strings -->
-    <string name="aerr_disable">غیر فعال کردن برنامه</string>
+    <string name="aerr_disable">Disable app</string>
 </resources>
