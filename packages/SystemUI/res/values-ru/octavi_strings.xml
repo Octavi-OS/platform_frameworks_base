@@ -140,10 +140,10 @@
     <!-- Scrolling Screenshot string -->
     <string name="scrollss">Прокрутка</string>
     <!-- CPUInfo tile -->
-    <string name="quick_settings_cpuinfo_label">Информация о ЦП</string>
+    <string name="quick_settings_cpuinfo_label">CPU Info</string>
     <!-- FPS Info tile -->
-    <string name="quick_settings_fpsinfo_label">Информация о FPS</string>
+    <string name="quick_settings_fpsinfo_label">FPS Info</string>
     <!-- Smart Pixels QS Tile -->
-    <string name="quick_settings_smart_pixels">Умные Пиксели</string>
-    <string name="quick_settings_smart_pixels_on_power_save">Автоматическое включение Умных Пикселей</string>
+    <string name="quick_settings_smart_pixels">Smart Pixels</string>
+    <string name="quick_settings_smart_pixels_on_power_save">Auto-enabled Smart Pixels</string>
 </resources>
