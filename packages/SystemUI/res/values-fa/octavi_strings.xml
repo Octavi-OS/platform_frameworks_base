@@ -59,56 +59,56 @@
     <string name="global_action_reboot_hot">داغ</string>
     <string name="global_action_reboot_bootloader">بوت لودر</string>
     <string name="global_action_reboot_bootloader_progress">راه اندازی مجدد به حالت بوت لودر\u2026</string>
-    <string name="global_action_reboot_fastboot">Fastboot</string>
-    <string name="global_action_reboot_fastboot_progress">Restarting to fastboot mode\u2026</string>
-    <string name="global_action_settings">Settings</string>
-    <string name="global_action_screenshot">Screenshot</string>
-    <string name="global_action_screenrecord">Screenrecord</string>
-    <string name="global_action_flashlight">Flashlight</string>
+    <string name="global_action_reboot_fastboot">فست بوت</string>
+    <string name="global_action_reboot_fastboot_progress">درحال راه‌اندازی مجدد به حالت فست‌بوت</string>
+    <string name="global_action_settings">تنظیمات</string>
+    <string name="global_action_screenshot">عکس از صفحه</string>
+    <string name="global_action_screenrecord">ضبط صفحه نمایش</string>
+    <string name="global_action_flashlight">چراغ قوه</string>
     <!-- Label for current user in power menu options dialog -->
-    <string name="global_action_current_user">Current</string>
+    <string name="global_action_current_user">فعلی</string>
     <!-- Advance location quick setting tile -->
     <string name="quick_settings_secondary_location_off"></string>
-    <string name="quick_settings_location_secondary_battery_saving">Battery Saving</string>
-    <string name="accessibility_quick_settings_location_battery_saving">Location reporting: battery saving mode.</string>
-    <string name="quick_settings_location_secondary_gps_only">Sensors Only</string>
-    <string name="accessibility_quick_settings_location_gps_only">Location reporting: sensors only mode.</string>
-    <string name="quick_settings_location_secondary_high_accuracy">High Accuracy</string>
-    <string name="accessibility_quick_settings_location_high_accuracy">Location reporting: high accuracy mode.</string>
+    <string name="quick_settings_location_secondary_battery_saving">ذخیرهٔ باتری</string>
+    <string name="accessibility_quick_settings_location_battery_saving">گزارش مکان: حالت صرفه‌جویی در باتری.</string>
+    <string name="quick_settings_location_secondary_gps_only">فقط سنسور ها</string>
+    <string name="accessibility_quick_settings_location_gps_only">گزارش مکان: حالت فقط حسگرها.</string>
+    <string name="quick_settings_location_secondary_high_accuracy">دقت بالا</string>
+    <string name="accessibility_quick_settings_location_high_accuracy">گزارش مکان: حالت دقت بالا.</string>
     <!-- Sound QS Tile -->
-    <string name="quick_settings_sound_label">Sound</string>
-    <string name="quick_settings_sound_ring">Ring</string>
-    <string name="quick_settings_sound_vibrate">Vibrate</string>
-    <string name="quick_settings_sound_mute">Mute</string>
+    <string name="quick_settings_sound_label">صدا</string>
+    <string name="quick_settings_sound_ring">زنگ</string>
+    <string name="quick_settings_sound_vibrate">لرزش</string>
+    <string name="quick_settings_sound_mute">بيصدا</string>
     <!-- Caffeine QS Tile -->
-    <string name="quick_settings_caffeine_label">Caffeine</string>
-    <string name="quick_settings_caffeine_label_off">Off</string>
-    <string name="accessibility_quick_settings_caffeine_off">Caffeine off</string>
-    <string name="accessibility_quick_settings_caffeine_on">Caffeine on</string>
-    <string name="omnijaws_service_error">Error</string>
-    <string name="omnijaws_service_unkown">No weather data</string>
-    <string name="omnijaws_service_error_long">Error loading weather data</string>
-    <string name="omnijaws_service_disabled">Service is disabled</string>
-    <string name="omnijaws_detail_header">Weather</string>
-    <string name="omnijaws_label_default">Weather</string>
-    <string name="omnijaws_current_text">Now</string>
-    <string name="omnijaws_package_not_available">OmniJaws not available</string>
-    <string name="omnijaws_service_last_update">Last update:</string>
+    <string name="quick_settings_caffeine_label">حالت کافئین</string>
+    <string name="quick_settings_caffeine_label_off">خاموش</string>
+    <string name="accessibility_quick_settings_caffeine_off">حالت کافئین خاموش</string>
+    <string name="accessibility_quick_settings_caffeine_on">حالت کافئین روشن</string>
+    <string name="omnijaws_service_error">خطا</string>
+    <string name="omnijaws_service_unkown">اطلاعات آب و هوا موجود نیست</string>
+    <string name="omnijaws_service_error_long">خطا در بارگیری اطلاعات آب و هوا</string>
+    <string name="omnijaws_service_disabled">سرویس غیرفعال است</string>
+    <string name="omnijaws_detail_header">آب و هوا</string>
+    <string name="omnijaws_label_default">آب و هوا</string>
+    <string name="omnijaws_current_text">هم اکنون</string>
+    <string name="omnijaws_package_not_available">OmniJaws در دسترس نیست</string>
+    <string name="omnijaws_service_last_update">آخرین به روزرسانی:</string>
     <!-- AOD QS tile -->
-    <string name="quick_settings_aod_label">AOD</string>
+    <string name="quick_settings_aod_label">صفحه نمایش همیشه روشن</string>
     <!-- Ambient display QS tile -->
-    <string name="quick_settings_ambient_display_label">Ambient display</string>
-    <string name="accessibility_quick_settings_ambient_display_off">Ambient display off</string>
-    <string name="accessibility_quick_settings_ambient_display_on">Ambient display on</string>
-    <string name="accessibility_quick_settings_ambient_display_changed_off">Ambient display turned off</string>
-    <string name="accessibility_quick_settings_ambient_display_changed_on">Ambient display turned on</string>
+    <string name="quick_settings_ambient_display_label">صفحه نیمه روشن</string>
+    <string name="accessibility_quick_settings_ambient_display_off">صفحه نیمه روشن غیر فعال</string>
+    <string name="accessibility_quick_settings_ambient_display_on">صفحه نیمه روشن فعال</string>
+    <string name="accessibility_quick_settings_ambient_display_changed_off">صفحه نیمه روشن غیر فعال شد</string>
+    <string name="accessibility_quick_settings_ambient_display_changed_on">صفحه نیمه روشن فعال شد</string>
     <!-- Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated.
          [CHAR LIMIT=4] -->
     <!-- Screenrecorder -->
     <string name="screenrecord_stopdot_label">Show stop dot\nLongpress to move it</string>
-    <string name="screenrecord_lowquality_label">Lower quality for smaller file size</string>
+    <string name="screenrecord_lowquality_label">استفاده‌ از کیفیت پایین تر برای فایل های کوچک</string>
     <!-- Heads Up QS Tile -->
     <string name="quick_settings_heads_up_label">Heads up</string>
     <string name="accessibility_quick_settings_heads_up_off">Heads up off.</string>
@@ -116,17 +116,17 @@
     <string name="accessibility_quick_settings_heads_up_changed_off">Heads up turned off.</string>
     <string name="accessibility_quick_settings_heads_up_changed_on">Heads up turned on.</string>
     <!-- accessibility label for button to open running apps prefscreen [CHAR LIMIT=NONE] -->
-    <string name="accessibility_quick_settings_running_services">Open Running Services screen.</string>
+    <string name="accessibility_quick_settings_running_services">باز کردن صفحه برنامه های در حال اجرا</string>
     <!-- Gaming mode -->
-    <string name="gaming_mode_not_enabled">Gaming mode is disabled in settings</string>
-    <string name="quick_settings_gaming_mode_label">Gaming mode</string>
+    <string name="gaming_mode_not_enabled">حالت بازی در تنظیمات غیر فعال است</string>
+    <string name="quick_settings_gaming_mode_label">حالت مخصوص بازی کردن</string>
     <!-- Content description of the Gaming mode tile in quick settings when disabled (not shown on the screen). [CHAR LIMIT=NONE] -->
-    <string name="accessibility_quick_settings_gaming_mode_disabled">Gaming mode turned off.</string>
+    <string name="accessibility_quick_settings_gaming_mode_disabled">حالت بازی خاموش شد</string>
     <!-- Content description of the Gaming mode tile in quick settings when enabled (not shown on the screen). [CHAR LIMIT=NONE] -->
-    <string name="accessibility_quick_settings_gaming_mode_enabled">Gaming mode turned on.</string>
+    <string name="accessibility_quick_settings_gaming_mode_enabled">حالت بازی روشن شد</string>
     <!-- Partial screenshot -->
-    <string name="global_screenshot_selector_capture_description">Capture partial screenshot</string>
-    <string name="global_screenshot_selector_cancel_description">Cancel partial screenshot</string>
+    <string name="global_screenshot_selector_capture_description">گرفتن عکس کوچکی از صفحه</string>
+    <string name="global_screenshot_selector_cancel_description">لغو گرفتن عکس از صفحه کوچک</string>
     <!-- Ambient Music Ticker -->
     <string name="ambientmusic_songinfo" formatted="false">%s by %s</string>
     <!-- Headphones Buddy -->
