@@ -12,10 +12,10 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="statusbar_items_title">Statusbar icon</string>
+    <string name="statusbar_items_title">آیکن‌های نوار وضعیت</string>
     <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
     <string name="keyguard_indication_dash_charging_time">Dash Charging (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> until full)</string>
-    <string name="keyguard_plugged_in_dash_charging">Dash Charging</string>
+    <string name="keyguard_plugged_in_dash_charging">شارژ سریع وان پلاس</string>
     <!-- Indication on the keyguard that is shown when the device is charging with a warp charger. Should match keyguard_plugged_in_warp_charging [CHAR LIMIT=40]-->
     <string name="keyguard_indication_warp_charging_time" formatted="false"><xliff:g id="percentage">%2$s</xliff:g> • Warp Charging (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> until full)</string>
     <string name="keyguard_plugged_in_warp_charging"><xliff:g id="percentage">%s</xliff:g>Warp Charging</string>
@@ -26,39 +26,39 @@
     <string name="keyguard_indication_turbo_power_time" formatted="false"><xliff:g id="percentage">%2$s</xliff:g> • Turbo Charging (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> until full)</string>
     <string name="keyguard_plugged_in_turbo_charging" formatted="false"><xliff:g id="percentage">%s</xliff:g> • Turbo Charging</string>
     <!-- DataSwitch Tile -->
-    <string name="qs_data_switch_label">Switch data card to</string>
-    <string name="qs_data_switch_toast_0">Currently no SIM card is inserted</string>
-    <string name="qs_data_switch_toast_1">Currently only one SIM card is inserted</string>
-    <string name="qs_data_switch_changed_1">Using SIM 1 for Mobile data</string>
-    <string name="qs_data_switch_changed_2">Using SIM 2 for Mobile data</string>
+    <string name="qs_data_switch_label">انتقال دیتای سیم کارت به</string>
+    <string name="qs_data_switch_toast_0">در حال حاضر سیم کارتی وارد نشده است(در اسلات مورد نظر)</string>
+    <string name="qs_data_switch_toast_1">در حال حاضر فقط یک سیم کارت در دستگاه وارد شده</string>
+    <string name="qs_data_switch_changed_1">استفاده از سیم کارت ۱ برای اینترنت دیتا</string>
+    <string name="qs_data_switch_changed_2">استفاده از سیم کارت ۲ برای اینترنت دیتا</string>
     <!-- Reboot/Recovery QS tile -->
-    <string name="quick_settings_reboot_label">Reboot</string>
-    <string name="quick_settings_reboot_recovery_label">Recovery</string>
+    <string name="quick_settings_reboot_label">راه اندازی مجدد</string>
+    <string name="quick_settings_reboot_recovery_label">ری استارت و رفتن به حالت ریکاوری</string>
     <!-- Mono QS Tile -->
     <string name="quick_settings_monotoggle_tile">Audio mode</string>
-    <string name="quick_settings_monotoggle_tile_mono">Mono audio</string>
-    <string name="quick_settings_monotoggle_tile_stereo">Stereo audio</string>
+    <string name="quick_settings_monotoggle_tile_mono">صدای مونو</string>
+    <string name="quick_settings_monotoggle_tile_stereo">صدای استریو</string>
     <!-- Spidey Analog clock -->
     <!-- Spectrum Analog clock -->
     <!-- Dot Analog clock -->
     <!-- Sneeky Analog clock -->
     <!-- Octavi Analog clock -->
     <!-- Screenshot QS tile -->
-    <string name="quick_settings_screenshot_label">Screenshot</string>
-    <string name="quick_settings_region_screenshot_label">Partial screenshot</string>
+    <string name="quick_settings_screenshot_label">عکس از صفحه</string>
+    <string name="quick_settings_region_screenshot_label">عکس از بخشی از صفحه</string>
     <!-- HW Keys Tile -->
-    <string name="accessibility_quick_settings_hwkeys_on">HW keys on</string>
-    <string name="accessibility_quick_settings_hwkeys_off">HW keys off</string>
-    <string name="quick_settings_hwkeys_label">HW keys</string>
+    <string name="accessibility_quick_settings_hwkeys_on">روشن کردن کلید‌های سخت افزاری</string>
+    <string name="accessibility_quick_settings_hwkeys_off">خاموش کردن کلید‌های سخت افزاری</string>
+    <string name="quick_settings_hwkeys_label">کلید‌های سخت افزاری</string>
     <!-- Advanced restart -->
-    <string name="global_action_reboot">Restart</string>
-    <string name="global_action_reboot_system">System</string>
+    <string name="global_action_reboot">راه اندازی مجدد</string>
+    <string name="global_action_reboot_system">سيستم</string>
     <string name="global_action_reboot_progress">Restarting\u2026</string>
-    <string name="global_action_reboot_recovery">Recovery</string>
-    <string name="global_action_reboot_recovery_progress">Restarting to recovery mode\u2026</string>
-    <string name="global_action_reboot_hot">Hot</string>
-    <string name="global_action_reboot_bootloader">Bootloader</string>
-    <string name="global_action_reboot_bootloader_progress">Restarting to bootloader mode\u2026</string>
+    <string name="global_action_reboot_recovery">ریکاوری</string>
+    <string name="global_action_reboot_recovery_progress">راه اندازی مجدد به حالت ریکاوری\u2026</string>
+    <string name="global_action_reboot_hot">داغ</string>
+    <string name="global_action_reboot_bootloader">بوت لودر</string>
+    <string name="global_action_reboot_bootloader_progress">راه اندازی مجدد به حالت بوت لودر\u2026</string>
     <string name="global_action_reboot_fastboot">Fastboot</string>
     <string name="global_action_reboot_fastboot_progress">Restarting to fastboot mode\u2026</string>
     <string name="global_action_settings">Settings</string>
@@ -131,19 +131,19 @@
     <string name="ambientmusic_songinfo" formatted="false">%s by %s</string>
     <!-- Headphones Buddy -->
     <string name="hp_buddy">Headphones Buddy</string>
-    <string name="hp_buddy_left">Left only</string>
-    <string name="hp_buddy_right">Right only</string>
-    <string name="hp_buddy_center">Both</string>
-    <string name="hp_buddy_not_connected">Connect your headphones</string>
-    <string name="lockscreen_default">Default</string>
-    <string name="lockscreen_hidden">None</string>
+    <string name="hp_buddy_left">فقط چپ</string>
+    <string name="hp_buddy_right">فقط راست</string>
+    <string name="hp_buddy_center">هر دو</string>
+    <string name="hp_buddy_not_connected">هدفون خود را متصل کنید</string>
+    <string name="lockscreen_default">پیش فرض</string>
+    <string name="lockscreen_hidden">هیچ کدام</string>
     <!-- Scrolling Screenshot string -->
-    <string name="scrollss">Scroll</string>
+    <string name="scrollss">اسکرول</string>
     <!-- CPUInfo tile -->
-    <string name="quick_settings_cpuinfo_label">CPU Info</string>
+    <string name="quick_settings_cpuinfo_label">اطلاعات پردازنده</string>
     <!-- FPS Info tile -->
-    <string name="quick_settings_fpsinfo_label">FPS Info</string>
+    <string name="quick_settings_fpsinfo_label">اطلاعات فریم بر ثانیه</string>
     <!-- Smart Pixels QS Tile -->
-    <string name="quick_settings_smart_pixels">Smart Pixels</string>
-    <string name="quick_settings_smart_pixels_on_power_save">Auto-enabled Smart Pixels</string>
+    <string name="quick_settings_smart_pixels">پیکسل های هوشمند</string>
+    <string name="quick_settings_smart_pixels_on_power_save">پیکسل های هوشمند درحالت خودکار</string>
 </resources>
