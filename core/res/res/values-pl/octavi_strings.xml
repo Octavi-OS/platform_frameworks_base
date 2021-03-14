@@ -19,11 +19,11 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Button that copies the url to the log of a crashed application -->
-    <string name="aerr_copy">Copy crash log URL</string>
+    <string name="aerr_copy">Skopiuj URL logu</string>
     <string name="url_copy_success">Pomyślnie skopiowano URL</string>
     <string name="url_copy_failed">Wystąpił błąd podczas przesyłania logów do serwisu dogbin</string>
     <!-- Pocket Lock -->
-    <string name="pocket_lock_message_long_press">Long press power button to interact</string>
+    <string name="pocket_lock_message_long_press">Przytrzymaj przycisk zasilania aby uruchomić</string>
     <!-- Gaming mode -->
     <string name="notification_channel_gaming">Tryb gry</string>
     <string name="gaming_mode_notification_title">Tryb gry włączony</string>
@@ -42,7 +42,7 @@
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_fake_package_signature">Zezwolić aplikacji &lt;b&gt;<xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b&gt; na fałszowanie podpisu pakietu?</string>
     <!-- Vendor mismatch fingerprint warning [CHAR LIMIT=NONE] -->
-    <string name="system_error_vendorprint">Your vendor image does not match the system. Please flash the <xliff:g id="string">%s</xliff:g> vendor image for your device</string>
+    <string name="system_error_vendorprint">Twój obraz dostawcy nie jest zgodny z systemem. Zainstaluj obraz <xliff:g id="string">%s</xliff:g> który jest zgodny z Twoim urządzeniem</string>
     <!-- Aerr strings -->
     <string name="aerr_disable">Wyłącz aplikację</string>
 </resources>
