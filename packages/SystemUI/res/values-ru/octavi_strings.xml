@@ -146,4 +146,5 @@
     <string name="quick_settings_smart_pixels">Умные Пиксели</string>
     <string name="quick_settings_smart_pixels_on_power_save">Автоматическое включение Умных Пикселей</string>
     <!-- App Lock -->
+    <!-- Biometric Dialog - Use Face -->
 </resources>
