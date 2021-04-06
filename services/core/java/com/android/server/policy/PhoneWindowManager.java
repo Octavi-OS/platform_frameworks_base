@@ -674,8 +674,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     };
 
-    private int mTorchActionMode;
-
     private static final int MSG_DISPATCH_MEDIA_KEY_WITH_WAKE_LOCK = 3;
     private static final int MSG_DISPATCH_MEDIA_KEY_REPEAT_WITH_WAKE_LOCK = 4;
     private static final int MSG_KEYGUARD_DRAWN_COMPLETE = 5;
