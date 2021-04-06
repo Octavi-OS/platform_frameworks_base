@@ -146,4 +146,5 @@
     <string name="quick_settings_smart_pixels">Pixels Inteligentes</string>
     <string name="quick_settings_smart_pixels_on_power_save">Auto-ativação dos Píxeis Inteligentes</string>
     <!-- App Lock -->
+    <!-- Biometric Dialog - Use Face -->
 </resources>
