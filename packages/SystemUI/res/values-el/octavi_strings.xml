@@ -146,4 +146,5 @@
     <string name="quick_settings_smart_pixels">Έξυπνα εικονοστοιχεια</string>
     <string name="quick_settings_smart_pixels_on_power_save">Αυτόματη ενεργοποίηση Έξυπνων Εικονοστοιχειων</string>
     <!-- App Lock -->
+    <!-- Biometric Dialog - Use Face -->
 </resources>
