@@ -146,4 +146,5 @@
     <string name="quick_settings_smart_pixels">پیکسل های هوشمند</string>
     <string name="quick_settings_smart_pixels_on_power_save">پیکسل های هوشمند درحالت خودکار</string>
     <!-- App Lock -->
+    <!-- Biometric Dialog - Use Face -->
 </resources>
