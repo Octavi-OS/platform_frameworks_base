@@ -146,4 +146,5 @@
     <string name="quick_settings_smart_pixels">البكسلات الذكية</string>
     <string name="quick_settings_smart_pixels_on_power_save">تمكين البكسلات الذكية تلقائياً</string>
     <!-- App Lock -->
+    <!-- Biometric Dialog - Use Face -->
 </resources>
