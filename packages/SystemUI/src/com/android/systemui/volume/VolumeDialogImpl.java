@@ -863,7 +863,7 @@ public class VolumeDialogImpl implements VolumeDialog,
                     tryToRemoveCaptionsTooltip();
                     mIsAnimatingDismiss = false;
                 }, 50));
-        if (!isLandscape()) animator.translationX((mDialogView.getWidth() / 2.0f)*(isAudioPanelOnLeftSide() ? -1 : 1));
+        if (!isLandscape()) animator.translationX((mDialogView.getWidth() / 2.0f)*(!isAudioPanelOnLeftSide() ? 1 : -1));
         animator.start();
         checkODICaptionsTooltip(true);
         mController.notifyVisible(false);
