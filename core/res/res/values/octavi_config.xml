@@ -234,4 +234,7 @@
          or FOD Circle hiding after the screen is put to sleep -->
     <bool name="config_hideFodCircleGoingToSleep">false</bool>
 
+    <!-- Switch USB controller on Asus ROG devices-->
+    <bool name="config_switchUsbController">false</bool>
+
 </resources>

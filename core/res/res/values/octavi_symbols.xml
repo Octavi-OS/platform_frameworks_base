@@ -203,4 +203,7 @@
        or FOD Circle hiding after the screen is put to sleep  -->
    <java-symbol type="bool" name="config_hideFodCircleGoingToSleep" />
 
+   <!-- Switch USB controller on Asus ROG devices-->
+   <java-symbol type="bool" name="config_switchUsbController" />
+
 </resources>
