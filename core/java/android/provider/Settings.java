@@ -5104,6 +5104,12 @@ public final class Settings {
         public static final String QS_COLUMNS_LANDSCAPE = "qs_columns_landscape";
 
         /**
+         * Whether to hide fp icon on lockscreen
+         * @hide
+         */
+        public static final String FP_ICON_DISABLED = "fp_icon_disabled";
+
+        /**
          * IMPORTANT: If you add a new public settings you also have to add it to
          * PUBLIC_SETTINGS below. If the new setting is hidden you have to add
          * it to PRIVATE_SETTINGS below. Also add a validator that can validate
@@ -6063,6 +6069,7 @@ public final class Settings {
             PUBLIC_SETTINGS.add(SHOW_WEB_SUGGESTIONS);
             PUBLIC_SETTINGS.add(VIBRATE_WHEN_RINGING);
             PUBLIC_SETTINGS.add(SCREEN_OFF_ANIMATION);
+            PUBLIC_SETTINGS.add(FP_ICON_DISABLED);
         }
 
         /**
@@ -6176,6 +6183,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(VIBRATE_ON_CONNECT);
             PRIVATE_SETTINGS.add(VIBRATE_ON_CALLWAITING);
             PRIVATE_SETTINGS.add(VIBRATE_ON_DISCONNECT);
+            PRIVATE_SETTINGS.add(FP_ICON_DISABLED);
         }
 
         /**

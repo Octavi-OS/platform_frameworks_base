@@ -511,16 +511,25 @@ public class KeyguardStatusView extends GridLayout implements
 
     private void UpdateFPIcon() {
         mHasFod = FodUtils.hasFodSupport(mContext);
+        final ContentResolver resolver = getContext().getContentResolver();
+        final Resources res = getContext().getResources();
+        boolean isFpIconDisabled = Settings.System.getIntForUser(getContext().getContentResolver(),
+                Settings.System.FP_ICON_ENABLED, 1, UserHandle.USER_CURRENT) == 1;
 
 		FingerprintManager fingerprintManager = (FingerprintManager) mContext.getSystemService(Context.FINGERPRINT_SERVICE);
                 if (fingerprintManager == null || !fingerprintManager.isHardwareDetected() || !fingerprintManager.hasEnrolledFingerprints() || mHasFod) {
                         fpIcon.setVisibility(View.GONE);
                         Log.d("FluidLSManager", "FP icon: Fingerprint icon not showing");
-		} else if (fingerprintManager.hasEnrolledFingerprints()) {
-			fpIcon.setVisibility(View.VISIBLE);
-			Log.d("FluidLSManager", "FP icon: fingerprint icon showing");
+                } else if (fingerprintManager.hasEnrolledFingerprints()) {
+                       if (isFpIconDisabled) {
+                  fpIcon.setVisibility(View.GONE);
+                }
+                       if (!isFpIconDisabled) {
+                  fpIcon.setVisibility(View.VISIBLE);
+                }
 		} else {
 			Log.d("FluidLSManager", "FP icon: No fingerprint state matching! No changes will be done.");
 		}
     }
+
 }
