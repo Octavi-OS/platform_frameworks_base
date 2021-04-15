@@ -107,7 +107,7 @@ public class QuickQSPanel extends QSPanel {
     @Override
     protected void initMediaHostState() {
         mMediaHost.setExpansion(0.0f);
-        mMediaHost.setShowsOnlyActiveMedia(false);
+        mMediaHost.setShowsOnlyActiveMedia(true);
         mMediaHost.init(MediaHierarchyManager.LOCATION_QQS);
     }
 
@@ -137,12 +137,6 @@ public class QuickQSPanel extends QSPanel {
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         Dependency.get(TunerService.class).removeTunable(mNumTiles);
-    }
-
-    @Override
-    public void setListening(boolean listening) {
-        super.setListening(listening);
-        setBrightnessListening(listening);
     }
 
     @Override
@@ -182,6 +176,14 @@ public class QuickQSPanel extends QSPanel {
         mMaxTiles = maxTiles;
         if (mHost != null) {
             setTiles(mHost.getTiles());
+        }
+    }
+
+    @Override
+    public void onTuningChanged(String key, String newValue) {
+        if (QS_SHOW_BRIGHTNESS.equals(key)) {
+            // No Brightness or Tooltip for you!
+            super.onTuningChanged(key, "0");
         }
     }
 
