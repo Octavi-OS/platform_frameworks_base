@@ -47,6 +47,7 @@ import java.util.UUID;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import com.android.internal.custom.screenshot.StitchImageUtility;
 
 /** Platform implementation of the cast controller. **/
 @Singleton
@@ -177,6 +178,10 @@ public class CastControllerImpl implements CastController {
         }
 
         synchronized (mProjectionLock) {
+            if (mProjection != null &&  mProjection.getPackageName().equals(
+                    StitchImageUtility.STITCHIMAGE_APP_PACKAGE_NAME)) {
+                mProjection = null;
+            }
             if (mProjection != null && mProjection.getPackageName().equals(
                     "com.asus.stitchimage")){
                 mProjection = null;

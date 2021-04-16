@@ -6255,6 +6255,12 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         }
     }
 
+    @Override
+    public void takeAlternativeScreenshot() {
+        mScreenshotRunnable.setScreenshotType(TAKE_SCREENSHOT_FULLSCREEN);
+        mHandler.post(mScreenshotRunnable);
+    }
+
     /**
      * @return Whether music is being played right now "locally" (e.g. on the device's speakers
      *    or wired headphones) or "remotely" (e.g. on a device using the Cast protocol and
