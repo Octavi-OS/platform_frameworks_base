@@ -19,20 +19,13 @@
     xmlns:systemui="http://schemas.android.com/apk/res-auto"
     android:id="@+id/quick_status_bar_system_icons"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@*android:dimen/quick_qs_offset_height"
     android:clipChildren="false"
     android:clipToPadding="false"
     android:gravity="center"
     android:orientation="horizontal"
     android:clickable="true"
     android:paddingTop="@dimen/status_bar_padding_top" >
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:gravity="center_vertical|start" >
 
     <com.android.systemui.statusbar.policy.Clock
            android:id="@+id/clock"
@@ -45,8 +38,6 @@
            android:singleLine="true"
            android:textAppearance="@style/TextAppearance.StatusBar.Clock"
            systemui:showDark="false" />
-
-    </LinearLayout>
 
         <android.widget.Space
            android:id="@+id/space"
@@ -73,9 +64,18 @@
         android:layout_height="0dp"
         android:paddingEnd="2dp"/>
 
+    <android.widget.Space
+        android:id="@+id/space"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:visibility="gone" />
+
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
         android:gravity="center_vertical|end" >
 
     <include layout="@layout/ongoing_privacy_chip" />
@@ -87,7 +87,7 @@
         android:layout_height="match_parent"
         android:layout_width="wrap_content"
         android:layout_gravity="center_vertical|end"
-        android:textColor="@color/clock_color"
+        systemui:textAppearance="@style/TextAppearance.QS.Status"
         android:paddingEnd="2dp" />
 
 </LinearLayout>

@@ -69,7 +69,6 @@ public class QSContainerImpl extends FrameLayout {
 
     private int mSideMargins;
     private boolean mQsDisabled;
-
     private int mContentPaddingStart = -1;
     private int mContentPaddingEnd = -1;
     private boolean mAnimateBottomOnNextLayout;
@@ -202,7 +201,7 @@ public class QSContainerImpl extends FrameLayout {
                 com.android.internal.R.dimen.quick_qs_offset_height);
         mQSPanelContainer.setLayoutParams(layoutParams);
 
-        mSideMargins = getResources().getDimensionPixelSize(R.dimen.qsside_paddings);
+        mSideMargins = getResources().getDimensionPixelSize(R.dimen.notification_side_paddings);
         mContentPaddingStart = getResources().getDimensionPixelSize(
                 com.android.internal.R.dimen.notification_content_margin_start);
         int newPaddingEnd = getResources().getDimensionPixelSize(
@@ -262,7 +261,7 @@ public class QSContainerImpl extends FrameLayout {
     private void setBackgroundGradientVisibility(Configuration newConfig) {
         if (newConfig.orientation == ORIENTATION_LANDSCAPE) {
             mBackgroundGradient.setVisibility(View.INVISIBLE);
-            mStatusBarBackground.setVisibility(View.VISIBLE);
+            mStatusBarBackground.setVisibility(View.INVISIBLE);
         } else {
             mBackgroundGradient.setVisibility(mQsDisabled ? View.INVISIBLE : View.VISIBLE);
             mStatusBarBackground.setVisibility(View.VISIBLE);

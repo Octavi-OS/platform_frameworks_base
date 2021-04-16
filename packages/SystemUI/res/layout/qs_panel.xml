@@ -18,16 +18,16 @@
     android:id="@+id/quick_settings_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
     android:clipToPadding="false"
-    android:clipChildren="false"
-    android:background="@drawable/qs_background_primary">
+    android:clipChildren="false" >
 
     <!-- Main QS background -->
     <View
         android:id="@+id/quick_settings_background"
         android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp"
+        android:elevation="4dp"
+        android:background="@drawable/qs_background_primary" />
 
     <!-- Black part behind the status bar -->
     <View
@@ -35,12 +35,14 @@
         android:layout_width="match_parent"
         android:layout_height="@*android:dimen/quick_qs_offset_height"
         android:clipToPadding="false"
-        android:clipChildren="false"/>
+        android:clipChildren="false"
+        android:background="#ff000000" />
 
+    <!-- Gradient view behind QS -->
     <View
         android:id="@+id/quick_settings_gradient_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="126dp"
         android:layout_marginTop="@*android:dimen/quick_qs_offset_height"
         android:clipToPadding="false"
         android:clipChildren="false"
@@ -71,5 +73,18 @@
 
     <include android:id="@+id/qs_customize" layout="@layout/qs_customize_panel"
         android:visibility="gone" />
+
+    <FrameLayout
+        android:id="@+id/qs_drag_handle_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:elevation="4dp"
+        android:paddingBottom="5dp">
+        <View
+            android:layout_width="46dp"
+            android:layout_height="3dp"
+            android:background="@drawable/qs_footer_drag_handle" />
+    </FrameLayout>
 
 </com.android.systemui.qs.QSContainerImpl>

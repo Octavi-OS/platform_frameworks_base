@@ -86,7 +86,6 @@ public class SystemSettings {
         Settings.System.NOTIFICATION_LIGHT_PULSE,
         Settings.System.DOUBLE_TAP_SLEEP_GESTURE,
         Settings.System.DOUBLE_TAP_SLEEP_LOCKSCREEN,
-        Settings.System.QS_PANEL_BG_USE_NEW_TINT,
         Settings.System.LOCKSCREEN_MEDIA_ART,
         Settings.System.NOTIFICATION_HEADERS,
         Settings.System.CENTER_NOTIFICATION_HEADERS,
