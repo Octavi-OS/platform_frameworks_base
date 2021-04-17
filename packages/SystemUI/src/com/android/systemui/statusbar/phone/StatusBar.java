@@ -1521,7 +1521,6 @@ public class StatusBar extends SystemUI implements DemoMode,
         filter.addAction(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
         filter.addAction(Intent.ACTION_SCREEN_OFF);
         filter.addAction(DevicePolicyManager.ACTION_SHOW_DEVICE_MONITORING_DIALOG);
-        filter.addAction(OctaviUtils.ACTION_DISMISS_KEYGUARD);
         filter.addAction(NotificationPanelViewController.CANCEL_NOTIFICATION_PULSE_ACTION);
         mBroadcastDispatcher.registerReceiver(mBroadcastReceiver, filter, null, UserHandle.ALL);
     }
@@ -3083,12 +3082,6 @@ public class StatusBar extends SystemUI implements DemoMode,
             }
             else if (NotificationPanelViewController.CANCEL_NOTIFICATION_PULSE_ACTION.equals(action)) {
                 mNotificationPanelViewController.stopNotificationPulse();
-            }
-            else if (OctaviUtils.ACTION_DISMISS_KEYGUARD.equals(action)) {
-                if (intent.hasExtra(OctaviUtils.DISMISS_KEYGUARD_EXTRA_INTENT)) {
-                    Intent launchIntent = (Intent) intent.getParcelableExtra(OctaviUtils.DISMISS_KEYGUARD_EXTRA_INTENT);
-                    startActivityDismissingKeyguard(launchIntent, true, true);
-                }
             }
         }
     };

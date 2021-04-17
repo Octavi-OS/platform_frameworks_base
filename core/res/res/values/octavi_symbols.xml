@@ -41,11 +41,6 @@
    <!-- Vendor platform signatures -->
    <java-symbol type="array" name="config_vendorPlatformSignatures" />
 
-   <!-- Path to the library that contains a device specific key handler -->
-   <java-symbol type="string" name="config_deviceKeyHandlerLib" />
-   <!-- Name of that key handler class -->
-   <java-symbol type="string" name="config_deviceKeyHandlerClass" />
-
    <!-- HW keys binding -->
    <java-symbol type="anim" name="custom_app_in" />
    <java-symbol type="anim" name="custom_app_out" />

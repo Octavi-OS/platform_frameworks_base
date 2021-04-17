@@ -4907,20 +4907,6 @@ public final class Settings {
          */
         public static final String MULTI_AUDIO_FOCUS_ENABLED = "multi_audio_focus_enabled";
 
-        /** some devices have a extra hw button e.g. n3 on the back on the
-         * fingerprint sensor. allow mapping button to key
-         *
-         * @hide
-         */
-        public static final String BUTTON_EXTRA_KEY_MAPPING = "button_extra_mapping";
-
-        /**
-         * Enable proxi check for wake keys - must be implemented in a device
-         * KeyHandler
-         * @hide
-         */
-        public static final String DEVICE_PROXI_CHECK_ENABLED = "device_proxi_check_enabled";
-
         /**
          * @hide
          */
@@ -6131,8 +6117,6 @@ public final class Settings {
             PRIVATE_SETTINGS.add(LOCK_TO_APP_ENABLED);
             PRIVATE_SETTINGS.add(EGG_MODE);
             PRIVATE_SETTINGS.add(DISPLAY_COLOR_MODE);
-            PRIVATE_SETTINGS.add(BUTTON_EXTRA_KEY_MAPPING);
-            PRIVATE_SETTINGS.add(DEVICE_PROXI_CHECK_ENABLED);
             PRIVATE_SETTINGS.add(VOLUME_ROCKER_WAKE);
             PRIVATE_SETTINGS.add(VOLUME_BUTTON_MUSIC_CONTROL);
             PRIVATE_SETTINGS.add(VOLUME_KEY_CURSOR_CONTROL);
