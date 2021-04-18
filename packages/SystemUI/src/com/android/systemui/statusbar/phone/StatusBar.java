@@ -323,6 +323,13 @@ public class StatusBar extends SystemUI implements DemoMode,
             "com.android.systemui.brightness.slider.oos",
          };
 
+         private static String[] NAVBAR_THEMES = {
+            "com.android.system.navbar.asus",
+            "com.android.system.navbar.oneplus",
+            "com.android.system.navbar.oneui",
+            "com.android.system.navbar.tecno",
+         };
+
     /**
      * The delay to reset the hint text when the hint animation is finished running.
      */
@@ -776,6 +783,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.BRIGHTNESS_SLIDER_STYLE),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.NAVBAR_STYLE),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -807,6 +817,9 @@ public class StatusBar extends SystemUI implements DemoMode,
            } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.BRIGHTNESS_SLIDER_STYLE))) {
                 updateBrightnessSliderStyle();
+           } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.NAVBAR_STYLE))) {
+                updateNavBarStyle();
             } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.PULSE_ON_NEW_TRACKS))) {
                 setPulseOnNewTracks();
@@ -3839,6 +3852,33 @@ public class StatusBar extends SystemUI implements DemoMode,
 	if (brighthnessSliderStyle>0){
 	try {
                 mOverlayManager.setEnabled(BRIGHTNESS_SLIDER_THEMES[brighthnessSliderStyle-1],
+                        true, mLockscreenUserManager.getCurrentUserId());
+            } catch (RemoteException e) {
+                Log.w(TAG, "Can't change theme", e);
+            }
+ 	}
+     }
+
+    private void stockNavBarStyle(){
+        for (int i = 0; i < NAVBAR_THEMES.length; i++) {
+            String NavBartheme = NAVBAR_THEMES[i];
+            try {
+                mOverlayManager.setEnabled(NavBartheme,
+                        false /*disable*/, mLockscreenUserManager.getCurrentUserId());
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void updateNavBarStyle() {
+        int NavBarStyle = Settings.System.getInt(mContext.getContentResolver(),
+                 Settings.System.NAVBAR_STYLE, 0);
+
+	stockNavBarStyle();
+	if (NavBarStyle>0){
+	try {
+                mOverlayManager.setEnabled(NAVBAR_THEMES[NavBarStyle-1],
                         true, mLockscreenUserManager.getCurrentUserId());
             } catch (RemoteException e) {
                 Log.w(TAG, "Can't change theme", e);

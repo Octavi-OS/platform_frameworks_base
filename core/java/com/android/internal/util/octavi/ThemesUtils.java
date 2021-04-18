@@ -71,6 +71,13 @@ public class ThemesUtils {
             "com.android.systemui.brightness.slider.oos",
     };
 
+    public static final String[] NAVBAR_THEMES = {
+            "com.android.system.navbar.asus",
+            "com.android.system.navbar.oneplus",
+	    "com.android.system.navbar.oneui",
+	    "com.android.system.navbar.tecno",
+    };
+
     public static final String NAVBAR_COLOR_PURP = "com.gnonymous.gvisualmod.pgm_purp";
 
     public static final String NAVBAR_COLOR_ORCD = "com.gnonymous.gvisualmod.pgm_orcd";
@@ -160,6 +167,31 @@ public class ThemesUtils {
                         true, userId);
             } catch (RemoteException e) {
                 Log.w(TAG, "Can't change brightness slider theme", e);
+            }
+        }
+    }
+
+    public static void stockNavBarStyle(IOverlayManager om, int userId) {
+        for (int i = 0; i < NAVBAR_THEMES.length; i++) {
+            String NavBartheme = NAVBAR_THEMES[i];
+            try {
+                om.setEnabled(NavBartheme,
+                        false /*disable*/, userId);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void updateNavBarStyle(IOverlayManager om, int userId, int NavBarStyle) {
+        if (NavBarStyle == 0) {
+            stockNavBarStyle(om, userId);
+        } else {
+            try {
+                om.setEnabled(NAVBAR_THEMES[NavBarStyle],
+                        true, userId);
+            } catch (RemoteException e) {
+                Log.w(TAG, "Can't change Navbar theme", e);
             }
         }
     }

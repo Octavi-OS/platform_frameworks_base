@@ -5685,6 +5685,12 @@ public final class Settings {
         public static final String BRIGHTNESS_SLIDER_STYLE = "brightness_slider_style";
 
         /**
+         * NavBar Styles
+         * @hide
+         */
+        public static final String NAVBAR_STYLE = "navbar_style";
+
+        /**
          * Gestures nav: left long back swipe app action
          * @hide
          */
