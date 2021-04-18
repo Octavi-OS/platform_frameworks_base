@@ -14,7 +14,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Color of the FOD view -->
     <color name="config_fodColor">#00ff00</color>
-    <color name="config_fodColorBackground">#20000000</color>
+    <color name="config_fodColorBackground">#00000000</color>
 
     <!-- Color for the Assistant invocation lights -->
     <color name="edge_light_blue">#4185f4</color>
