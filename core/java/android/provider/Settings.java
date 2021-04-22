@@ -5667,6 +5667,13 @@ public final class Settings {
          */
         public static final String BACK_SWIPE_EXTENDED = "back_swipe_extended";
 
+         /**
+         * Settings Theme Overlay holder
+         *
+         * @hide
+         */
+        public static final String SETTINGS_THEME_STYLE = "settings_theme_style";
+
         /**
          * Gestures nav: left long back swipe action
          * @hide

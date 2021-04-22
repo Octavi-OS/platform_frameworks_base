@@ -330,6 +330,10 @@ public class StatusBar extends SystemUI implements DemoMode,
             "com.android.system.navbar.tecno",
          };
 
+	 private static String[] SETTINGS_THEME_STYLE = {
+            "com.android.theme.icon_pack.one.settings"
+         };
+
     /**
      * The delay to reset the hint text when the hint animation is finished running.
      */
@@ -786,6 +790,10 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.NAVBAR_STYLE),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.SETTINGS_THEME_STYLE),
+                    false, this, UserHandle.USER_ALL);
+
         }
 
         @Override
@@ -825,6 +833,8 @@ public class StatusBar extends SystemUI implements DemoMode,
                 setPulseOnNewTracks();
             } else if (uri.equals(Settings.System.getUriFor(Settings.System.QS_PANEL_BG_USE_NEW_TINT))) {
                 mQSPanel.getHost().reloadAllTiles();
+            } else if (uri.equals(Settings.System.getUriFor(Settings.System.SETTINGS_THEME_STYLE))) {
+                updateStylesSetting();
             }
 	    update();
         }
@@ -3832,6 +3842,32 @@ public class StatusBar extends SystemUI implements DemoMode,
         ThemesUtils.stockSwitchStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
     }
 
+    private void updateStylesSetting(){
+        int settingsStyle = Settings.System.getInt(mContext.getContentResolver(),
+                 Settings.System.SETTINGS_THEME_STYLE, 0);
+
+        stockSettingsStyle();
+        if (settingsStyle>0){
+        try {
+                mOverlayManager.setEnabled(SETTINGS_THEME_STYLE[settingsStyle-1],
+                        true, mLockscreenUserManager.getCurrentUserId());
+            } catch (RemoteException e) {
+                Log.w(TAG, "Can't change theme", e);
+            }
+        }
+    }
+    private void stockSettingsStyle(){
+    for (int i = 0; i < ThemesUtils.SETTINGS_THEME_STYLE.length; i++) {
+    String themeStyle= ThemesUtils.SETTINGS_THEME_STYLE[i];
+            try {
+                mOverlayManager.setEnabled(themeStyle,
+                        false /*disable*/, mLockscreenUserManager.getCurrentUserId());
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
     private void stockBrightnessSliderStyle(){
         for (int i = 0; i < BRIGHTNESS_SLIDER_THEMES.length; i++) {
             String brightnessSlidertheme = BRIGHTNESS_SLIDER_THEMES[i];
@@ -3875,7 +3911,7 @@ public class StatusBar extends SystemUI implements DemoMode,
         int NavBarStyle = Settings.System.getInt(mContext.getContentResolver(),
                  Settings.System.NAVBAR_STYLE, 0);
 
-	stockNavBarStyle();
+	stockNavBarStyle();//abbe -1 kar rha toh by default 1st asus wla select hoga na in that case it should 
 	if (NavBarStyle>0){
 	try {
                 mOverlayManager.setEnabled(NAVBAR_THEMES[NavBarStyle-1],
