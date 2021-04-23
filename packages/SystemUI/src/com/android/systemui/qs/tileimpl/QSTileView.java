@@ -32,6 +32,8 @@ import com.android.systemui.R;
 import com.android.systemui.plugins.qs.QSIconView;
 import com.android.systemui.plugins.qs.QSTile;
 
+import android.provider.Settings;
+import android.os.UserHandle;
 import java.util.Objects;
 
 /** View that represents a standard quick settings tile. **/

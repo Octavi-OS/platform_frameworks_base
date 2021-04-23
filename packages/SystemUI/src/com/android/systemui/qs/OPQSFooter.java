@@ -49,6 +49,7 @@ import androidx.annotation.VisibleForTesting;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto;
+import com.android.keyguard.CarrierText;
 import com.android.keyguard.KeyguardUpdateMonitor;
 import com.android.settingslib.Utils;
 import com.android.settingslib.development.DevelopmentSettingsEnabler;
@@ -79,6 +80,7 @@ public class OPQSFooter extends LinearLayout {
     private Boolean mExpanded;
     private Boolean mIsLandscape;
     private FrameLayout mFooterActions;
+    private CarrierText mCarrierText;
 
     public OPQSFooter(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -92,6 +94,7 @@ public class OPQSFooter extends LinearLayout {
         mSettingsButton = findViewById(R.id.settings_button);
         mFooterActions = findViewById(R.id.op_qs_footer_actions);
         mFooterAnimator = createFooterAnimator();
+        mCarrierText = findViewById(R.id.qs_carrier_text);
         mCarrierTextAnimator = createCarrierTextAnimator();
     }
 
@@ -124,6 +127,8 @@ public class OPQSFooter extends LinearLayout {
     private TouchAnimator createCarrierTextAnimator() {
         return new TouchAnimator.Builder()
                 .addFloat(mCarrierText, "alpha", 1, 0, 0)
+                .build();
+    }
 
     public View getSettingsButton() {
         return mSettingsButton;

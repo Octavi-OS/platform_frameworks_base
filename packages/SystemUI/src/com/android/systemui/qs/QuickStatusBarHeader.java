@@ -105,6 +105,10 @@ import java.util.Objects;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+
 /**
  * View that contains the top-most bits of the screen (primarily the status bar with date, time, and
  * battery) and also contains the {@link QuickQSPanel} along with some of the panel's inner

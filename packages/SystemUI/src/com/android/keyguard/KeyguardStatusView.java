@@ -514,7 +514,7 @@ public class KeyguardStatusView extends GridLayout implements
         final ContentResolver resolver = getContext().getContentResolver();
         final Resources res = getContext().getResources();
         boolean isFpIconDisabled = Settings.System.getIntForUser(getContext().getContentResolver(),
-                Settings.System.FP_ICON_ENABLED, 1, UserHandle.USER_CURRENT) == 1;
+                Settings.System.FP_ICON_DISABLED, 1, UserHandle.USER_CURRENT) == 1;
 
 		FingerprintManager fingerprintManager = (FingerprintManager) mContext.getSystemService(Context.FINGERPRINT_SERVICE);
                 if (fingerprintManager == null || !fingerprintManager.isHardwareDetected() || !fingerprintManager.hasEnrolledFingerprints() || mHasFod) {
