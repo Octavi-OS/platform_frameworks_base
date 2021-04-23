@@ -13,6 +13,9 @@
  -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="statusbar_items_title">Αντικείμενα στατικής μπάρας</string>
+    <string name="status_bar_camera">Φωτογραφική μηχανή</string>
+    <string name="status_bar_location">Τοποθεσία</string>
+    <string name="status_bar_microphone">Μικρόφωνο</string>
     <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
     <string name="keyguard_indication_dash_charging_time">Ευθεία φόρτιση (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> έως πλήρες)</string>
     <string name="keyguard_plugged_in_dash_charging">Ευθεία φόρτιση</string>
