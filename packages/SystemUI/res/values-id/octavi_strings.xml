@@ -13,6 +13,9 @@
  -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="statusbar_items_title">Ikon bilah status</string>
+    <string name="status_bar_camera">Kamera</string>
+    <string name="status_bar_location">Lokasi</string>
+    <string name="status_bar_microphone">Mikrofon</string>
     <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
     <string name="keyguard_indication_dash_charging_time">Pengisian Cepat (<xliff:g id="charging_time_left" example="4 jam dan 2 menit">%s</xliff:g> hingga penuh)</string>
     <string name="keyguard_plugged_in_dash_charging">Pengisian Cepat</string>
@@ -68,7 +71,6 @@
     <!-- Label for current user in power menu options dialog -->
     <string name="global_action_current_user">Saat ini</string>
     <!-- Advance location quick setting tile -->
-    <string name="quick_settings_secondary_location_off"></string>
     <string name="quick_settings_location_secondary_battery_saving">Penghemat Baterai</string>
     <string name="accessibility_quick_settings_location_battery_saving">Laporan lokasi: mode hemat baterai.</string>
     <string name="quick_settings_location_secondary_gps_only">Hanya sensor</string>
@@ -146,4 +148,13 @@
     <!-- Smart Pixels QS Tile -->
     <string name="quick_settings_smart_pixels">Piksel Cerdas</string>
     <string name="quick_settings_smart_pixels_on_power_save">Otomatis hidupkan Piksel Cerdas</string>
+    <!-- App Lock -->
+    <string name="applock_locked">&#160;terkunci</string>
+    <string name="applock_fingerprint_face">, sidik jari atau wajah Anda untuk membuka kunci</string>
+    <string name="applock_face">&#160;atau wajah Anda untuk membuka kunci</string>
+    <string name="applock_fingerprint">&#160;atau sidik jari Anda untuk membuka kunci</string>
+    <string name="applock_credential">&#160;untuk membuka</string>
+    <string name="applock_unlock">Buka</string>
+    <!-- Biometric Dialog - Use Face -->
+    <string name="biometric_dialog_button_use_face">Gunakan Wajah</string>
 </resources>
