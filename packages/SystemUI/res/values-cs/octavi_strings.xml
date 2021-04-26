@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  Copyright (C) 2020 OctaviOS
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="statusbar_items_title">Ikona ve stavové liště</string>
+    <string name="status_bar_camera">Fotoaparát</string>
+    <string name="status_bar_location">Poloha</string>
+    <string name="status_bar_microphone">Mikrofon</string>
+    <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_dash_charging_time">DASH nabíjení (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> do plného nabití)</string>
+    <string name="keyguard_plugged_in_dash_charging">DASH nabíjení</string>
+    <!-- Indication on the keyguard that is shown when the device is charging with a warp charger. Should match keyguard_plugged_in_warp_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_warp_charging_time" formatted="false"><xliff:g id="percentage">%2$s</xliff:g> • Rychlé nabíjení (Zbývá <xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> do plného nabití)</string>
+    <string name="keyguard_plugged_in_warp_charging"><xliff:g id="percentage">%s</xliff:g> • Rychlé nabíjení</string>
+    <!-- Indication on the keyguard that is shown when the device is charging with a VOOC charger. Should match keyguard_plugged_in_vooc_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_vooc_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • Rychlé nabíjení (Zbývá <xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> do plného nabití)</string>
+    <string name="keyguard_plugged_in_vooc_charging"><xliff:g id="percentage">%s</xliff:g> • VOOC nabíjení</string>
+    <!-- Indication on the keyguard that is shown when the device is charging with a turbo power charger. Should match keyguard_plugged_in_turbo_power_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_turbo_power_time" formatted="false"><xliff:g id="percentage">%2$s</xliff:g> • Turbo nabíjení (zbývá <xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> do plného nabití)</string>
+    <string name="keyguard_plugged_in_turbo_charging" formatted="false"><xliff:g id="percentage">%s</xliff:g> • Rychlé nabíjení</string>
+    <!-- DataSwitch Tile -->
+    <string name="qs_data_switch_label">Přepnout SIM pro data</string>
+    <string name="qs_data_switch_toast_0">Momentálně není vložena žádná SIM karta</string>
+    <string name="qs_data_switch_toast_1">Momentálně je vložena pouze jedna SIM karta</string>
+    <string name="qs_data_switch_changed_1">Mobilní data jsou používána na SIM 1</string>
+    <string name="qs_data_switch_changed_2">Mobilní data jsou používána na SIM 2</string>
+    <!-- Reboot/Recovery QS tile -->
+    <string name="quick_settings_reboot_label">Restartovat</string>
+    <string name="quick_settings_reboot_recovery_label">Recovery</string>
+    <!-- Mono QS Tile -->
+    <string name="quick_settings_monotoggle_tile">Režim zvuku</string>
+    <string name="quick_settings_monotoggle_tile_mono">Zvuk mono</string>
+    <string name="quick_settings_monotoggle_tile_stereo">Zvuk stereo</string>
+    <!-- Spidey Analog clock -->
+    <!-- Spectrum Analog clock -->
+    <!-- Dot Analog clock -->
+    <!-- Sneeky Analog clock -->
+    <!-- Octavi Analog clock -->
+    <!-- Screenshot QS tile -->
+    <string name="quick_settings_screenshot_label">Snímek obrazovky</string>
+    <string name="quick_settings_region_screenshot_label">Částečný snímek obrazovky</string>
+    <!-- HW Keys Tile -->
+    <string name="accessibility_quick_settings_hwkeys_on">HW tlačítka zapnuta</string>
+    <string name="accessibility_quick_settings_hwkeys_off">HW tlačítka vypnuta</string>
+    <string name="quick_settings_hwkeys_label">Hardwarová tlačítka</string>
+    <!-- Advanced restart -->
+    <string name="global_action_reboot">Restartovat</string>
+    <string name="global_action_reboot_system">Systém</string>
+    <string name="global_action_reboot_progress">Restartování…</string>
+    <string name="global_action_reboot_recovery">Recovery</string>
+    <string name="global_action_reboot_recovery_progress">Restartování do režimu recovery ...</string>
+    <string name="global_action_reboot_hot">Horký restart</string>
+    <string name="global_action_reboot_bootloader">Bootloader režim</string>
+    <string name="global_action_reboot_bootloader_progress">Restartování do režimu bootloader ...</string>
+    <string name="global_action_reboot_fastboot">Fastboot</string>
+    <string name="global_action_reboot_fastboot_progress">Restartování do režimu fastboot ...</string>
+    <string name="global_action_settings">Nastavení</string>
+    <string name="global_action_screenshot">Snímek obrazovky</string>
+    <string name="global_action_screenrecord">Záznam obrazovky</string>
+    <string name="global_action_flashlight">Svítilna</string>
+    <!-- Label for current user in power menu options dialog -->
+    <string name="global_action_current_user">Aktuální</string>
+    <!-- Advance location quick setting tile -->
+    <string name="quick_settings_location_secondary_battery_saving">Úspora baterie</string>
+    <string name="accessibility_quick_settings_location_battery_saving">Hlášení polohy: úsporný režim.</string>
+    <string name="quick_settings_location_secondary_gps_only">Pouze GPS</string>
+    <string name="accessibility_quick_settings_location_gps_only">Hlášení polohy: pouze GPS.</string>
+    <string name="quick_settings_location_secondary_high_accuracy">Vysoká přesnost</string>
+    <string name="accessibility_quick_settings_location_high_accuracy">Hlášení polohy: vysoká přesnost.</string>
+    <!-- Sound QS Tile -->
+    <string name="quick_settings_sound_label">Zvuk</string>
+    <string name="quick_settings_sound_ring">Vyzvánění</string>
+    <string name="quick_settings_sound_vibrate">Vibrace</string>
+    <string name="quick_settings_sound_mute">Ztlumit</string>
+    <!-- Caffeine QS Tile -->
+    <string name="quick_settings_caffeine_label">Kofein</string>
+    <string name="quick_settings_caffeine_label_off">Vyp.</string>
+    <string name="accessibility_quick_settings_caffeine_off">Kofein vyp.</string>
+    <string name="accessibility_quick_settings_caffeine_on">Kofein zap.</string>
+    <string name="omnijaws_service_error">Chyba</string>
+    <string name="omnijaws_service_unkown">Žádné údaje o počasí</string>
+    <string name="omnijaws_service_error_long">Chyba při načítání údajů o počasí</string>
+    <string name="omnijaws_service_disabled">Služba je zakázána</string>
+    <string name="omnijaws_detail_header">Počasí</string>
+    <string name="omnijaws_label_default">Počasí</string>
+    <string name="omnijaws_current_text">Nyní</string>
+    <string name="omnijaws_package_not_available">OmniJaws není k dispozici</string>
+    <string name="omnijaws_service_last_update">Poslední aktualizace:</string>
+    <!-- AOD QS tile -->
+    <string name="quick_settings_aod_label">Vždy zapnutý displej</string>
+    <!-- Ambient display QS tile -->
+    <string name="quick_settings_ambient_display_label">Ambientní displej</string>
+    <string name="accessibility_quick_settings_ambient_display_off">Vypnout ambientní displej</string>
+    <string name="accessibility_quick_settings_ambient_display_on">Zapnout ambientní displej</string>
+    <string name="accessibility_quick_settings_ambient_display_changed_off">Ambientní displej je vypnutý</string>
+    <string name="accessibility_quick_settings_ambient_display_changed_on">Ambientní displej je zapnutý</string>
+    <!-- Text to use when the number in a notification info is too large
+         (greater than status_bar_notification_info_maxnum, defined in
+         values/config.xml) and must be truncated.
+         [CHAR LIMIT=4] -->
+    <!-- Screenrecorder -->
+    <string name="screenrecord_stopdot_label">Zobrazit tečku pro zastavení nahrávání\Dlouhým stiskem ji přesunete</string>
+    <string name="screenrecord_lowquality_label">Nižší kvalita pro menší velikost souboru</string>
+    <!-- Heads Up QS Tile -->
+    <string name="quick_settings_heads_up_label">Plovoucí oznámení</string>
+    <string name="accessibility_quick_settings_heads_up_off">Plovoucí oznámení vyp.</string>
+    <string name="accessibility_quick_settings_heads_up_on">Plovoucí oznámení zap.</string>
+    <string name="accessibility_quick_settings_heads_up_changed_off">Plovoucí oznámení bylo vypnuto.</string>
+    <string name="accessibility_quick_settings_heads_up_changed_on">Plovoucí oznámení bylo zapnuto.</string>
+    <!-- accessibility label for button to open running apps prefscreen [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_running_services">Otevřít obrazovku spuštěných služeb.</string>
+    <!-- Gaming mode -->
+    <string name="gaming_mode_not_enabled">Herní režim je vypnutý v Nastavení</string>
+    <string name="quick_settings_gaming_mode_label">Herní režim</string>
+    <!-- Content description of the Gaming mode tile in quick settings when disabled (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_gaming_mode_disabled">Herní režim je vypnutý.</string>
+    <!-- Content description of the Gaming mode tile in quick settings when enabled (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_gaming_mode_enabled">Herní režim je zapnutý.</string>
+    <!-- Partial screenshot -->
+    <string name="global_screenshot_selector_capture_description">Pořídit částečný snímek obrazovky</string>
+    <string name="global_screenshot_selector_cancel_description">Zrušit částečný snímek obrazovky</string>
+    <!-- Ambient Music Ticker -->
+    <string name="ambientmusic_songinfo" formatted="false">%s od %s</string>
+    <!-- Headphones Buddy -->
+    <string name="hp_buddy">Sluchátka (špunty)</string>
+    <string name="hp_buddy_left">Pouze levé</string>
+    <string name="hp_buddy_right">Pouze pravé</string>
+    <string name="hp_buddy_center">Obojí</string>
+    <string name="hp_buddy_not_connected">Připojte svá sluchátka</string>
+    <string name="lockscreen_default">Výchozí</string>
+    <string name="lockscreen_hidden">Žádný</string>
+    <!-- Scrolling Screenshot string -->
+    <string name="scrollss">Posun</string>
+    <!-- CPUInfo tile -->
+    <string name="quick_settings_cpuinfo_label">Informace o CPU</string>
+    <!-- FPS Info tile -->
+    <string name="quick_settings_fpsinfo_label">Informace o FPS</string>
+    <!-- Smart Pixels QS Tile -->
+    <string name="quick_settings_smart_pixels">Chytré pixely</string>
+    <string name="quick_settings_smart_pixels_on_power_save">Automaticky povolit Chytré Pixely</string>
+    <!-- App Lock -->
+    <string name="applock_locked">&#160;je uzamknuta</string>
+    <string name="applock_fingerprint_face">, odemknout pomocí otisku prstu nebo obličeje</string>
+    <string name="applock_face">&#160;nebo odemknout obličejem</string>
+    <string name="applock_fingerprint">&#160;nebo odemknout otiskem prstu</string>
+    <string name="applock_credential">&#160;odemknout</string>
+    <string name="applock_unlock">Odemknout</string>
+    <!-- Biometric Dialog - Use Face -->
+    <string name="biometric_dialog_button_use_face">Použít obličej</string>
+</resources>
