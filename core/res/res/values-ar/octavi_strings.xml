@@ -19,31 +19,31 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Button that copies the url to the log of a crashed application -->
-    <string name="aerr_copy">Copy crash log URL</string>
-    <string name="url_copy_success">URL copied successfully</string>
-    <string name="url_copy_failed">An error occured while uploading the log to dogbin</string>
+    <string name="aerr_copy">نسخ رابط سجل العطل</string>
+    <string name="url_copy_success">تم نسخ الرابط بنجاح</string>
+    <string name="url_copy_failed">حدث خطأ أثناء رفع السجل الى Dogbin</string>
     <!-- Pocket Lock -->
-    <string name="pocket_lock_message_long_press">Long press power button to interact</string>
+    <string name="pocket_lock_message_long_press">اضغط زر الطاقة مطولاً للتفاعل</string>
     <!-- Gaming mode -->
-    <string name="notification_channel_gaming">Gaming mode</string>
-    <string name="gaming_mode_notification_title">Gaming mode enabled</string>
-    <string name="gaming_mode_notification_content">Tap to turn off Gaming mode</string>
-    <string name="gaming_mode_enabled_toast">Gaming mode turned on</string>
-    <string name="gaming_mode_disabled_toast">Gaming mode turned off</string>
+    <string name="notification_channel_gaming">وضع الألعاب</string>
+    <string name="gaming_mode_notification_title">تم تفعيل وضع الألعاب</string>
+    <string name="gaming_mode_notification_content">إضغط لإيقاف وضع الألعاب</string>
+    <string name="gaming_mode_enabled_toast">تم تفعيل وضع الألعاب</string>
+    <string name="gaming_mode_disabled_toast">تم إيقاف وضع الألعاب</string>
     <!-- MicroG -->
-    <string name="permlab_fakePackageSignature">Spoof package signature</string>
+    <string name="permlab_fakePackageSignature">تزييف التوقيع الرقمي للحزمة</string>
     <!-- Description of an application permission, listed so the user can choose whether
          they want to allow the application to do this. -->
-    <string name="permdesc_fakePackageSignature">Allows the app to pretend to be a different app. Malicious applications might be able to use this to access private application data. Legitimate uses include an emulator pretending to be what it emulates. Grant this permission with caution only!</string>
+    <string name="permdesc_fakePackageSignature">السماح للتطبيق بأن يتظاهر كتطبيق آخر. التطبيقات الخبيثة قد تستخدم هذا للوصول للبيانات الخاصة للتطبيق. الإستخدام الشرعي يتضمن محاكي لكي يحاكي ما يتظاهر به. امنح هذا الإذن بحذر!</string>
     <!-- Title of a category of application permissions, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permgrouplab_fake_package_signature">Spoof package signature</string>
+    <string name="permgrouplab_fake_package_signature">تزييف التوقيع الرقمي للحزمة</string>
     <!-- Description of a category of application permissions, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permgroupdesc_fake_package_signature">allow to spoof package signature</string>
+    <string name="permgroupdesc_fake_package_signature">السماح بتزييف التوقيع الرقمي للحزم</string>
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
-    <string name="permgrouprequest_fake_package_signature">Allow
-        &lt;b&gt;<xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b&gt; to spoof package signature?</string>
+    <string name="permgrouprequest_fake_package_signature">السماح
+        &lt;b&gt;<xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b&gt; بتزوير توقيع الحزمة؟</string>
     <!-- Vendor mismatch fingerprint warning [CHAR LIMIT=NONE] -->
-    <string name="system_error_vendorprint">Your vendor image does not match the system. Please flash the <xliff:g id="string">%s</xliff:g> vendor image for your device</string>
+    <string name="system_error_vendorprint">صورة موردك لا تطابق النظام. الرجاء تنصيب<xliff:g id="string">%s</xliff:g> صورة مورد جهازك</string>
     <!-- Aerr strings -->
-    <string name="aerr_disable">Disable app</string>
+    <string name="aerr_disable">تعطيل التطبيق</string>
 </resources>
