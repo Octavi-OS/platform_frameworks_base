@@ -331,7 +331,8 @@ public class StatusBar extends SystemUI implements DemoMode,
          };
 
 	 private static String[] SETTINGS_THEME_STYLE = {
-            "com.android.theme.icon_pack.one.settings"
+            "com.android.theme.icon_pack.one.settings",
+            "com.android.theme.icon_pack.miui.settings",
          };
 
     /**

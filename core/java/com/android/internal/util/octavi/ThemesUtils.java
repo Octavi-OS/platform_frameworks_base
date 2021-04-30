@@ -62,7 +62,8 @@ public class ThemesUtils {
     };
 
     public static final String[] SETTINGS_THEME_STYLE = {
-            "com.android.theme.icon_pack.one.settings"
+            "com.android.theme.icon_pack.one.settings",
+	    "com.android.theme.icon_pack.miui.settings",
     };
 
     public static final String[] UI_RADIUS = {
