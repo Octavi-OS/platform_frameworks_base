@@ -290,6 +290,7 @@ public class KeyguardClockSwitch extends RelativeLayout {
         }
         mClockPlugin.setDarkAmount(mDarkAmount);
         mClockPlugin.setHasVisibleNotifications(mHasVisibleNotifications);
+        mKeyguardStatusArea.setClockPlugin(mClockPlugin);
         if (mColorPalette != null) {
             mClockPlugin.setColorPalette(mSupportsDarkText, mColorPalette);
         }
