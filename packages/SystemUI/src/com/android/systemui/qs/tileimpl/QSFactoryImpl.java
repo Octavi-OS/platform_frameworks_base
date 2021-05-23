@@ -152,7 +152,7 @@ public class QSFactoryImpl implements QSFactory {
             Provider<HeadphonesBuddyTile> headphonesBuddyTile,
             Provider<CPUInfoTile> cpuInfoTileProvider,
             Provider<FPSInfoTile> fpsInfoTileProvider,
-            Provider<SmartPixelsTile> smartPixelsTileProvider
+            Provider<SmartPixelsTile> smartPixelsTileProvider,
             Provider<SyncTile> syncTileProvider) {
         mQsHostLazy = qsHostLazy;
         mWifiTileProvider = wifiTileProvider;
