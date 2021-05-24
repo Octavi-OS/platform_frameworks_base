@@ -157,4 +157,15 @@
     <string name="applock_unlock">Ξεκλείδωμα</string>
     <!-- Biometric Dialog - Use Face -->
     <string name="biometric_dialog_button_use_face">Χρήση Προσώπου</string>
+    <string name="date_long_title_today">Σήμερα είναι %s</string>
+    <!-- Sync QS Tile -->
+    <string name="quick_settings_sync_label">Συγχρονισμός</string>
+    <string name="accessibility_quick_settings_sync_off">Συγχρονισμός ανενεργός</string>
+    <string name="accessibility_quick_settings_sync_on">Συγχρονισμός ενεργός</string>
+    <string name="accessibility_quick_settings_sync_changed_off">Ο συγχρονισμός έχει απενεργοποιηθεί</string>
+    <string name="accessibility_quick_settings_sync_changed_on">Ο συγχρονισμός ενεργοποιήθηκε</string>
+    <!-- Data usage info -->
+    <string name="usage_data">σε χρήση</string>
+    <string name="usage_wifi_prefix">Wi-Fi</string>
+    <string name="usage_data_prefix">Δεδομένα</string>
 </resources>
