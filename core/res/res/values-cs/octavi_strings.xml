@@ -46,4 +46,11 @@
     <string name="system_error_vendorprint">Váš dodavatel obrazu se neshoduje se systémem. Prosím flashněte obraz pro vaše zařízení <xliff:g id="string">%s </xliff:g></string>
     <!-- Aerr strings -->
     <string name="aerr_disable">Deaktivovat aplikaci</string>
+    <!-- Pocket Lock -->
+    <string name="pocket_view_title">Režim v kapse je zapnutý</string>
+    <string name="pocket_view_title_cancel">Aktivace telefonu:</string>
+    <string name="pocket_view_top_tag_cancel">Nezakrývejte modrou oblast telefonu, nečistoty a prach očistěte.</string>
+    <string name="pocket_view_top_tag_cancel2">Dlouhým stiskem tlačítka Napájení vynutíte ukončení režimu v kapse</string>
+    <string name="pocket_view_top_tag_number1">1.\u0020</string>
+    <string name="pocket_view_top_tag_number2">2.\u0020</string>
 </resources>
