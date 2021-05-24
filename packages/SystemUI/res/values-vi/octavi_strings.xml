@@ -157,4 +157,15 @@
     <string name="applock_unlock">Mở khóa</string>
     <!-- Biometric Dialog - Use Face -->
     <string name="biometric_dialog_button_use_face">Sử dụng khuôn mặt</string>
+    <string name="date_long_title_today">Hôm nay là %s</string>
+    <!-- Sync QS Tile -->
+    <string name="quick_settings_sync_label">Đồng bộ</string>
+    <string name="accessibility_quick_settings_sync_off">Tắt đồng bộ</string>
+    <string name="accessibility_quick_settings_sync_on">Bật đồng bộ</string>
+    <string name="accessibility_quick_settings_sync_changed_off">Đồng bộ đã tắt</string>
+    <string name="accessibility_quick_settings_sync_changed_on">Đồng bộ đã bật</string>
+    <!-- Data usage info -->
+    <string name="usage_data">Đã sử dụng</string>
+    <string name="usage_wifi_prefix">Wi-Fi</string>
+    <string name="usage_data_prefix">Dữ liệu</string>
 </resources>
