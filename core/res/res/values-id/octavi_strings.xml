@@ -46,4 +46,11 @@
     <string name="system_error_vendorprint">Gambar vendor Anda tidak sesuai dengan sistem. Silakan flash gambar vendor <xliff:g id="string">%s</xliff:g> untuk perangkat Anda</string>
     <!-- Aerr strings -->
     <string name="aerr_disable">Nonaktifkan aplikasi</string>
+    <!-- Pocket Lock -->
+    <string name="pocket_view_title">Mode saku aktif</string>
+    <string name="pocket_view_title_cancel">Untuk mengaktifkan perangkat Anda:</string>
+    <string name="pocket_view_top_tag_cancel">Jangan menutupi area biru ponsel Anda, dan bersihkan kotoran atau debu.</string>
+    <string name="pocket_view_top_tag_cancel2">Tekan lama tombol daya untuk memaksa keluar dari mode saku</string>
+    <string name="pocket_view_top_tag_number1">1.\u0020</string>
+    <string name="pocket_view_top_tag_number2">2.\u0020</string>
 </resources>
