@@ -45,4 +45,11 @@
     <string name="system_error_vendorprint">Vendor imajı sisteminiz ile eşleşmiyor. Cihazınız için <xliff:g id="string">%s</xliff:g> vendor imajını flaşlayın lütfen</string>
     <!-- Aerr strings -->
     <string name="aerr_disable">Uygulamayı devre dışı bırak</string>
+    <!-- Pocket Lock -->
+    <string name="pocket_view_title">Cep modu açık</string>
+    <string name="pocket_view_title_cancel">Telefonunuzu etkinleştirmek için:</string>
+    <string name="pocket_view_top_tag_cancel">Telefonunuzun mavi alanını kapatmayın ve her türlü kiri veya tozu temizleyin.</string>
+    <string name="pocket_view_top_tag_cancel2">Cep modundan çıkmaya zorlamak için güç tuşuna uzun basın</string>
+    <string name="pocket_view_top_tag_number1">1.\u0020</string>
+    <string name="pocket_view_top_tag_number2">2.\u0020</string>
 </resources>
