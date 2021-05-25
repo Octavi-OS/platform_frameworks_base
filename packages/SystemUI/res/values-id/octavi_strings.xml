@@ -157,4 +157,15 @@
     <string name="applock_unlock">Buka</string>
     <!-- Biometric Dialog - Use Face -->
     <string name="biometric_dialog_button_use_face">Gunakan Wajah</string>
+    <string name="date_long_title_today">Hari ini %s</string>
+    <!-- Sync QS Tile -->
+    <string name="quick_settings_sync_label">Sinkronisasi</string>
+    <string name="accessibility_quick_settings_sync_off">Sinkronisasi nonaktif</string>
+    <string name="accessibility_quick_settings_sync_on">Sinkronisasi aktif</string>
+    <string name="accessibility_quick_settings_sync_changed_off">Sinkronisasi dinonaktifkan</string>
+    <string name="accessibility_quick_settings_sync_changed_on">Sinkronisasi diaktifkan</string>
+    <!-- Data usage info -->
+    <string name="usage_data">digunakan</string>
+    <string name="usage_wifi_prefix">Wi-Fi</string>
+    <string name="usage_data_prefix">Data</string>
 </resources>
