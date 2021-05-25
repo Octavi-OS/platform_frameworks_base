@@ -157,4 +157,15 @@
     <string name="applock_unlock">Kilidi Aç</string>
     <!-- Biometric Dialog - Use Face -->
     <string name="biometric_dialog_button_use_face">Yüzü kullan</string>
+    <string name="date_long_title_today">Bugün %s</string>
+    <!-- Sync QS Tile -->
+    <string name="quick_settings_sync_label">Senkronizasyon</string>
+    <string name="accessibility_quick_settings_sync_off">Senkronizasyon kapalı</string>
+    <string name="accessibility_quick_settings_sync_on">Senkronizasyon açık</string>
+    <string name="accessibility_quick_settings_sync_changed_off">Senkronizasyon kapatıldı</string>
+    <string name="accessibility_quick_settings_sync_changed_on">Senkronizasyon açıldı</string>
+    <!-- Data usage info -->
+    <string name="usage_data">kullanılan</string>
+    <string name="usage_wifi_prefix">Kablosuz ağ</string>
+    <string name="usage_data_prefix">Veri</string>
 </resources>
