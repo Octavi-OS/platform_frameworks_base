@@ -37,12 +37,14 @@ public class AmbientDisplayConfiguration {
 
     private final Context mContext;
     private final boolean mAlwaysOnByDefault;
+    private final boolean mDeviceHasSoli;
 
     /** {@hide} */
     @TestApi
     public AmbientDisplayConfiguration(Context context) {
         mContext = context;
         mAlwaysOnByDefault = mContext.getResources().getBoolean(R.bool.config_dozeAlwaysOnEnabled);
+        mDeviceHasSoli = mContext.getResources().getBoolean(R.bool.config_has_Soli);
     }
 
     /** {@hide} */
@@ -250,6 +252,11 @@ public class AmbientDisplayConfiguration {
     public boolean isAmbientTickerEnabled(int user) {
         return Settings.System.getIntForUser(mContext.getContentResolver(),
                 Settings.System.PULSE_ON_NEW_TRACKS, 1, user) != 0;
+    }
+
+    /** {@hide} */
+    public boolean deviceHasSoli() {
+        return mDeviceHasSoli;
     }
 
     public boolean alwaysOnChargingEnabled(int user) {

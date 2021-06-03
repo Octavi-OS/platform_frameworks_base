@@ -243,12 +243,14 @@
     </string-array>
 
     <!-- Power Menu -->
-  <string-array translatable="false" name="custom_config_globalActionsList">
-      <item>emergency</item>
-      <item>lockdown</item>
-      <item>power</item>
-      <item>restart</item>
-      <item>users_choice</item> <!--2 buttons nav-->
-  </string-array>
+    <string-array translatable="false" name="custom_config_globalActionsList">
+        <item>emergency</item>
+        <item>lockdown</item>
+        <item>power</item>
+        <item>restart</item>
+        <item>users_choice</item> <!--2 buttons nav-->
+    </string-array>
+
+    <bool name="config_has_Soli">false</bool>
 
 </resources>
