@@ -2060,6 +2060,10 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener, Dumpab
                 && !mSecureCameraLaunched
                 && !mIsDeviceInPocket;
 
+        if (shouldListen && isFaceAuthOnlyOnSecurityView() && !mBouncerFullyShown){
+            shouldListen = false;
+        }
+
         if (shouldListen && mFaceAuthOnlyOnSecurityView && !mBouncerFullyShown){
             shouldListen = false;
         }
