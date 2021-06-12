@@ -1751,7 +1751,7 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener, Dumpab
         }
 
         // Take a guess at initial SIM state, battery status and PLMN until we get an update
-        mBatteryStatus = new BatteryStatus(BATTERY_STATUS_UNKNOWN, 100, 0, 0, 0, 0, 0, 0, false, false, false, false);
+        mBatteryStatus = new BatteryStatus(BATTERY_STATUS_UNKNOWN, 100, 0, 0, 0, 0, 0, 0, false, false, false, false,true);
 
         // Watch for interesting updates
         final IntentFilter filter = new IntentFilter();
@@ -2059,10 +2059,6 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener, Dumpab
                 && strongAuthAllowsScanning && mIsPrimaryUser
                 && !mSecureCameraLaunched
                 && !mIsDeviceInPocket;
-
-        if (shouldListen && isFaceAuthOnlyOnSecurityView() && !mBouncerFullyShown){
-            shouldListen = false;
-        }
 
         if (shouldListen && mFaceAuthOnlyOnSecurityView && !mBouncerFullyShown){
             shouldListen = false;
@@ -2658,6 +2654,8 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener, Dumpab
         final boolean wasPluggedIn = old.isPluggedIn();
         final boolean stateChangedWhilePluggedIn = wasPluggedIn && nowPluggedIn
                 && (old.status != current.status);
+        final boolean nowPresent = current.present;
+        final boolean wasPresent = old.present;
 
         // change in plug state is always interesting
         if (wasPluggedIn != nowPluggedIn || stateChangedWhilePluggedIn) {
@@ -2704,6 +2702,11 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener, Dumpab
 
         // change in battery overheat
         if (current.health != old.health) {
+            return true;
+        }
+
+        // Battery either showed up or disappeared
+        if (wasPresent != nowPresent) {
             return true;
         }
 
