@@ -111,8 +111,6 @@
 
     <color name="meter_bg_color">@color/transparent</color>
 
-    <color name="qs_tile_background_color_disabled">#0fffffff</color>
-
     <color name="op_qs_tile_background_color_disabled">#1C1C1E</color>
 
     <color name="qs_tile_oos_background">#DBDBDB</color>

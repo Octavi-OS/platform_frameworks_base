@@ -1431,5 +1431,4 @@
     <dimen name="media_output_dialog_title_anim_y_delta">12.5dp</dimen>
 
     <dimen name="qsside_paddings">0dp</dimen>
-    <dimen name="config_rounded_mask_size_bottom">@*android:dimen/rounded_corner_radius_bottom</dimen>
 </resources>
