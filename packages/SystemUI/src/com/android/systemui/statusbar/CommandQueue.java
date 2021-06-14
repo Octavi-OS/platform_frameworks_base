@@ -130,9 +130,9 @@ public class CommandQueue extends IStatusBar.Stub implements CallbackController<
     private static final int MSG_HIDE_IN_DISPLAY_FINGERPRINT_VIEW  = 58 << MSG_SHIFT;
     private static final int MSG_TOGGLE_CAMERA_FLASH               = 59 << MSG_SHIFT;
     private static final int MSG_TOGGLE_CAMERA_FLASH_STATE         = 60 << MSG_SHIFT;
+    private static final int MSG_TOGGLE_SETTINGS_PANEL             = 61 << MSG_SHIFT;
     private static final int MSG_SET_BLOCKED_GESTURAL_NAVIGATION   = 91 << MSG_SHIFT;
     private static final int MSG_KILL_FOREGROUND_APP               = 92 << MSG_SHIFT;
-
     public static final int FLAG_EXCLUDE_NONE = 0;
     public static final int FLAG_EXCLUDE_SEARCH_PANEL = 1 << 0;
     public static final int FLAG_EXCLUDE_RECENTS_PANEL = 1 << 1;
@@ -176,6 +176,7 @@ public class CommandQueue extends IStatusBar.Stub implements CallbackController<
         default void animateCollapsePanels(int flags, boolean force) { }
         default void togglePanel() { }
         default void animateExpandSettingsPanel(String obj) { }
+        default void toggleSettingsPanel() { }
 
         /**
          * Called to notify IME window status changes.
@@ -510,6 +511,13 @@ public class CommandQueue extends IStatusBar.Stub implements CallbackController<
         synchronized (mLock) {
             mHandler.removeMessages(MSG_TOGGLE_PANEL);
             mHandler.obtainMessage(MSG_TOGGLE_PANEL, 0, 0).sendToTarget();
+        }
+    }
+
+    public void toggleSettingsPanel() {
+        synchronized (mLock) {
+            mHandler.removeMessages(MSG_TOGGLE_SETTINGS_PANEL);
+            mHandler.obtainMessage(MSG_TOGGLE_SETTINGS_PANEL, 0, 0).sendToTarget();
         }
     }
 
@@ -1383,6 +1391,11 @@ public class CommandQueue extends IStatusBar.Stub implements CallbackController<
                 case MSG_TOGGLE_CAMERA_FLASH_STATE:
                     for (int i = 0; i < mCallbacks.size(); i++) {
                         mCallbacks.get(i).toggleCameraFlashState(msg.arg1 != 0);
+                    }
+                    break;
+                case MSG_TOGGLE_SETTINGS_PANEL:
+                    for (int i = 0; i < mCallbacks.size(); i++) {
+                        mCallbacks.get(i).toggleSettingsPanel();
                     }
                     break;
                 case MSG_SET_BLOCKED_GESTURAL_NAVIGATION:
