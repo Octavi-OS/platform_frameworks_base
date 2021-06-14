@@ -266,6 +266,11 @@ public class OctaviUtils {
         FireActions.killForegroundApp();
     }
 
+    // Toggle notifications panel
+    public static void toggleNotifications() {
+        FireActions.toggleNotifications();
+    }
+
     public static void sendKeycode(int keycode) {
         long when = SystemClock.uptimeMillis();
         final KeyEvent evDown = new KeyEvent(when, when, KeyEvent.ACTION_DOWN, keycode, 0,
@@ -348,6 +353,15 @@ public class OctaviUtils {
                 } catch (RemoteException e) {
                     // do nothing.
                 }
+            }
+        }
+
+        public static void toggleNotifications() {
+            IStatusBarService service = getStatusBarService();
+            if (service != null) {
+                try {
+                    service.togglePanel();
+                } catch (RemoteException e) {}
             }
         }
     }
