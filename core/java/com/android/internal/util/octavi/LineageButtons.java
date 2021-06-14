@@ -226,7 +226,7 @@ public final class LineageButtons {
                 OctaviUtils.launchCamera(context);
                 break;
             case 4: // Flashlight
-                OctaviUtils.toggleCameraFlash(false/*no proximity check*/);
+                OctaviUtils.toggleCameraFlash(/*(false for no proximity check)*/);
                 break;
             case 5: // Application
                 OctaviUtils.launchApp(context, leftEdge, isVerticalSwipe);
