@@ -259,6 +259,12 @@ public class AmbientDisplayConfiguration {
         return mDeviceHasSoli;
     }
 
+    /** {@hide} */
+    public boolean isAmbientGestureEnabled(int user) {
+        return !mDeviceHasSoli && Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.AMBIENT_WAKE_GESTURES, 1, user) != 0;
+    }
+
     public boolean alwaysOnChargingEnabled(int user) {
         final boolean dozeOnChargeEnabled = boolSettingSystem(Settings.System.OMNI_DOZE_ON_CHARGE, user, 0);
         if (dozeOnChargeEnabled) {
