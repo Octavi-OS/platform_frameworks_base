@@ -18,6 +18,7 @@ package com.android.internal.util.octavi;
 
 import android.Manifest;
 import android.app.ActivityManager;
+import android.app.NotificationManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -43,6 +44,7 @@ import android.net.NetworkInfo;
 import android.os.BatteryManager;
 import android.os.SystemProperties;
 import android.hardware.input.InputManager;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
@@ -67,6 +69,9 @@ import android.view.InputDevice;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.util.DisplayMetrics;
+
+import static android.content.Context.NOTIFICATION_SERVICE;
+import static android.content.Context.VIBRATOR_SERVICE;
 
 import com.android.internal.R;
 
@@ -281,6 +286,11 @@ public class OctaviUtils {
         FireActions.clearAllNotifications();
     }
 
+    // Start Assistant
+    public static void startAssist() {
+        FireActions.startAssist();
+    }
+
     public static void sendKeycode(int keycode) {
         long when = SystemClock.uptimeMillis();
         final KeyEvent evDown = new KeyEvent(when, when, KeyEvent.ACTION_DOWN, keycode, 0,
@@ -389,6 +399,15 @@ public class OctaviUtils {
             if (service != null) {
                 try {
                     service.onClearAllNotifications(ActivityManager.getCurrentUser());
+                } catch (RemoteException e) {}
+            }
+        }
+
+        public static void startAssist() {
+            IStatusBarService service = getStatusBarService();
+            if (service != null) {
+                try {
+                    service.startAssist(new Bundle());
                 } catch (RemoteException e) {}
             }
         }
