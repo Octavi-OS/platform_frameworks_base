@@ -209,6 +209,10 @@
     <string name="global_action_screenrecord">Screenrecord</string>
     <string name="global_action_flashlight">Flashlight</string>
 
+    <!-- App picker manifest entry -->
+    <string name="app_picker_dialog_title">Select an app</string>
+    <string name="app_picker_activity_select_title">Select activity</string>
+
 </resources> 
 
 
