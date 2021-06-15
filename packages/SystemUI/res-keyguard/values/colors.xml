@@ -24,6 +24,11 @@
   <!-- Custom text clock -->
   <color name="custom_text_clock_top_fallback_color">#e7b465</color>
 
+  <!-- Lockscreen analog clock -->
+  <color name="analog_clock_border_color">#212121</color>
+  <color name="analog_clock_face_color">#FFFFFF</color>
+  <color name="analog_clock_hand_minute_color">#212121</color>
+
   <color name="lockscreen_clock_accent_color">@*android:color/accent_device_default</color>
   <color name="lockscreen_clock_white_color">@*android:color/white</color>
 
