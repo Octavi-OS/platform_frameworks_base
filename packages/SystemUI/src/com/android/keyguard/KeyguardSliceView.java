@@ -351,8 +351,24 @@ public class KeyguardSliceView extends LinearLayout implements View.OnClickListe
         }
     }
 
+    public void setViewsTextStyles(float textSp, boolean textAllCaps) {
+        int childCount = mRow.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            View v = mRow.getChildAt(i);
+            if (v instanceof TextView) {
+                ((TextView) v).setLetterSpacing(textSp);
+                ((TextView) v).setAllCaps(textAllCaps);
+            }
+        }
+    }
+
     public void setViewBackground(Drawable drawRes) {
+        setViewBackground(drawRes, 255);
+    }
+
+    public void setViewBackground(Drawable drawRes, int bgAlpha) {
         mRow.setBackground(drawRes);
+        mRow.getBackground().setAlpha(bgAlpha);
     }
 
     public void setViewBackgroundResource(int drawRes) {
