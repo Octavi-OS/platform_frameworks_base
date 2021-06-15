@@ -10455,6 +10455,18 @@ public final class Settings {
         public static final String USE_OLD_MOBILETYPE = "use_old_mobiletype";
 
         /**
+         * Dark Accent Color
+         * @hide
+         */
+        public static final String ACCENT_DARK = "accent_dark";
+
+        /**
+         * Light Accent Color
+         * @hide
+         */
+        public static final String ACCENT_LIGHT = "accent_light";
+
+        /**
          * Keys we no longer back up under the current schema, but want to continue to
          * process when restoring historical backup datasets.
          *
