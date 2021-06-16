@@ -20,7 +20,7 @@
             android:paddingRight="6dp"
             android:format12Hour="hh"
             android:format24Hour="kk"
-            style="@style/widget_big"
+            style="@style/custom_widget_big"
             android:textColor="?attr/wallpaperTextColor"
             android:textSize="104sp" />
 
@@ -32,7 +32,7 @@
             android:paddingLeft="6dp"
             android:format12Hour="mm"
             android:format24Hour="mm"
-            style="@style/widget_big"
+            style="@style/custom_widget_big"
             android:textColor="?attr/wallpaperTextColor"
             android:textSize="86sp" />
 
