@@ -5404,24 +5404,6 @@ public final class Settings {
         public static final String LOCKSCREEN_MEDIA_ART = "lockscreen_media_art";
 
         /**
-         * Custom Ambient tilt gesture
-         * @hide
-         */
-        public static final String CUSTOM_AMBIENT_TILT_GESTURE = "custom_ambient_tilt_gesture";
-
-        /**
-         * Custom Ambient handwave gesture
-         * @hide
-         */
-        public static final String CUSTOM_AMBIENT_HANDWAVE_GESTURE = "custom_ambient_handwave_gesture";
-
-         /**
-         * Custom Ambient pocketmode gesture
-         * @hide
-         */
-        public static final String CUSTOM_AMBIENT_POCKETMODE_GESTURE = "custom_ambient_pocketmode_gesture";
-
-        /**
          * Ambient screen settings
          * "screen_brightness_array=0:1:2:3:4"
          * @hide
@@ -5511,18 +5493,6 @@ public final class Settings {
         public static final String PIXEL_NAV_ANIMATION = "pixel_nav_animation";
 
         /**
-         * Whether to enable DOZE only when charging
-         * @hide
-         */
-        public static final String OMNI_DOZE_ON_CHARGE = "doze_on_charge";
-
-        /**
-         * hidden stting of the current atate of DOZE only when charging
-         * @hide
-         */
-        public static final String OMNI_DOZE_ON_CHARGE_NOW = "doze_on_charge_now";
-
-        /**
          * @hide
          */
         public static final String FORCE_SHOW_NAVBAR = "navigation_bar_show_new";
@@ -5564,78 +5534,6 @@ public final class Settings {
          * @hide
          */
         public static final String SMART_SCREEN_WAKE = "smart_screen_wake";
-
-        /**
-         * Whether to enable PULSE Edge lights
-         * @hide
-         */
-        public static final String NOTIFICATION_PULSE = "pulse_ambient_light";
-
-         /**
-         * Whether to enable Ambient Edge lights
-         * @hide
-         */
-        public static final String AOD_NOTIFICATION_PULSE = "ambient_notification_light_enabled";
-
-         /**
-         * Whether hide everything on aod when  ambient lights are enabled
-         * @hide
-         */
-        public static final String AOD_NOTIFICATION_PULSE_CLEAR  = "ambient_notification_light_hide_aod";
-
-         /**
-         * Whether to change aod pulse state
-         * @hide
-         */
-        public static final String AOD_NOTIFICATION_PULSE_TRIGGER = "ambient_notification_light";
-
-        /**
-         * Whether to use accent color for pulse
-         * @hide
-         */
-        public static final String NOTIFICATION_PULSE_ACCENT = "ambient_notification_light_accent";
-
-        /**
-         * Pulse Ambient lights color
-         * @hide
-         */
-        public static final String NOTIFICATION_PULSE_COLOR = "ambient_notification_light_color";
-
-        /**
-         * @hide
-         */
-        public static final String NOTIFICATION_PULSE_COLOR_AUTOMATIC = "ambient_notification_light_color_automatic";
-
-        /**
-         * Whether Ambient Edge lights are activated
-         * @hide
-         */
-        public static final String AOD_NOTIFICATION_PULSE_ACTIVATED = "ambient_notification_light_activated";
-
-        /**
-         * helper setting to contain the current pulse reason so we can check
-         * if it has been triggered from a notification or a gesture
-         * @hide
-         */
-        public static final String PULSE_TRIGGER_REASON = "pulse_trigger_reason";
-
-        /**
-         * Notification pulse repeats count - 0 means go by timeout
-         * @hide
-         */
-        public static final String NOTIFICATION_PULSE_REPEATS = "ambient_notification_light_repeats";
-
-        /**
-         * Timeout for ambient pulse in seconds - 0 is no timeout
-         * @hide
-         */
-        public static final String AOD_NOTIFICATION_PULSE_TIMEOUT = "ambient_notification_light_timeout";
-
-        /**
-         * Notification pulse animation duration in seconds
-         * @hide
-         */
-        public static final String NOTIFICATION_PULSE_DURATION = "ambient_notification_light_duration";
 
         /** @hide */
         public static final String BACK_GESTURE_HEIGHT = "back_gesture_height";
@@ -6356,7 +6254,6 @@ public final class Settings {
             PRIVATE_SETTINGS.add(LOCKSCREEN_MEDIA_ART);
             PRIVATE_SETTINGS.add(BACK_GESTURE_HAPTIC);
             PRIVATE_SETTINGS.add(SYSTEMUI_PLUGIN_VOLUME);
-            PRIVATE_SETTINGS.add(OMNI_DOZE_ON_CHARGE);
             PRIVATE_SETTINGS.add(FORCE_SHOW_NAVBAR);
             PRIVATE_SETTINGS.add(OMNI_PULSE_BRIGHTNESS);
             PRIVATE_SETTINGS.add(OMNI_DOZE_BRIGHTNESS);
