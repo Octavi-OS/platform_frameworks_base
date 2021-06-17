@@ -38,6 +38,7 @@ public class AmbientDisplayConfiguration {
     private final Context mContext;
     private final boolean mAlwaysOnByDefault;
     private final boolean mDeviceHasSoli;
+    private final boolean mDozeEnabledByDefault;
 
     /** {@hide} */
     @TestApi
@@ -45,6 +46,7 @@ public class AmbientDisplayConfiguration {
         mContext = context;
         mAlwaysOnByDefault = mContext.getResources().getBoolean(R.bool.config_dozeAlwaysOnEnabled);
         mDeviceHasSoli = mContext.getResources().getBoolean(R.bool.config_has_Soli);
+        mDozeEnabledByDefault = mContext.getResources().getBoolean(R.bool.config_doze_enabled_by_default);
     }
 
     /** {@hide} */
@@ -66,7 +68,7 @@ public class AmbientDisplayConfiguration {
 
     /** {@hide} */
     public boolean pulseOnNotificationEnabled(int user) {
-        return boolSettingDefaultOn(Settings.Secure.DOZE_ENABLED, user)
+        return boolSetting(Settings.Secure.DOZE_ENABLED, user, mDozeEnabledByDefault ? 1 : 0)
                 && pulseOnNotificationAvailable();
     }
 
