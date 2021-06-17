@@ -165,7 +165,7 @@ public class AmbientDisplayConfiguration {
     @TestApi
     public boolean alwaysOnEnabled(int user) {
         return (boolSetting(Settings.Secure.DOZE_ALWAYS_ON, user, mAlwaysOnByDefault ? 1 : 0) ||
-                boolSetting(Settings.Secure.DOZE_ON_CHARGE_NOW, user, 0))
+                boolSetting(Settings.Secure.DOZE_ON_CHARGE_NOW, user, 0) || alwaysOnAmbientLightEnabled(user))
                 && alwaysOnAvailable() && !accessibilityInversionEnabled(user);
     }
 
@@ -230,9 +230,18 @@ public class AmbientDisplayConfiguration {
         return Settings.Secure.getIntForUser(mContext.getContentResolver(), name, def, user) != 0;
     }
 
-    // omni additions start
     private boolean boolSettingSystem(String name, int user, int def) {
         return Settings.System.getIntForUser(mContext.getContentResolver(), name, def, user) != 0;
+    }
+
+    /** {@hide} */
+    public boolean alwaysOnAmbientLightEnabled(int user) {
+        final boolean ambientLightsEnabled = boolSettingSystem(Settings.System.AMBIENT_NOTIFICATION_LIGHT_ENABLED, user, 0);
+        if (ambientLightsEnabled) {
+            boolean ambientLightsActivated = boolSettingSystem(Settings.System.AMBIENT_NOTIFICATION_LIGHT_ACTIVATED, user, 0);
+            return ambientLightsActivated && !accessibilityInversionEnabled(user) && alwaysOnAvailable();
+        }
+        return false;
     }
 
     /** {@hide} */
