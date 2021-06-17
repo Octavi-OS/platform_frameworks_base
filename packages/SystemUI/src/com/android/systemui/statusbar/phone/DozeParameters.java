@@ -75,6 +75,12 @@ public class DozeParameters implements TunerService.Tunable,
         mPowerManager.setDozeAfterScreenOff(!mControlScreenOffAnimation);
 
         sInstance = this;
+
+        tunerService.addTunable(
+                this,
+                Settings.Secure.DOZE_ALWAYS_ON,
+                Settings.Secure.ACCESSIBILITY_DISPLAY_INVERSION_ENABLED,
+                Settings.Secure.DOZE_ON_CHARGE_NOW);
     }
 
     public void dump(PrintWriter pw) {
