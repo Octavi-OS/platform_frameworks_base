@@ -57,7 +57,8 @@ public class AmbientDisplayConfiguration {
                 || pickupGestureEnabled(user)
                 || tapGestureEnabled(user)
                 || doubleTapGestureEnabled(user)
-                || isAmbientTickerEnabled(user);
+                || isAmbientTickerEnabled(user)
+                || alwaysOnAmbientLightEnabled(user);
     }
 
     /** {@hide} */
@@ -165,7 +166,7 @@ public class AmbientDisplayConfiguration {
     @TestApi
     public boolean alwaysOnEnabled(int user) {
         return (boolSetting(Settings.Secure.DOZE_ALWAYS_ON, user, mAlwaysOnByDefault ? 1 : 0) ||
-                boolSetting(Settings.Secure.DOZE_ON_CHARGE_NOW, user, 0) || alwaysOnAmbientLightEnabled(user))
+                boolSetting(Settings.Secure.DOZE_ON_CHARGE_NOW, user, 0))
                 && alwaysOnAvailable() && !accessibilityInversionEnabled(user);
     }
 
@@ -239,7 +240,7 @@ public class AmbientDisplayConfiguration {
         final boolean ambientLightsEnabled = boolSettingSystem(Settings.System.AOD_NOTIFICATION_PULSE, user, 0);
         if (ambientLightsEnabled) {
             boolean ambientLightsActivated = boolSettingSystem(Settings.System.AOD_NOTIFICATION_PULSE_ACTIVATED, user, 0);
-            return ambientLightsActivated && !accessibilityInversionEnabled(user) && alwaysOnAvailable();
+            return ambientLightsActivated && alwaysOnEnabled(user);
         }
         return false;
     }
