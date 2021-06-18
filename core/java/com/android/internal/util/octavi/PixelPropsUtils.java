@@ -29,14 +29,23 @@ public class PixelPropsUtils {
     private static final boolean DEBUG = false;
 
     private static final Map<String, Object> propsToChange;
+    private static final Map<String, Object> propsToChangePixel3;
 
     private static final String[] packagesToChange = {
+            "com.google.android.gms",
+            "com.breel.wallpapers20",
+            "com.google.android.apps.customization.pixel",
+            "com.google.android.apps.maps",
+            "com.google.android.apps.photos",
             "com.google.android.apps.safetyhub",
+            "com.google.android.apps.subscriptions.red",
             "com.google.android.apps.turbo",
             "com.google.android.apps.turboadapter",
             "com.google.android.apps.wallpaper",
-            "com.google.android.apps.maps",
-            "com.google.android.gms"
+            "com.google.android.apps.wallpaper.pixel",
+            "com.google.android.as",
+            "com.google.pixel.dynamicwallpapers",
+            "com.google.pixel.livewallpaper"
     };
 
     static {
