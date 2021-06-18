@@ -52,6 +52,10 @@ public class PixelPropsUtils {
             "com.google.pixel.livewallpaper"
     };
 
+    private static final String[] packagesToChangePixel3 = {
+        "com.google.android.googlequicksearchbox"
+    };
+
     static {
         propsToChange = new HashMap<>();
         propsToChange.put("BRAND", "google");
@@ -60,14 +64,16 @@ public class PixelPropsUtils {
         propsToChange.put("PRODUCT", "redfin");
         propsToChange.put("MODEL", "Pixel 5");
         propsToChange.put("FINGERPRINT", "google/redfin/redfin:11/RQ2A.210505.003/7255357:user/release-keys");
+        propsToChangePixel3 = new HashMap<>();
+        propsToChangePixel3.put("MODEL", "Pixel 3 XL");
     }
 
     public static void setProps(String packageName) {
-        if (packageName == null){
+        if (packageName == null) {
             return;
         }
         if (Arrays.asList(packagesToChange).contains(packageName)){
-            if (DEBUG){
+            if (DEBUG) {
                 Log.d(TAG, "Defining props for: " + packageName);
             }
             for (Map.Entry<String, Object> prop : propsToChange.entrySet()) {
@@ -76,15 +82,25 @@ public class PixelPropsUtils {
                 setPropValue(key, value);
             }
         }
+        if (Arrays.asList(packagesToChangePixel3).contains(packageName)) {
+            if (DEBUG) {
+                Log.d(TAG, "Defining props for: " + packageName);
+            }
+            for (Map.Entry<String, Object> prop : propsToChangePixel3.entrySet()) {
+                String key = prop.getKey();
+                Object value = prop.getValue();
+                setPropValue(key, value);
+            }
+        }
         // Set proper indexing fingerprint
-        if (packageName.equals("com.google.android.settings.intelligence")){
+        if (packageName.equals("com.google.android.settings.intelligence")) {
             setPropValue("FINGERPRINT", Build.FINGERPRINT);
         }
     }
 
-    private static void setPropValue(String key, Object value){
+    private static void setPropValue(String key, Object value) {
         try {
-            if (DEBUG){
+            if (DEBUG) {
                 Log.d(TAG, "Defining prop " + key + " to " + value.toString());
             }
             Field field = Build.class.getDeclaredField(key);
