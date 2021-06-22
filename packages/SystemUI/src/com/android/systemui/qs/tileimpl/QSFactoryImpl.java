@@ -50,6 +50,7 @@ import com.android.systemui.qs.tiles.LocationTile;
 import com.android.systemui.qs.tiles.MonoToggleTile;
 import com.android.systemui.qs.tiles.NfcTile;
 import com.android.systemui.qs.tiles.NightDisplayTile;
+import com.android.systemui.qs.tiles.PowerMenuTile;
 import com.android.systemui.qs.tiles.RebootTile;
 import com.android.systemui.qs.tiles.RotationLockTile;
 import com.android.systemui.qs.tiles.ScreenRecordTile;
@@ -112,6 +113,7 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<FPSInfoTile> mFPSInfoTileProvider;
     private final Provider<SmartPixelsTile> mSmartPixelsTileProvider;
     private final Provider<SyncTile> mSyncTileProvider;
+    private final Provider<PowerMenuTile> mPowerMenuTileProvider;
 
     private final Lazy<QSHost> mQsHostLazy;
 
@@ -153,7 +155,8 @@ public class QSFactoryImpl implements QSFactory {
             Provider<CPUInfoTile> cpuInfoTileProvider,
             Provider<FPSInfoTile> fpsInfoTileProvider,
             Provider<SmartPixelsTile> smartPixelsTileProvider,
-            Provider<SyncTile> syncTileProvider) {
+            Provider<SyncTile> syncTileProvider,
+            Provider<PowerMenuTile> powerMenuTileProvider) {
         mQsHostLazy = qsHostLazy;
         mWifiTileProvider = wifiTileProvider;
         mBluetoothTileProvider = bluetoothTileProvider;
@@ -192,6 +195,7 @@ public class QSFactoryImpl implements QSFactory {
         mFPSInfoTileProvider = fpsInfoTileProvider;
         mSmartPixelsTileProvider = smartPixelsTileProvider;
         mSyncTileProvider = syncTileProvider;
+        mPowerMenuTileProvider = powerMenuTileProvider;
     }
 
     public QSTile createTile(String tileSpec) {
@@ -277,6 +281,8 @@ public class QSFactoryImpl implements QSFactory {
                 return mSmartPixelsTileProvider.get();
             case "sync":
                 return mSyncTileProvider.get();
+            case "powermenu":
+                return mPowerMenuTileProvider.get();
         }
 
         // Custom tiles
