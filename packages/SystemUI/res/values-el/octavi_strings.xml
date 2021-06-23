@@ -53,21 +53,6 @@
     <string name="accessibility_quick_settings_hwkeys_on">Πλήκτρα HW ενεργά</string>
     <string name="accessibility_quick_settings_hwkeys_off">Πλήκτρα HW ανενεργά</string>
     <string name="quick_settings_hwkeys_label">Πλήκτρα HW</string>
-    <!-- Advanced restart -->
-    <string name="global_action_reboot">Επανεκκίνηση</string>
-    <string name="global_action_reboot_system">Σύστημα</string>
-    <string name="global_action_reboot_progress">Επανεκκινεί στο σύστημα...\u2026</string>
-    <string name="global_action_reboot_recovery">Ανάκτηση</string>
-    <string name="global_action_reboot_recovery_progress">Επανεκκινεί στην ανάκτηση...\u2026</string>
-    <string name="global_action_reboot_hot">Άμμεση</string>
-    <string name="global_action_reboot_bootloader">Εκκινητής</string>
-    <string name="global_action_reboot_bootloader_progress">Επανεκκινεί στον εκκινητή...\u2026</string>
-    <string name="global_action_reboot_fastboot">Fastboot</string>
-    <string name="global_action_reboot_fastboot_progress">Επανεκκινεί σε fastboot...\u2026</string>
-    <string name="global_action_settings">Ρυθμίσεις</string>
-    <string name="global_action_screenshot">Απόσπ.Οθόνης</string>
-    <string name="global_action_screenrecord">Εγγρ.Οθόνης</string>
-    <string name="global_action_flashlight">Φακός</string>
     <!-- Label for current user in power menu options dialog -->
     <string name="global_action_current_user">Τωρινός</string>
     <!-- Advance location quick setting tile -->
@@ -168,4 +153,19 @@
     <string name="usage_data">σε χρήση</string>
     <string name="usage_wifi_prefix">Wi-Fi</string>
     <string name="usage_data_prefix">Δεδομένα</string>
+    <!-- Power Menu -->
+    <string name="global_action_restart_advanced">Προηγμένη εκκίνηση</string>
+    <string name="global_action_restart_recovery">Ανάκτηση</string>
+    <string name="global_action_restart_bootloader">Εκκινητής</string>
+    <string name="global_action_restart_ui">ΣύστημαUI</string>
+    <string name="global_action_screenrecord">Εγγρ.Οθόνης</string>
+    <string name="global_action_flashlight">Φακός</string>
+    <!-- App picker manifest entry -->
+    <string name="app_picker_dialog_title">Επιλέξτε μια εφαρμογή</string>
+    <string name="app_picker_activity_select_title">Επιλέξτε δραστηριότητα</string>
+    <!-- Kill app -->
+    <string name="task_helper_app_killed">%1$s αναγκαστικό κλείσιμο</string>
+    <string name="empty_app_killed">Εφαρμογή</string>
+    <!-- Power menu QS tile -->
+    <string name="quick_settings_power_menu_label">Μενού ενέργειας</string>
 </resources>
