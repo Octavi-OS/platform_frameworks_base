@@ -53,21 +53,6 @@
     <string name="accessibility_quick_settings_hwkeys_on">Bật phím cứng</string>
     <string name="accessibility_quick_settings_hwkeys_off">Tắt phím cứng</string>
     <string name="quick_settings_hwkeys_label">Phím cứng</string>
-    <!-- Advanced restart -->
-    <string name="global_action_reboot">Khởi động lại</string>
-    <string name="global_action_reboot_system">Hệ thống</string>
-    <string name="global_action_reboot_progress">Đang khởi động lại\u2026</string>
-    <string name="global_action_reboot_recovery">Chế độ khôi phục</string>
-    <string name="global_action_reboot_recovery_progress">Đang khởi động vào chế độ phục hồi\u2026</string>
-    <string name="global_action_reboot_hot">Nhanh</string>
-    <string name="global_action_reboot_bootloader">Chế độ bootloader</string>
-    <string name="global_action_reboot_bootloader_progress">Đang khởi động lại vào chế độ bootloader\u2026</string>
-    <string name="global_action_reboot_fastboot">Khởi động nhanh</string>
-    <string name="global_action_reboot_fastboot_progress">Đang khởi động lại vào chế độ fastbootd\u2026</string>
-    <string name="global_action_settings">Cài đặt</string>
-    <string name="global_action_screenshot">Chụp màn hình</string>
-    <string name="global_action_screenrecord">Quay màn hình</string>
-    <string name="global_action_flashlight">Đèn pin</string>
     <!-- Label for current user in power menu options dialog -->
     <string name="global_action_current_user">Hiện tại</string>
     <!-- Advance location quick setting tile -->
@@ -168,4 +153,19 @@
     <string name="usage_data">Đã sử dụng</string>
     <string name="usage_wifi_prefix">Wi-Fi</string>
     <string name="usage_data_prefix">Dữ liệu</string>
+    <!-- Power Menu -->
+    <string name="global_action_restart_advanced">Nâng cao</string>
+    <string name="global_action_restart_recovery">Chế độ phục hồi</string>
+    <string name="global_action_restart_bootloader">Trình nạp khởi động</string>
+    <string name="global_action_restart_ui">Hệ thống</string>
+    <string name="global_action_screenrecord">Quay màn hình</string>
+    <string name="global_action_flashlight">Đèn pin</string>
+    <!-- App picker manifest entry -->
+    <string name="app_picker_dialog_title">Chọn ứng dụng</string>
+    <string name="app_picker_activity_select_title">Chọn hoạt động</string>
+    <!-- Kill app -->
+    <string name="task_helper_app_killed">%1$s buộc dừng</string>
+    <string name="empty_app_killed">Ứng dụng</string>
+    <!-- Power menu QS tile -->
+    <string name="quick_settings_power_menu_label">Menu nguồn</string>
 </resources>
