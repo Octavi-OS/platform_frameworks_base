@@ -490,7 +490,7 @@ public class BatteryMeterView extends LinearLayout implements
                                     || (mBatteryPercentCharging && mCharging)
                                     || mShowPercentMode == MODE_ON
                                     || mShowPercentMode == MODE_ESTIMATE
-                                    || !mBatteryStateUnknown;
+                                    && !mBatteryStateUnknown;
 
         if (showPercent) {
             mDrawable.setShowPercent(false);
