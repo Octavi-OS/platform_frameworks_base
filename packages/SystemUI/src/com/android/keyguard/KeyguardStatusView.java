@@ -391,7 +391,7 @@ public class KeyguardStatusView extends GridLayout implements
 
     private int getLockDateFont() {
         return Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.LOCK_DATE_FONTS, 32);
+                Settings.System.LOCK_DATE_FONTS, 0);
     }
 
     private int getOwnerInfoFont() {
