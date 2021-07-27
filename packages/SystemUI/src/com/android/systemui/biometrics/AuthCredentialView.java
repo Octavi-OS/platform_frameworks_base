@@ -242,7 +242,7 @@ public abstract class AuthCredentialView extends LinearLayout {
             setTextOrHide(mDescriptionView, getDescription(mBiometricPromptBundle));
         } else {
             setText(mTitleView, title);
-            setTextOrHide(mDescriptionView, credText));
+            setTextOrHide(mDescriptionView, credText);
         }
         announceForAccessibility(title);
 
