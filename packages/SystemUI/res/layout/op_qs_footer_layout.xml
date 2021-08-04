@@ -24,6 +24,7 @@
     android:layout_marginTop="-12dp"
     android:layout_marginEnd="@dimen/qs_footer_margin"
     android:layout_marginBottom="-8dp"
+    android:layoutDirection = "ltr"
     android:background="@android:color/transparent"
     android:clickable="false"
     android:clipChildren="false"
