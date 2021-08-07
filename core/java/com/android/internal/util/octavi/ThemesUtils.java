@@ -16,14 +16,32 @@
 
 package com.android.internal.util.octavi;
 
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.ContentResolver;
+import android.content.pm.ProviderInfo;
+import android.database.Cursor;
+import com.android.internal.util.octavi.clock.ClockFace;
+import android.net.Uri;
 import android.content.om.IOverlayManager;
 import android.content.om.OverlayInfo;
 import android.os.RemoteException;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
 public class ThemesUtils {
 
     public static final String TAG = "ThemesUtils";
+
+    private Context mContext;
+
+     public ThemesUtils(Context context) {
+        mContext = context;
+    }
 
     // Switch themes
     private static final String[] SWITCH_THEMES = {
@@ -82,5 +100,38 @@ public class ThemesUtils {
                 e.printStackTrace();
             }
         }
+    }
+
+    public List<ClockFace> getClocks() {
+        ProviderInfo providerInfo = mContext.getPackageManager().resolveContentProvider("com.android.keyguard.clock",
+                        PackageManager.MATCH_SYSTEM_ONLY);
+
+        Uri optionsUri = new Uri.Builder()
+                .scheme(ContentResolver.SCHEME_CONTENT)
+                .authority(providerInfo.authority)
+                .appendPath("list_options")
+                .build();
+
+        ContentResolver resolver = mContext.getContentResolver();
+        List<ClockFace> clocks = new ArrayList<>();
+        try (Cursor c = resolver.query(optionsUri, null, null, null, null)) {
+            while(c.moveToNext()) {
+                String id = c.getString(c.getColumnIndex("id"));
+                String title = c.getString(c.getColumnIndex("title"));
+                String previewUri = c.getString(c.getColumnIndex("preview"));
+                Uri preview = Uri.parse(previewUri);
+                String thumbnailUri = c.getString(c.getColumnIndex("thumbnail"));
+                Uri thumbnail = Uri.parse(thumbnailUri);
+
+                ClockFace.Builder builder = new ClockFace.Builder();
+                builder.setId(id).setTitle(title).setPreview(preview).setThumbnail(thumbnail);
+                clocks.add(builder.build());
+            }
+        } catch (Exception e) {
+            clocks = null;
+        } finally {
+            // Do Nothing
+        }
+        return clocks;
     }
 }
