@@ -532,7 +532,7 @@ class MediaCarouselController @Inject constructor(
 
         private fun update() {
             backgroundArtwork = Settings.System.getInt(contentResolver,
-                Settings.System.ARTWORK_MEDIA_BACKGROUND, 0) == 1;
+                Settings.System.ARTWORK_MEDIA_BACKGROUND, 1) == 1;
             artworkFadeLevel = Settings.System.getInt(contentResolver,
                 Settings.System.ARTWORK_MEDIA_FADE_LEVEL, 30);
         }
