@@ -59,6 +59,7 @@ LOCAL_REQUIRED_MODULES := \
         FontNovaSourceOverlay \
         FontTaurusSourceOverlay \
         FontTechnicalSourceOverlay \
+        FontMontserratSourceOverlay \
 	IconPackCircularAndroidOverlay \
 	IconPackCircularLauncherOverlay \
 	IconPackCircularSettingsOverlay \
