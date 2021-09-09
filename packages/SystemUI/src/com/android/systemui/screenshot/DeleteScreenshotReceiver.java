@@ -26,7 +26,9 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.widget.Toast;
 
+import com.android.systemui.R;
 import com.android.systemui.dagger.qualifiers.Background;
 
 import java.util.concurrent.Executor;
@@ -55,7 +57,8 @@ public class DeleteScreenshotReceiver extends BroadcastReceiver {
         }
 
         // Clear the notification when the image is deleted
-            ScreenshotNotificationsController.cancelScreenshotNotification(context);
+        ScreenshotNotificationsController.cancelScreenshotNotification(context);
+        Toast.makeText(context, R.string.delete_screenshot_toast, Toast.LENGTH_SHORT).show();
 
         // And delete the image from the media store
         final Uri uri = Uri.parse(intent.getStringExtra(SCREENSHOT_URI_ID));
