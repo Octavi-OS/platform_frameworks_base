@@ -3885,7 +3885,7 @@ public class StatusBar extends SystemUI implements DemoMode,
         int brighthnessSliderStyle = Settings.System.getInt(mContext.getContentResolver(),
                  Settings.System.BRIGHTNESS_SLIDER_STYLE, 0);
 
-	stockBrightnessSliderStyles();
+	stockBrightnessSliderStyle();
 	if (brighthnessSliderStyle>0){
 	try {
                 mOverlayManager.setEnabled(BRIGHTNESS_SLIDER_THEMES[brighthnessSliderStyle-1],

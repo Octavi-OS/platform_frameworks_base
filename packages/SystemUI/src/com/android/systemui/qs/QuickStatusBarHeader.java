@@ -111,6 +111,10 @@ import javax.inject.Named;
 
 import com.android.settingslib.Utils;
 
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
