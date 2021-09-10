@@ -234,10 +234,6 @@ public class AndroidSClockController implements ClockPlugin {
         previewClock.setFormat24Hour("kk\nmm");
         previewTitle.setText(new SimpleDateFormat("EEE, MMM d", Locale.getDefault()).format(new Date()));
 
-        ColorExtractor.GradientColors colors = mColorExtractor.getColors(
-                WallpaperManager.FLAG_LOCK);
-        mPalette.setColorPalette(colors.supportsDarkText(), colors.getColorPalette());
-
         int color = getTextColor();
         previewClock.setTextColor(color);
         previewTitle.setTextColor(color);
