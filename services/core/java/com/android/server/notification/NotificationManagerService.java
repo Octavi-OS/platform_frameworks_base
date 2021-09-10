@@ -188,6 +188,7 @@ import android.os.RemoteException;
 import android.os.ResultReceiver;
 import android.os.ServiceManager;
 import android.os.ShellCallback;
+import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.os.Trace;
 import android.os.UserHandle;
@@ -225,6 +226,7 @@ import android.util.Pair;
 import android.util.Slog;
 import android.util.SparseArray;
 import android.util.StatsEvent;
+import android.util.TimeUtils;
 import android.util.Xml;
 import android.util.proto.ProtoOutputStream;
 import android.view.accessibility.AccessibilityEvent;
@@ -299,6 +301,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Set;
@@ -482,6 +485,7 @@ public class NotificationManagerService extends SystemService {
     @GuardedBy("mNotificationLock")
     final ArrayMap<NotificationRecord, ArrayList<CancelNotificationRunnable>> mDelayedCancelations =
             new ArrayMap<>();
+    final ArrayMap<String, Long> mLastSoundTimestamps = new ArrayMap<>();
 
     private KeyguardManager mKeyguardManager;
 
@@ -3120,6 +3124,19 @@ public class NotificationManagerService extends SystemService {
             handleSavePolicyFile();
         }
 
+        @Override
+        public void setNotificationSoundTimeout(String pkg, int uid, long timeout) {
+            checkCallerIsSystem();
+            mPreferencesHelper.setNotificationSoundTimeout(pkg, uid, timeout);
+            handleSavePolicyFile();
+        }
+
+        @Override
+        public long getNotificationSoundTimeout(String pkg, int uid) {
+            checkCallerIsSystem();
+            return mPreferencesHelper.getNotificationSoundTimeout(pkg, uid);
+        }
+
         /**
          * Updates the enabled state for notifications for the given package (and uid).
          * Additionally, this method marks the app importance as locked by the user, which
@@ -5622,6 +5639,14 @@ public class NotificationManagerService extends SystemService {
                 pw.println("\n  Usage Stats:");
                 mUsageStats.dump(pw, "    ", filter);
             }
+
+            long now = SystemClock.elapsedRealtime();
+            pw.println("\n  Last notification sound timestamps:");
+            for (Map.Entry<String, Long> entry : mLastSoundTimestamps.entrySet()) {
+                pw.print("    " + entry.getKey() + " -> ");
+                TimeUtils.formatDuration(entry.getValue(), now, pw);
+                pw.println(" ago");
+            }
         }
     }
 
@@ -6987,7 +7012,8 @@ public class NotificationManagerService extends SystemService {
                         || (mAudioManager.getRingerModeInternal()
                         == AudioManager.RINGER_MODE_VIBRATE));
                 boolean hasAudibleAlert = hasValidSound || hasValidVibrate;
-                if (hasAudibleAlert && !shouldMuteNotificationLocked(record)) {
+                if (hasAudibleAlert && !shouldMuteNotificationLocked(record)
+                        && !isInSoundTimeoutPeriod(record)) {
                     if (!sentAccessibilityEvent) {
                         sendAccessibilityEvent(record);
                         sentAccessibilityEvent = true;
@@ -7040,6 +7066,10 @@ public class NotificationManagerService extends SystemService {
             blink = true;
         } else if (wasShowLights) {
             updateLightsLocked();
+        }
+        if (buzz || beep) {
+            mLastSoundTimestamps.put(generateLastSoundTimeoutKey(record),
+                    SystemClock.elapsedRealtime());
         }
         final int buzzBeepBlink = (buzz ? 1 : 0) | (beep ? 2 : 0) | (blink ? 4 : 0);
         if (buzzBeepBlink > 0) {
@@ -7126,6 +7156,24 @@ public class NotificationManagerService extends SystemService {
         } else {
             mNotificationLight.turnOff();
         }
+    }
+
+    private boolean isInSoundTimeoutPeriod(NotificationRecord record) {
+        long timeoutMillis = mPreferencesHelper.getNotificationSoundTimeout(
+                record.getSbn().getPackageName(), record.getSbn().getUid());
+        if (timeoutMillis == 0) {
+            return false;
+        }
+
+        Long value = mLastSoundTimestamps.get(generateLastSoundTimeoutKey(record));
+        if (value == null) {
+            return false;
+        }
+        return SystemClock.elapsedRealtime() - value < timeoutMillis;
+    }
+
+    private String generateLastSoundTimeoutKey(NotificationRecord record) {
+        return record.getSbn().getPackageName() + "|" + record.getSbn().getUid();
     }
 
     @GuardedBy("mNotificationLock")
