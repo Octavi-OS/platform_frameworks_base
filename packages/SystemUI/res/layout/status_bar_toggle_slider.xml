@@ -42,6 +42,7 @@
         android:paddingBottom="16dp"
         android:thumb="@drawable/ic_brightness_thumb"
         android:progressDrawable="@drawable/brightness_progress_drawable"
+        android:background="@android:color/transparent"
         android:splitTrack="false"
         />
     <TextView
