@@ -720,6 +720,9 @@ public class KeyguardStatusView extends GridLayout implements
         boolean isPrimary = UserHandle.getCallingUserId() == UserHandle.USER_OWNER;
         int ownerInfoSize = isPrimary ? getOwnerInfoSize() : 21;
 
+        if (mOwnerInfo == null){
+          return;
+        }
         if (ownerInfoSize == 10) {
         mOwnerInfo.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                 getResources().getDimensionPixelSize(R.dimen.lock_date_font_size_10));
@@ -776,6 +779,9 @@ public class KeyguardStatusView extends GridLayout implements
         boolean isPrimary = UserHandle.getCallingUserId() == UserHandle.USER_OWNER;
         int ownerinfoFont = isPrimary ? getOwnerInfoFont() : 0;
 
+        if (mOwnerInfo == null){
+          return;
+        }
         if (ownerinfoFont == 0) {
             mOwnerInfo.setTypeface(Typeface.create("sans-serif", Typeface.NORMAL));
         }
@@ -1378,6 +1384,9 @@ public class KeyguardStatusView extends GridLayout implements
     }
 
     private void UpdateFPIcon() {
+       if (fpIcon == null) {
+         return;
+       }
         mHasFod = FodUtils.hasFodSupport(mContext);
         final ContentResolver resolver = getContext().getContentResolver();
         final Resources res = getContext().getResources();
