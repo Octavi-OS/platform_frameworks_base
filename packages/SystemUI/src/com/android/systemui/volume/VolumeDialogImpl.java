@@ -1076,9 +1076,8 @@ public class VolumeDialogImpl implements VolumeDialog,
                     AccessibilityManager.FLAG_CONTENT_TEXT
                             | AccessibilityManager.FLAG_CONTENT_CONTROLS);
         }
-        int volumeDialogTimeout = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.VOLUME_DIALOG_TIMEOUT, 3000);
-        return volumeDialogTimeout;
+        return mAccessibilityMgr.getRecommendedTimeoutMillis(DIALOG_TIMEOUT_MILLIS,
+                AccessibilityManager.FLAG_CONTENT_CONTROLS);
     }
 
     protected void dismissH(int reason) {
