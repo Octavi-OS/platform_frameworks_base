@@ -34,7 +34,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.util.Slog;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
@@ -56,7 +55,6 @@ import com.android.systemui.Dependency;
 import com.android.systemui.R;
 import com.android.systemui.Interpolators;
 import com.android.systemui.omni.CurrentWeatherView;
-import com.android.systemui.statusbar.phone.NotificationIconContainer;
 import com.android.systemui.statusbar.policy.ConfigurationController;
 
 import java.io.FileDescriptor;
@@ -212,10 +210,6 @@ public class KeyguardStatusView extends GridLayout implements
         return mClockView.hasCustomClock();
     }
 
-    public boolean isTypeClock() {
-        return mClockView.isTypeClock();
-    }
-
     /**
      * Set whether or not the lock screen is showing notifications.
      */
@@ -305,9 +299,6 @@ public class KeyguardStatusView extends GridLayout implements
      * Moves clock, adjusting margins when slice content changes.
      */
     private void onSliceContentChanged() {
-        if (mNotificationIcons != null)
-            mNotificationIcons.setCenter(isTypeClock() ? false : true);
-
         final boolean hasHeader = mKeyguardSlice.hasHeader();
         mClockView.setKeyguardShowingHeader(hasHeader);
         if (mShowingHeader == hasHeader) {
@@ -319,7 +310,8 @@ public class KeyguardStatusView extends GridLayout implements
             MarginLayoutParams params = (MarginLayoutParams) mNotificationIcons.getLayoutParams();
             params.setMargins(params.leftMargin,
                     hasHeader ? mIconTopMarginWithHeader : mIconTopMargin,
-                    params.rightMargin, params.bottomMargin);
+                    params.rightMargin,
+                    params.bottomMargin);
             mNotificationIcons.setLayoutParams(params);
         }
         refreshLockDateFont();
@@ -587,7 +579,6 @@ public class KeyguardStatusView extends GridLayout implements
             }
         }
         mOwnerInfo.setText(info);
-        mOwnerInfo.setGravity(isTypeClock() ? Gravity.START : Gravity.CENTER_HORIZONTAL);
         updateDark();
     }
 

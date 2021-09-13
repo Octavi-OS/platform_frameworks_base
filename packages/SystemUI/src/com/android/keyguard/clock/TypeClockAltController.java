@@ -104,8 +104,7 @@ public class TypeClockAltController implements ClockPlugin {
         mStatusBarHeight = res.getDimensionPixelSize(R.dimen.status_bar_height);
         mKeyguardLockPadding = res.getDimensionPixelSize(R.dimen.keyguard_lock_padding);
         mKeyguardLockHeight = res.getDimensionPixelSize(R.dimen.keyguard_lock_height);
-        mBurnInOffsetY = res.getBoolean(com.android.internal.R.bool.config_enableBurnInProtection) ?
-                             res.getDimensionPixelSize(R.dimen.burn_in_prevention_offset_y) : 0;
+        mBurnInOffsetY = res.getDimensionPixelSize(R.dimen.burn_in_prevention_offset_y);
     }
 
     private void createViews() {
