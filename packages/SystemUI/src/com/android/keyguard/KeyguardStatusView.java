@@ -212,10 +212,6 @@ public class KeyguardStatusView extends GridLayout implements
         return mClockView.hasCustomClock();
     }
 
-    public boolean isTypeClock() {
-        return mClockView.isTypeClock();
-    }
-
     /**
      * Set whether or not the lock screen is showing notifications.
      */
@@ -305,9 +301,6 @@ public class KeyguardStatusView extends GridLayout implements
      * Moves clock, adjusting margins when slice content changes.
      */
     private void onSliceContentChanged() {
-        if (mNotificationIcons != null)
-            mNotificationIcons.setCenter(isTypeClock() ? false : true);
-
         final boolean hasHeader = mKeyguardSlice.hasHeader();
         mClockView.setKeyguardShowingHeader(hasHeader);
         if (mShowingHeader == hasHeader) {
@@ -319,7 +312,8 @@ public class KeyguardStatusView extends GridLayout implements
             MarginLayoutParams params = (MarginLayoutParams) mNotificationIcons.getLayoutParams();
             params.setMargins(params.leftMargin,
                     hasHeader ? mIconTopMarginWithHeader : mIconTopMargin,
-                    params.rightMargin, params.bottomMargin);
+                    params.rightMargin,
+                    params.bottomMargin);
             mNotificationIcons.setLayoutParams(params);
         }
         refreshLockDateFont();
@@ -587,7 +581,6 @@ public class KeyguardStatusView extends GridLayout implements
             }
         }
         mOwnerInfo.setText(info);
-        mOwnerInfo.setGravity(isTypeClock() ? Gravity.START : Gravity.CENTER_HORIZONTAL);
         updateDark();
     }
 
