@@ -96,6 +96,7 @@
     <!-- Screenrecorder -->
     <string name="screenrecord_stopdot_label">Tampilkan titik berhenti\nTekan lama untuk memindahkannya</string>
     <string name="screenrecord_lowquality_label">Kualitas lebih rendah untuk ukuran file yang lebih kecil</string>
+    <string name="screenrecord_longer_timeout_switch_label">Batas ukuran file lebih besar\nBatasi ukuran perekaman hingga 15 GB</string>
     <!-- Heads Up QS Tile -->
     <string name="quick_settings_heads_up_label">Notifikasi mengambang</string>
     <string name="accessibility_quick_settings_heads_up_off">Notifikasi mengambang mati.</string>
@@ -134,12 +135,7 @@
     <string name="quick_settings_smart_pixels">Piksel Cerdas</string>
     <string name="quick_settings_smart_pixels_on_power_save">Otomatis hidupkan Piksel Cerdas</string>
     <!-- App Lock -->
-    <string name="applock_locked">&#160;terkunci</string>
-    <string name="applock_fingerprint_face">, sidik jari atau wajah Anda untuk membuka kunci</string>
-    <string name="applock_face">&#160;atau wajah Anda untuk membuka kunci</string>
-    <string name="applock_fingerprint">&#160;atau sidik jari Anda untuk membuka kunci</string>
-    <string name="applock_credential">&#160;untuk membuka</string>
-    <string name="applock_unlock">Buka</string>
+    <string name="applock_unlock">Buka kunci aplikasi</string>
     <!-- Biometric Dialog - Use Face -->
     <string name="biometric_dialog_button_use_face">Gunakan Wajah</string>
     <string name="date_long_title_today">Hari ini %s</string>
@@ -176,4 +172,14 @@
     <string name="accessibility_quick_settings_reading_mode_changed_off">Mode membaca dinonaktifkan.</string>
     <!-- Anti flicker QS tile -->
     <string name="quick_settings_anti_flicker">Anti kerlip</string>
+    <!-- Screenshot Delete Toast -->
+    <string name="delete_screenshot_toast">Tangkapan layar dihapus</string>
+    <!-- Screen pinning dialog description. (for devices without navbar) -->
+    <string name="screen_pinning_description_no_navbar">Hal ini membuatnya tetap dalam pandangan sampai Anda melepas sematan. Sentuh &amp; tahan tombol Kembali untuk melepas sematan.</string>
+    <!-- Notify use that they are in Lock-to-app (for devices without navbar)-->
+    <string name="screen_pinning_toast_no_navbar">Untuk melepaskan sematan layar ini, sentuh &amp; tahan tombol Kembali</string>
+    <!-- Screen pinning dialog description. (for devices without navbar and with gestures on fingerprint sensor) -->
+    <string name="screen_pinning_description_no_navbar_fpsensor">Hal ini membuatnya tetap ditampilkan sampai Anda melepas sematan. Sentuh &amp; tahan pemindai sidik jari untuk melepas sematan.</string>
+    <!-- Notify use that they are in Lock-to-app (for devices without navbar and with gestures on fingerprint sensor)-->
+    <string name="screen_pinning_toast_no_navbar_fpsensor">Untuk melepas sematan pada layar ini, sentuh &amp; tahan pemindai sidik jari</string>
 </resources>
