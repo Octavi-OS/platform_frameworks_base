@@ -96,6 +96,7 @@
     <!-- Screenrecorder -->
     <string name="screenrecord_stopdot_label">Hiện chấm dừng\nNhấn giữ để di chuyển nó</string>
     <string name="screenrecord_lowquality_label">Chất lượng thấp cho dung lượng nhỏ hơn</string>
+    <string name="screenrecord_longer_timeout_switch_label">Giới hạn kích thước tệp lớn hơn\nKích thước bản ghi giới hạn ở 15 GB</string>
     <!-- Heads Up QS Tile -->
     <string name="quick_settings_heads_up_label">Thông báo nổi trên cùng màn hình</string>
     <string name="accessibility_quick_settings_heads_up_off">Tắt thông báo nổi</string>
@@ -134,12 +135,7 @@
     <string name="quick_settings_smart_pixels">Điểm ảnh thông minh</string>
     <string name="quick_settings_smart_pixels_on_power_save">Tự động bật điểm ảnh thông minh</string>
     <!-- App Lock -->
-    <string name="applock_locked">&#160;đã khóa</string>
-    <string name="applock_fingerprint_face">, vân tay hoặc khuôn mặt để mở khóa</string>
-    <string name="applock_face">&#160;hoặc sử dụng khuôn mặt để mở khóa</string>
-    <string name="applock_fingerprint">&#160;hoặc vân tay của bạn để mở khoá</string>
-    <string name="applock_credential">&#160;để mở khóa</string>
-    <string name="applock_unlock">Mở khóa</string>
+    <string name="applock_unlock">Mở khóa ứng dụng</string>
     <!-- Biometric Dialog - Use Face -->
     <string name="biometric_dialog_button_use_face">Sử dụng khuôn mặt</string>
     <string name="date_long_title_today">Hôm nay là %s</string>
@@ -176,4 +172,14 @@
     <string name="accessibility_quick_settings_reading_mode_changed_off">Chế độ đọc đã được tắt.</string>
     <!-- Anti flicker QS tile -->
     <string name="quick_settings_anti_flicker">Chống nhấp nháy</string>
+    <!-- Screenshot Delete Toast -->
+    <string name="delete_screenshot_toast">Đã xóa ảnh chụp màn hình</string>
+    <!-- Screen pinning dialog description. (for devices without navbar) -->
+    <string name="screen_pinning_description_no_navbar">Thao tác này sẽ duy trì hiển thị màn hình cho đến khi bạn bỏ ghim. Chạm &amp; giữ Quay lại để bỏ ghim.</string>
+    <!-- Notify use that they are in Lock-to-app (for devices without navbar)-->
+    <string name="screen_pinning_toast_no_navbar">Để bỏ ghim màn hình này, chạm &amp; giữ nút Quay lại</string>
+    <!-- Screen pinning dialog description. (for devices without navbar and with gestures on fingerprint sensor) -->
+    <string name="screen_pinning_description_no_navbar_fpsensor">Thao tác này sẽ duy trì hiển thị màn hình cho đến khi bạn bỏ ghim. Chạm &amp; giữ cảm biến vân tay để bỏ ghim.</string>
+    <!-- Notify use that they are in Lock-to-app (for devices without navbar and with gestures on fingerprint sensor)-->
+    <string name="screen_pinning_toast_no_navbar_fpsensor">Để bỏ ghim màn hình này, chạm &amp; giữ cảm biến vân tay</string>
 </resources>
