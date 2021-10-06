@@ -489,8 +489,6 @@ public class NotificationManagerService extends SystemService {
 
     private KeyguardManager mKeyguardManager;
 
-    private KeyguardManager mKeyguardManager;
-
     // The last key in this list owns the hardware.
     ArrayList<String> mLights = new ArrayList<>();
 
