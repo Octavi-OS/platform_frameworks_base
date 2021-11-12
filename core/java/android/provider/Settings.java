@@ -5876,13 +5876,6 @@ public final class Settings {
         public static final String THREE_FINGER_GESTURE = "three_finger_gesture";
 
         /**
-         * Whether to scramble a pin unlock layout
-         * @hide
-         */
-        public static final String LOCKSCREEN_PIN_SCRAMBLE_LAYOUT =
-                "lockscreen_scramble_pin_layout";
-
-        /**
          * These are all public system settings
          *
          * @hide
