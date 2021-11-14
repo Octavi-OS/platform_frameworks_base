@@ -286,9 +286,10 @@ oneway interface IStatusBar
     void runGcForTest();
 
     /**
-     * Aex
+     * Octavi
      */
     void toggleCameraFlash();
     void toggleCameraFlashState(boolean enable);
+    void killForegroundApp();
 
 }
