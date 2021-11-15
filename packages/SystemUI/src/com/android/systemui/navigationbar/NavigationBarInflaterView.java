@@ -551,6 +551,9 @@ public class NavigationBarInflaterView extends FrameLayout
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.GESTURE_NAVBAR_LENGTH),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.GESTURE_NAVBAR_RADIUS),
+                    false, this, UserHandle.USER_ALL);
         }
 
         void stop() {
@@ -561,6 +564,11 @@ public class NavigationBarInflaterView extends FrameLayout
         public void onChange(boolean selfChange, Uri uri) {
             if (uri.equals(Settings.System.getUriFor(
                     Settings.System.GESTURE_NAVBAR_LENGTH))) {
+                clearViews();
+                inflateLayout(getDefaultLayout());
+            }
+            if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.GESTURE_NAVBAR_RADIUS))) {
                 clearViews();
                 inflateLayout(getDefaultLayout());
             }
