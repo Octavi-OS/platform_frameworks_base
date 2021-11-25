@@ -117,6 +117,7 @@ public class BatteryMeterView extends LinearLayout implements
     private boolean mBatteryStateUnknown;
     // Lazily-loaded since this is expected to be a rare-if-ever state
     private Drawable mUnknownStateDrawable;
+    private boolean mShowBatteryEstimate;
 
     private boolean mCharging;
     public int mBatteryStyle = BATTERY_STYLE_PORTRAIT;
@@ -245,6 +246,14 @@ public class BatteryMeterView extends LinearLayout implements
         updateSbBatteryStyle();
         updateSbShowBatteryPercent();
         leftBatteyText();
+        updateQsBatteryEstimate();
+    }
+
+    private void updateQsBatteryEstimate() {
+        mShowBatteryEstimate = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.QS_SHOW_BATTERY_ESTIMATE, 1,
+                UserHandle.USER_CURRENT) == 1;
+        updatePercentView();
     }
 
     private void updateSbBatteryStyle() {
@@ -354,7 +363,7 @@ public class BatteryMeterView extends LinearLayout implements
         }
 
         if (mBatteryPercentView != null) {
-            if (mShowPercentMode == MODE_ESTIMATE && !mCharging) {
+            if (mShowPercentMode == MODE_ESTIMATE && !mCharging && mShowBatteryEstimate) {
                 mBatteryController.getEstimatedTimeRemainingString((String estimate) -> {
                     if (mBatteryPercentView == null) {
                         return;
@@ -581,6 +590,7 @@ public class BatteryMeterView extends LinearLayout implements
     @Override
     public void onDarkChanged(Rect area, float darkIntensity, int tint) {
         float intensity = DarkIconDispatcher.isInArea(area, this) ? darkIntensity : 0;
+        updateSettings();
         mNonAdaptedSingleToneColor = mDualToneHandler.getSingleColor(intensity);
         mNonAdaptedForegroundColor = mDualToneHandler.getFillColor(intensity);
         mNonAdaptedBackgroundColor = mDualToneHandler.getBackgroundColor(intensity);
@@ -641,6 +651,9 @@ public class BatteryMeterView extends LinearLayout implements
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.DO_LEFT_BATTERY_TEXT),
+                    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.QS_SHOW_BATTERY_ESTIMATE),
                     false, this, UserHandle.USER_ALL);
         }
 
