@@ -2463,6 +2463,9 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         } finally {
             IoUtils.closeQuietly(fis);
         }
+
+        // Migrate from pre-12 network-isolation to restricted-networking-mode
+        migrateNetworkIsolation();
     }
 
     private void readPolicyXml(InputStream inputStream, boolean forRestore) throws IOException,
@@ -2919,6 +2922,9 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         } catch (IOException | XmlPullParserException e) {
             Slog.w(TAG, "applyRestore: error reading payload", e);
         }
+
+        // Migrate from pre-12 network-isolation to restricted-networking-mode
+        migrateNetworkIsolation();
     }
 
     @Override
