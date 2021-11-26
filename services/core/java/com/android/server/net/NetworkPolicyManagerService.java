@@ -86,6 +86,7 @@ import static android.net.NetworkPolicyManager.MASK_METERED_NETWORKS;
 import static android.net.NetworkPolicyManager.MASK_RESTRICTED_MODE_NETWORKS;
 import static android.net.NetworkPolicyManager.POLICY_ALLOW_METERED_BACKGROUND;
 import static android.net.NetworkPolicyManager.POLICY_NONE;
+import static android.net.NetworkPolicyManager.POLICY_REJECT_ALL;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_CELLULAR;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_METERED_BACKGROUND;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_VPN;
@@ -2413,6 +2414,25 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         }
     }
 
+    private void migrateNetworkIsolation() {
+        // Get pre-12 network-isolation uids
+        final int[] uidsWithPolicy = getUidsWithPolicy(POLICY_REJECT_ALL);
+        final Set<Integer> uidsToDeny =
+                Arrays.stream(uidsWithPolicy).boxed().collect(Collectors.toSet());
+
+        // Remove the POLICY_REJECT_ALL uids from the allowlist
+        Set<Integer> uidsAllowedOnRestrictedNetworks =
+                ConnectivitySettingsManager.getUidsAllowedOnRestrictedNetworks(mContext);
+        uidsAllowedOnRestrictedNetworks.removeAll(uidsToDeny);
+        ConnectivitySettingsManager.setUidsAllowedOnRestrictedNetworks(mContext,
+                uidsAllowedOnRestrictedNetworks);
+
+        // Clear policy to avoid future conflicts
+        for (int uid : uidsToDeny) {
+            removeUidPolicy(uid, POLICY_REJECT_ALL);
+        }
+    }
+
     @GuardedBy({"mUidRulesFirstLock", "mNetworkPoliciesSecondLock"})
     private void readPolicyAL() {
         if (LOGV) Slog.v(TAG, "readPolicyAL()");
@@ -2426,34 +2446,50 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         FileInputStream fis = null;
         try {
             fis = mPolicyFile.openRead();
-            final TypedXmlPullParser in = Xml.resolvePullParser(fis);
+            readPolicyXml(fis, false);
+        } catch (FileNotFoundException e) {
+            // missing policy is okay, probably first boot
+            upgradeDefaultBackgroundDataUL();
+        } catch (Exception e) {
+            Log.wtf(TAG, "problem reading network policy", e);
+        } finally {
+            IoUtils.closeQuietly(fis);
+        }
 
-             // Must save the <restrict-background> tags and convert them to <uid-policy> later,
-             // to skip UIDs that were explicitly denied.
-            final SparseBooleanArray restrictBackgroundAllowedUids = new SparseBooleanArray();
+        // Migrate from pre-12 network-isolation to restricted-networking-mode
+        migrateNetworkIsolation();
+    }
 
-            int type;
-            int version = VERSION_INIT;
-            boolean insideAllowlist = false;
-            while ((type = in.next()) != END_DOCUMENT) {
-                final String tag = in.getName();
-                if (type == START_TAG) {
-                    if (TAG_POLICY_LIST.equals(tag)) {
-                        final boolean oldValue = mRestrictBackground;
-                        version = readIntAttribute(in, ATTR_VERSION);
-                        mLoadedRestrictBackground = (version >= VERSION_ADDED_RESTRICT_BACKGROUND)
-                                && readBooleanAttribute(in, ATTR_RESTRICT_BACKGROUND);
-                    } else if (TAG_NETWORK_POLICY.equals(tag)) {
-                        int templateType = readIntAttribute(in, ATTR_NETWORK_TEMPLATE);
-                        final String subscriberId = in.getAttributeValue(null, ATTR_SUBSCRIBER_ID);
-                        final String networkId;
-                        final int subscriberIdMatchRule;
-                        final int templateMeteredness;
-                        if (version >= VERSION_ADDED_NETWORK_ID) {
-                            networkId = in.getAttributeValue(null, ATTR_NETWORK_ID);
-                        } else {
-                            networkId = null;
-                        }
+    private void readPolicyXml(InputStream inputStream, boolean forRestore) throws IOException,
+            XmlPullParserException {
+        final TypedXmlPullParser in = Xml.resolvePullParser(inputStream);
+
+         // Must save the <restrict-background> tags and convert them to <uid-policy> later,
+         // to skip UIDs that were explicitly denied.
+        final SparseBooleanArray restrictBackgroundAllowedUids = new SparseBooleanArray();
+
+        int type;
+        int version = VERSION_INIT;
+        boolean insideAllowlist = false;
+        while ((type = in.next()) != END_DOCUMENT) {
+            final String tag = in.getName();
+            if (type == START_TAG) {
+                if (TAG_POLICY_LIST.equals(tag)) {
+                    final boolean oldValue = mRestrictBackground;
+                    version = readIntAttribute(in, ATTR_VERSION);
+                    mLoadedRestrictBackground = (version >= VERSION_ADDED_RESTRICT_BACKGROUND)
+                            && readBooleanAttribute(in, ATTR_RESTRICT_BACKGROUND);
+                } else if (TAG_NETWORK_POLICY.equals(tag)) {
+                    int templateType = readIntAttribute(in, ATTR_NETWORK_TEMPLATE);
+                    final String subscriberId = in.getAttributeValue(null, ATTR_SUBSCRIBER_ID);
+                    final String networkId;
+                    final int subscriberIdMatchRule;
+                    final int templateMeteredness;
+                    if (version >= VERSION_ADDED_NETWORK_ID) {
+                        networkId = in.getAttributeValue(null, ATTR_NETWORK_ID);
+                    } else {
+                        networkId = null;
+                    }
 
                         if (version >= VERSION_SUPPORTED_CARRIER_USAGE) {
                             subscriberIdMatchRule = readIntAttribute(in,
@@ -2837,6 +2873,9 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                 mPolicyFile.failWrite(fos);
             }
         }
+
+        // Migrate from pre-12 network-isolation to restricted-networking-mode
+        migrateNetworkIsolation();
     }
 
     @Override
