@@ -15,7 +15,7 @@
 <resources>
 
     <!-- Total height of QQS (quick_qs_offset_height + 128) -->
-    <dimen name="quick_qs_total_height">176dp</dimen>
+    <dimen name="quick_qs_total_height">248dip</dimen>
 
     <!-- Pocket Mode -->
     <dimen name="pocket_view_img_height">350dp</dimen>
@@ -28,4 +28,5 @@
     <dimen name="pocket_view_cancel_margin_horizontal">24dp</dimen>
     <dimen name="pocket_view_top_tag_size">14sp</dimen>
     <dimen name="pocket_view_top_tag_margin_top">8dp</dimen>
+
 </resources>

@@ -71,7 +71,6 @@ class QuickStatusBarHeaderController extends ViewController<QuickStatusBarHeader
     private final FeatureFlags mFeatureFlags;
 
     private final VariableDateViewController mVariableDateViewControllerDateView;
-    private final VariableDateViewController mVariableDateViewControllerClockDateView;
 
     private boolean mListening;
     private boolean mMicCameraIndicatorsEnabled;
@@ -156,9 +155,6 @@ class QuickStatusBarHeaderController extends ViewController<QuickStatusBarHeader
         mVariableDateViewControllerDateView = variableDateViewControllerFactory.create(
                 mView.requireViewById(R.id.date)
         );
-        mVariableDateViewControllerClockDateView = variableDateViewControllerFactory.create(
-                mView.requireViewById(R.id.date_clock)
-        );
 
         mIconManager = new StatusBarIconController.TintedIconManager(mIconContainer, featureFlags);
         mDemoModeReceiver = new ClockDemoModeReceiver(mClockView);
@@ -206,7 +202,6 @@ class QuickStatusBarHeaderController extends ViewController<QuickStatusBarHeader
         mDemoModeController.addCallback(mDemoModeReceiver);
 
         mVariableDateViewControllerDateView.init();
-        mVariableDateViewControllerClockDateView.init();
     }
 
     @Override

@@ -65,14 +65,12 @@ public class QuickStatusBarHeader extends FrameLayout {
     private View mDatePrivacyView;
     private View mDateView;
     // DateView next to clock. Visible on QQS
-    private VariableDateView mClockDateView;
     private View mSecurityHeaderView;
     private View mClockIconsView;
     private View mContainer;
     private NetworkTraffic mNetworkTraffic;
 
     private View mQSCarriers;
-    private ViewGroup mClockContainer;
     private Clock mClockView;
     private Space mDatePrivacySeparator;
     private View mClockIconsSeparator;
@@ -128,7 +126,6 @@ public class QuickStatusBarHeader extends FrameLayout {
         mIconContainer = findViewById(R.id.statusIcons);
         mPrivacyChip = findViewById(R.id.privacy_chip);
         mDateView = findViewById(R.id.date);
-        mClockDateView = findViewById(R.id.date_clock);
         mSecurityHeaderView = findViewById(R.id.header_text_container);
         mClockIconsSeparator = findViewById(R.id.separator);
         mRightLayout = findViewById(R.id.rightLayout);
@@ -136,7 +133,6 @@ public class QuickStatusBarHeader extends FrameLayout {
         mPrivacyContainer = findViewById(R.id.privacy_container);
         mNetworkTraffic = findViewById(R.id.networkTraffic);
 
-        mClockContainer = findViewById(R.id.clock_container);
         mClockView = findViewById(R.id.clock);
         mClockView.setQsHeader();
         mDatePrivacySeparator = findViewById(R.id.space);
@@ -296,10 +292,6 @@ public class QuickStatusBarHeader extends FrameLayout {
                 endPadding,
                 mClockView.getPaddingBottom()
         );
-
-        MarginLayoutParams lp = (MarginLayoutParams) mClockDateView.getLayoutParams();
-        lp.setMarginStart(endPadding);
-        mClockDateView.setLayoutParams(lp);
     }
 
     private void updateAnimators() {
@@ -319,7 +311,6 @@ public class QuickStatusBarHeader extends FrameLayout {
                 .addFloat(mSecurityHeaderView, "alpha", 0, 1)
                 // These views appear on expanding down
                 .addFloat(mDateView, "alpha", 0, 0, 1)
-                .addFloat(mClockDateView, "alpha", 1, 0, 0)
                 .addFloat(mQSCarriers, "alpha", 0, 1)
                 .addFloat(mNetworkTraffic, "alpha", 0, 1)
                 .setListener(new TouchAnimator.ListenerAdapter() {
@@ -329,14 +320,10 @@ public class QuickStatusBarHeader extends FrameLayout {
                         if (!mIsSingleCarrier) {
                             mIconContainer.addIgnoredSlots(mRssiIgnoredSlots);
                         }
-                        // Make it gone so there's enough room for carrier names
-                        mClockDateView.setVisibility(View.GONE);
                     }
 
                     @Override
                     public void onAnimationStarted() {
-                        mClockDateView.setVisibility(View.VISIBLE);
-                        mClockDateView.setFreezeSwitching(true);
                         setSeparatorVisibility(false);
                         if (!mIsSingleCarrier) {
                             mIconContainer.addIgnoredSlots(mRssiIgnoredSlots);
@@ -346,8 +333,6 @@ public class QuickStatusBarHeader extends FrameLayout {
                     @Override
                     public void onAnimationAtStart() {
                         super.onAnimationAtStart();
-                        mClockDateView.setFreezeSwitching(false);
-                        mClockDateView.setVisibility(View.VISIBLE);
                         setSeparatorVisibility(mShowClockIconsSeparator);
                         // In QQS we never ignore RSSI.
                         mIconContainer.removeIgnoredSlots(mRssiIgnoredSlots);
@@ -481,13 +466,7 @@ public class QuickStatusBarHeader extends FrameLayout {
         mClockIconsSeparator.setVisibility(visible ? View.VISIBLE : View.GONE);
         mQSCarriers.setVisibility(visible ? View.GONE : View.VISIBLE);
 
-        LinearLayout.LayoutParams lp =
-                (LinearLayout.LayoutParams) mClockContainer.getLayoutParams();
-        lp.width = visible ? 0 : WRAP_CONTENT;
-        lp.weight = visible ? 1f : 0f;
-        mClockContainer.setLayoutParams(lp);
-
-        lp = (LinearLayout.LayoutParams) mRightLayout.getLayoutParams();
+        LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mRightLayout.getLayoutParams();
         lp.width = visible ? 0 : WRAP_CONTENT;
         lp.weight = visible ? 1f : 0f;
         mRightLayout.setLayoutParams(lp);
