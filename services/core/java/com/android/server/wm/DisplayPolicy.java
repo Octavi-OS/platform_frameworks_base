@@ -116,12 +116,10 @@ import android.app.ActivityManager;
 import android.app.ActivityThread;
 import android.app.LoadedApk;
 import android.app.ResourcesManager;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.database.ContentObserver;
 import android.graphics.Insets;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
@@ -134,7 +132,6 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.os.UserHandle;
-import android.provider.Settings;
 import android.util.PrintWriterPrinter;
 import android.util.Slog;
 import android.util.SparseArray;
@@ -253,7 +250,6 @@ public class DisplayPolicy {
 
     private volatile boolean mHasStatusBar;
     private volatile boolean mHasNavigationBar;
-    private volatile int mForceNavbar = -1;
     // Can the navigation bar ever move to the side?
     private volatile boolean mNavigationBarCanMove;
     private volatile boolean mNavigationBarLetsThroughTaps;
@@ -359,7 +355,7 @@ public class DisplayPolicy {
 
     private PointerLocationView mPointerLocationView;
 
-    private SettingsObserver mSettingsObserver;
+    private int mDisplayCutoutTouchableRegionSize;
 
     /**
      * The area covered by system windows which belong to another display. Forwarded insets is set
@@ -421,24 +417,6 @@ public class DisplayPolicy {
                     disablePointerLocation();
                     break;
             }
-        }
-    }
-
-    private class SettingsObserver extends ContentObserver {
-        public SettingsObserver(Handler handler) {
-            super(handler);
-
-            ContentResolver resolver = mContext.getContentResolver();
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.FORCE_SHOW_NAVBAR), false, this,
-                    UserHandle.USER_ALL);
-
-            updateSettings();
-        }
-
-        @Override
-        public void onChange(boolean selfChange) {
-            updateSettings();
         }
     }
 
@@ -656,9 +634,6 @@ public class DisplayPolicy {
             } else if ("0".equals(navBarOverride)) {
                 mHasNavigationBar = true;
             }
-
-            // Register content observer only for main display
-            mSettingsObserver = new SettingsObserver(mHandler);
         } else {
             mHasStatusBar = false;
             mHasNavigationBar = mDisplayContent.supportsSystemDecorations();
@@ -699,21 +674,6 @@ public class DisplayPolicy {
         if (mService.mPointerLocationEnabled) {
             setPointerLocationEnabled(true);
         }
-    }
-
-    public void updateSettings() {
-        ContentResolver resolver = mContext.getContentResolver();
-
-        int mDefNavBar;
-        if (mHasNavigationBar) {
-            mDefNavBar = 1;
-        } else {
-            mDefNavBar = 0;
-        }
-
-        mForceNavbar = Settings.System.getIntForUser(resolver,
-                Settings.System.FORCE_SHOW_NAVBAR, mDefNavBar,
-                UserHandle.USER_CURRENT);
     }
 
     private int getDisplayId() {
@@ -764,7 +724,7 @@ public class DisplayPolicy {
     }
 
     public boolean hasNavigationBar() {
-        return mForceNavbar == 1;
+        return mHasNavigationBar;
     }
 
     public boolean hasStatusBar() {
@@ -813,6 +773,11 @@ public class DisplayPolicy {
 
     public ScreenOnListener getScreenOnListener() {
         return mScreenOnListener;
+    }
+
+    public int getTopFullscreenOpaqueWindowStatePrivateFlags() {
+        return mTopFullscreenOpaqueWindowState != null ?
+                mTopFullscreenOpaqueWindowState.getAttrs().privateFlags : 0;
     }
 
     public void screenTurnedOn(ScreenOnListener screenOnListener) {
@@ -1123,8 +1088,21 @@ public class DisplayPolicy {
                         (displayFrames, windowState, rect) -> {
                             rect.bottom = rect.top + getStatusBarHeight(displayFrames);
                         };
+                final TriConsumer<DisplayFrames, WindowState, Rect> gestureFrameProvider =
+                        (displayFrames, windowState, rect) -> {
+                            rect.bottom = rect.top + getStatusBarHeight(displayFrames);
+                            final DisplayCutout cutout =
+                                    displayFrames.mInsetsState.getDisplayCutout();
+                            if (cutout != null) {
+                                final Rect top = cutout.getBoundingRectTop();
+                                if (!top.isEmpty()) {
+                                    rect.bottom = rect.bottom + mDisplayCutoutTouchableRegionSize;
+                                }
+                            }
+                        };
                 mDisplayContent.setInsetProvider(ITYPE_STATUS_BAR, win, frameProvider);
-                mDisplayContent.setInsetProvider(ITYPE_TOP_MANDATORY_GESTURES, win, frameProvider);
+                mDisplayContent.setInsetProvider(
+                        ITYPE_TOP_MANDATORY_GESTURES, win, gestureFrameProvider);
                 mDisplayContent.setInsetProvider(ITYPE_TOP_TAPPABLE_ELEMENT, win, frameProvider);
                 break;
             case TYPE_NAVIGATION_BAR:
@@ -1646,7 +1624,7 @@ public class DisplayPolicy {
             pf.set((fl & FLAG_LAYOUT_IN_SCREEN) == 0 ? attached.getFrame() : df);
         }
 
-        final int cutoutMode = attrs.layoutInDisplayCutoutMode;
+        final int cutoutMode = LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS;
         // Ensure that windows with a DEFAULT or NEVER display cutout mode are laid out in
         // the cutout safe zone.
         if (cutoutMode != LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS) {
@@ -2035,11 +2013,14 @@ public class DisplayPolicy {
             mStatusBarHeightForRotation[landscapeRotation] =
                     mStatusBarHeightForRotation[seascapeRotation] =
                             res.getDimensionPixelSize(R.dimen.status_bar_height_landscape);
+            mDisplayCutoutTouchableRegionSize = res.getDimensionPixelSize(
+                    R.dimen.display_cutout_touchable_region_size);
         } else {
             mStatusBarHeightForRotation[portraitRotation] =
                     mStatusBarHeightForRotation[upsideDownRotation] =
                             mStatusBarHeightForRotation[landscapeRotation] =
                                     mStatusBarHeightForRotation[seascapeRotation] = 0;
+            mDisplayCutoutTouchableRegionSize = 0;
         }
 
         // Height of the navigation bar when presented horizontally at bottom
@@ -3022,6 +3003,7 @@ public class DisplayPolicy {
         pw.print(" mAllowLockscreenWhenOn="); pw.println(mAllowLockscreenWhenOn);
         pw.print(prefix); pw.print("mRemoteInsetsControllerControlsSystemBars=");
         pw.println(mDisplayContent.getInsetsPolicy().getRemoteInsetsControllerControlsSystemBars());
+        mSystemGestures.dump(pw, prefix);
 
         pw.print(prefix); pw.println("Looper state:");
         mHandler.getLooper().dump(new PrintWriterPrinter(pw), prefix + "  ");
