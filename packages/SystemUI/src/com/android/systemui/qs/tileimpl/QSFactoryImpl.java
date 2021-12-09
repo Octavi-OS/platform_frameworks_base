@@ -27,7 +27,6 @@ import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.external.CustomTile;
 import com.android.systemui.qs.tiles.AirplaneModeTile;
 import com.android.systemui.qs.tiles.AlarmTile;
-import com.android.systemui.qs.tiles.AODTile;
 import com.android.systemui.qs.tiles.BatterySaverTile;
 import com.android.systemui.qs.tiles.BluetoothTile;
 import com.android.systemui.qs.tiles.CameraToggleTile;
@@ -107,7 +106,6 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<SoundTile> mSoundTileProvider;
     private final Provider<ScreenshotTile> mScreenshotTileProvider;
     private final Provider<HeadsUpTile> mHeadsUpTileProvider;
-    private final Provider<AODTile> mAODTileProvider;
     private final Provider<DataSwitchTile> mDataSwitchTileProvider;
     private final Provider<SoundSearchTile> mSoundSearchTileProvider;
 
@@ -152,9 +150,9 @@ public class QSFactoryImpl implements QSFactory {
             Provider<SoundTile> soundTileProvider,
             Provider<ScreenshotTile> screenshotTileProvider,
             Provider<HeadsUpTile> headsUpTileProvider,
-            Provider<AODTile> aodTileProvider,
             Provider<DataSwitchTile> dataSwitchTileProvider,
             Provider<SoundSearchTile> soundSearchTileProvider) {
+            Provider<HeadsUpTile> headsUpTileProvider) {
         mQsHostLazy = qsHostLazy;
         mCustomTileBuilderProvider = customTileBuilderProvider;
 
@@ -192,7 +190,6 @@ public class QSFactoryImpl implements QSFactory {
         mSoundTileProvider = soundTileProvider;
         mScreenshotTileProvider = screenshotTileProvider;
         mHeadsUpTileProvider = headsUpTileProvider;
-        mAODTileProvider = aodTileProvider;
         mDataSwitchTileProvider = dataSwitchTileProvider;
         mSoundSearchTileProvider = soundSearchTileProvider;
     }
@@ -275,8 +272,6 @@ public class QSFactoryImpl implements QSFactory {
                 return mScreenshotTileProvider.get();
             case "heads_up":
                 return mHeadsUpTileProvider.get();
-            case "aod":
-                return mAODTileProvider.get();
             case "dataswitch":
                 return mDataSwitchTileProvider.get();
             case "soundsearch":
