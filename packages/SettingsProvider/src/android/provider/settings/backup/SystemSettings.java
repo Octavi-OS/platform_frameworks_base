@@ -88,5 +88,6 @@ public class SystemSettings {
         Settings.System.RINGTONE_VIBRATION_PATTERN,
         Settings.System.CUSTOM_RINGTONE_VIBRATION_PATTERN,
         Settings.System.SCREEN_OFF_FOD,
+        Settings.System.FULLSCREEN_GESTURES,
     };
 }
