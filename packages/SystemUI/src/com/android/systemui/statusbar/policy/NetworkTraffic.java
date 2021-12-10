@@ -455,6 +455,11 @@ public class NetworkTraffic extends TextView {
         }
     }
 
+    public void setTintColor(int color) {
+        mTintColor = color;
+        updateTrafficDrawable();
+    }
+
     public void onDensityOrFontScaleChanged() {
         final Resources resources = getResources();
         txtSize = (mTrafficType == BOTH)
