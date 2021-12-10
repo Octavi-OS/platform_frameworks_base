@@ -97,4 +97,7 @@
     <!-- Pocket Service -->
     <java-symbol type="string" name="config_pocketJudgeVendorSensorName" />
 
+    <!-- Ambiant Pulse Light -->
+    <java-symbol type="integer" name="config_AmbiantPulseLightColor" />
+
 </resources>

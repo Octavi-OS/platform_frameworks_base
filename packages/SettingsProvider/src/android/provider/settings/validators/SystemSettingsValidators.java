@@ -207,6 +207,9 @@ public class SystemSettingsValidators {
         VALIDATORS.put(System.RINGTONE_VIBRATION_PATTERN, new InclusiveIntegerRangeValidator(0, 5));
         VALIDATORS.put(System.SCREEN_OFF_FOD, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.FULLSCREEN_GESTURES, BOOLEAN_VALIDATOR);
+        VALIDATORS.put(System.PULSE_AMBIENT_LIGHT, BOOLEAN_VALIDATOR);
+        VALIDATORS.put(System.AMBIENT_NOTIFICATION_LIGHT_ENABLED, BOOLEAN_VALIDATOR);
+        VALIDATORS.put(System.AMBIENT_NOTIFICATION_LIGHT, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.CUSTOM_RINGTONE_VIBRATION_PATTERN,
                 new Validator() {
                     @Override
