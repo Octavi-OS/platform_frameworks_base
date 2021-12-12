@@ -149,6 +149,7 @@
             android:paddingEnd="4dp">
 
             <TextView
+	        android:id="@+id/text_1"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_gravity="start|center"
@@ -164,6 +165,7 @@
                 android:textStyle="bold" />
 
             <TextView
+	        android:id="@+id/text_2"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_gravity="start|center"

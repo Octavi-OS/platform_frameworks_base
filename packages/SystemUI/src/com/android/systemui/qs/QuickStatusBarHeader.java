@@ -31,6 +31,7 @@ import android.view.WindowInsets;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Space;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -45,6 +46,8 @@ import com.android.systemui.statusbar.policy.Clock;
 import com.android.systemui.statusbar.policy.VariableDateView;
 import com.android.systemui.statusbar.policy.NetworkTraffic;
 
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -53,6 +56,7 @@ import java.util.List;
  */
 public class QuickStatusBarHeader extends FrameLayout {
 
+    TextView text1, text2;
     private boolean mExpanded;
     private boolean mQsDisabled;
 
@@ -133,7 +137,9 @@ public class QuickStatusBarHeader extends FrameLayout {
         mPrivacyContainer = findViewById(R.id.privacy_container);
         mNetworkTraffic = findViewById(R.id.networkTraffic);
 
-        mClockView = findViewById(R.id.clock);
+        text1 = findViewById(R.id.text_1);
+	text2 = findViewById(R.id.text_2);
+	mClockView = findViewById(R.id.clock);
         mClockView.setQsHeader();
         mDatePrivacySeparator = findViewById(R.id.space);
         // Tint for the battery icons are handled in setupHost()
@@ -154,6 +160,8 @@ public class QuickStatusBarHeader extends FrameLayout {
                 .addFloat(mIconContainer, "alpha", 0, 1)
                 .addFloat(mBatteryRemainingIcon, "alpha", 0, 1)
                 .build();
+
+	updateQsTextView();
     }
 
     void onAttach(TintedIconManager iconManager,
@@ -351,6 +359,16 @@ public class QuickStatusBarHeader extends FrameLayout {
             mIconsAlphaAnimator = null;
             mIconContainer.setAlpha(1);
             mBatteryRemainingIcon.setAlpha(1);
+        }
+
+    }
+
+    private void updateQsTextView() {
+        Calendar calendar = Calendar.getInstance();
+        String date = DateFormat.getDateInstance().format(calendar.getTime());
+        if (date.equals("01-Jan-2022")){
+            text1.setText("Happy");
+            text2.setText("New Year");
         }
 
     }
