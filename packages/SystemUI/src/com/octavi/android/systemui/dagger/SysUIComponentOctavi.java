@@ -8,6 +8,7 @@ import com.android.systemui.dagger.SysUIComponent;
 import com.android.systemui.dagger.SystemUIModule;
 
 import com.octavi.android.systemui.columbus.ColumbusModule;
+import com.octavi.android.systemui.elmyra.ElmyraModule;
 import com.octavi.android.systemui.gamedashboard.GameDashboardModule;
 import com.octavi.android.systemui.keyguard.KeyguardSliceProviderOctavi;
 import com.octavi.android.systemui.smartspace.KeyguardSmartspaceController;
@@ -19,6 +20,7 @@ import dagger.Subcomponent;
         ColumbusModule.class,
         DefaultComponentBinder.class,
         DependencyProvider.class,
+        ElmyraModule.class,
         GameDashboardModule.class,
         SystemUIModule.class,
         SystemUIOctaviBinder.class,
