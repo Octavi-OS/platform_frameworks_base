@@ -58,11 +58,13 @@ android_library {
         "src/**/I*.aidl",
     ],
     resource_dirs: [
+        "res",
+        "res-assist",
+        "res-columbus",
         "res-product",
         "res-keyguard",
         "res-smartspace",
         "res-gamedashboard",
-        "res",
         "res-hwkeys",
     ],
     static_libs: [
@@ -100,10 +102,13 @@ android_library {
         "lottie",
         "colorkt",
         "themelib",
+        "assistmanager-google",
         "backgesture-google",
+        "columbus-sysui-google",
         "smartspace-google",
         "tensorflowlite_java",
         "gamedashboard-sysui-google",
+        "vendor-pixelatoms-java",
     ],
     manifest: "AndroidManifest.xml",
 
