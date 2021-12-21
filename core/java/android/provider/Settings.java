@@ -6109,8 +6109,21 @@ public final class Settings {
         public static final String STATUSBAR_ICONS_STYLE = "statusbar_icons_style";
 
         /**
-         * Whether to hide navbar pill and keyboard space.
-         * Default 0.
+         * @hide
+         */
+        public static final String UDFPS_ANIM = "udfps_anim";
+
+        /**
+         * @hide
+         */
+        public static final String UDFPS_ANIM_STYLE = "udfps_anim_style";
+
+        /**
+         * @hide
+         */
+        public static final String UDFPS_ICON = "udfps_icon";
+
+        /**
          * @hide
          */
         public static final String FULLSCREEN_GESTURES = "fullscreen_gestures";

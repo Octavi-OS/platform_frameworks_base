@@ -60,6 +60,7 @@ import android.view.WindowManager;
 import android.view.accessibility.AccessibilityManager;
 
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.internal.util.octavi.OctaviUtils;
 import com.android.keyguard.KeyguardUpdateMonitor;
 import com.android.systemui.R;
 import com.android.systemui.biometrics.UdfpsHbmTypes.HbmType;
@@ -171,6 +172,8 @@ public class UdfpsController implements DozeReceiver, UdfpsHbmProvider {
     private final int mUdfpsVendorCode;
     private final SystemSettings mSystemSettings;
     private boolean mScreenOffFod;
+
+    private UdfpsAnimation mUdfpsAnimation;
 
     @VisibleForTesting
     public static final AudioAttributes VIBRATION_SONIFICATION_ATTRIBUTES =
@@ -625,6 +628,9 @@ public class UdfpsController implements DozeReceiver, UdfpsHbmProvider {
 
         udfpsHapticsSimulator.setUdfpsController(this);
         mUdfpsVendorCode = mContext.getResources().getInteger(R.integer.config_udfps_vendor_code);
+        if (OctaviUtils.isPackageInstalled(mContext, "com.octavi.udfps.resources")) {
+            mUdfpsAnimation = new UdfpsAnimation(mContext, mWindowManager, mSensorProps);
+        }
         mSystemSettings = systemSettings;
         updateScreenOffFodState();
         mSystemSettings.registerContentObserver(Settings.System.SCREEN_OFF_FOD,
@@ -799,6 +805,12 @@ public class UdfpsController implements DozeReceiver, UdfpsHbmProvider {
         mExecution.assertIsMainThread();
 
         final int reason = request.mRequestReason;
+
+        if (mUdfpsAnimation != null) {
+            mUdfpsAnimation.setIsKeyguard(reason ==
+                    IUdfpsOverlayController.REASON_AUTH_FPM_KEYGUARD);
+        }
+
         if (mView == null) {
             try {
                 Log.v(TAG, "showUdfpsOverlay | adding window reason=" + reason);
@@ -1022,6 +1034,9 @@ public class UdfpsController implements DozeReceiver, UdfpsHbmProvider {
         for (Callback cb : mCallbacks) {
             cb.onFingerDown();
         }
+        if (mUdfpsAnimation != null) {
+            mUdfpsAnimation.show();
+        }
     }
 
     private void onFingerUp() {
@@ -1037,6 +1052,9 @@ public class UdfpsController implements DozeReceiver, UdfpsHbmProvider {
             for (Callback cb : mCallbacks) {
                 cb.onFingerUp();
             }
+        }
+        if (mUdfpsAnimation != null) {
+            mUdfpsAnimation.hide();
         }
         mOnFingerDown = false;
         if (mView.isIlluminationRequested()) {

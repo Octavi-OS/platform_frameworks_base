@@ -38,4 +38,8 @@
     <!-- Height of the battery icon in the status bar. -->
     <dimen name="status_bar_battery_icon_height_landscape">12.5dp</dimen>
     <dimen name="status_bar_battery_icon_width_landscape">24dp</dimen>
+
+    <!-- Recognizing fingerprint animation -->
+    <dimen name="udfps_animation_size">280dp</dimen>
+    <dimen name="udfps_animation_offset">0dp</dimen>
 </resources>
