@@ -95,6 +95,11 @@ LOCAL_REQUIRED_MODULES := \
         IconPackOOSLauncherOverlay \
         IconPackOOSSettingsOverlay \
         IconPackOOSThemePickerOverlay \
+        IconShapePebbleOverlay \
+        IconShapeRoundedRectOverlay \
+        IconShapeSquareOverlay \
+        IconShapeSquircleOverlay \
+        IconShapeTeardropOverlay \
 	NavigationBarMode3ButtonOverlay \
         NavigationBarMode2ButtonOverlay \
 	NavigationBarModeGesturalOverlay \
