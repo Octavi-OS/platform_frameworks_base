@@ -5677,12 +5677,6 @@ public final class Settings {
         public static final String VIBRATE_ON_DISCONNECT = "vibrate_on_disconnect";
 
         /**
-         * Network traffic inactivity threshold (default is 1 kBs)
-         * @hide
-         */
-        public static final String NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD = "network_traffic_autohide_threshold";
-
-        /**
          * media artwork wallpaper blur level on lockscreen
          * @hide
          */
