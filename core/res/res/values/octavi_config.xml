@@ -142,4 +142,15 @@
 
     <!-- Whether to cancel fingerprint operation if not idle -->
     <bool name="config_fpCancelIfNotIdle">false</bool>
+
+        <!-- Whether device has an alert slider. -->
+    <bool name="config_hasAlertSlider">false</bool>
+
+    <!-- The location of the device's alert slider:
+         0: Left side
+         1: Right side -->
+    <integer name="config_alertSliderLocation">1</integer>
+
+    <!-- Whether key handler sends intent when changing slider position -->
+    <string name="config_alertSliderIntent"></string>    
 </resources>
