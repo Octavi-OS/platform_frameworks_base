@@ -100,6 +100,7 @@ public final class PhoneStatusBarTransitions extends BarTransitions {
                     animateTransitionTo(mRightClock, newAlphaBC),
                     animateTransitionTo(mBatteryBars[0], newAlphaBC),
                     animateTransitionTo(mBatteryBars[1], newAlphaBC)
+                    animateTransitionTo(mRightClock, newAlphaBC)
                     );
             if (isLightsOut(mode)) {
                 anims.setDuration(LIGHTS_OUT_DURATION);
