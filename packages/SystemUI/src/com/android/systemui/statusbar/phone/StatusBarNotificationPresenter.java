@@ -21,6 +21,7 @@ import static com.android.systemui.statusbar.phone.StatusBar.SPEW;
 
 import android.annotation.Nullable;
 import android.app.KeyguardManager;
+import android.app.Notification;
 import android.content.Context;
 import android.os.RemoteException;
 import android.os.ServiceManager;
@@ -502,10 +503,16 @@ public class StatusBarNotificationPresenter implements NotificationPresenter,
             return false;
         }
 
-        @Override
+	@Override
         public boolean suppressAwakeInterruptions(NotificationEntry entry) {
-            return isDeviceInVrMode();
-        }
+            final StatusBarNotification sbn = entry.getSbn();
+            if (sbn.getIsContentSecure()) {
+                return true;
+            } else {
+                final Notification notification = entry.getSbn().getNotification();
+                return isDeviceInVrMode();
+            }
+       }
 
         @Override
         public boolean suppressInterruptions(NotificationEntry entry) {
