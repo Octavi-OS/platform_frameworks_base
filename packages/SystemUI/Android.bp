@@ -110,6 +110,7 @@ android_library {
         "tensorflowlite_java",
         "gamedashboard-sysui-google",
         "vendor-pixelatoms-java",
+        "faceunlock_framework",
     ],
     manifest: "AndroidManifest.xml",
 
